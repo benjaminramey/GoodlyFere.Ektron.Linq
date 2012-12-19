@@ -37,6 +37,15 @@
     <Reference Include="Common.Logging.Log4Net">
       <HintPath>packages\Common.Logging.Log4Net.2.0.1\lib\net20\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
+    <Reference Include="Ektron.Cms.Common">
+      <HintPath>..\lib\Ektron.Cms.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework">
+      <HintPath>..\lib\Ektron.Cms.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.ObjectFactory">
+      <HintPath>..\lib\Ektron.Cms.ObjectFactory.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
@@ -52,11 +61,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EktronModel\Attributes\ContentTypeAttribute.cs" />
+    <Compile Include="EktronModel\Attributes\CustomPropertyAttribute.cs" />
+    <Compile Include="EktronModel\Attributes\EktronPropertyAttribute.cs" />
+    <Compile Include="EktronModel\Attributes\FolderPathAttribute.cs" />
+    <Compile Include="EktronModel\Attributes\MetadataPropertyAttribute.cs" />
+    <Compile Include="EktronModel\Attributes\SmartFormAttribute.cs" />
+    <Compile Include="EktronModel\Attributes\SmartFormPropertyAttribute.cs" />
+    <Compile Include="EktronQueryable.cs" />
+    <Compile Include="EktronQueryExecutor.cs" />
+    <Compile Include="EktronQueryFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
