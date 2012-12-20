@@ -37,13 +37,145 @@
     <Reference Include="Common.Logging.Log4Net">
       <HintPath>..\GoodlyFere.Ektron.Linq\packages\Common.Logging.Log4Net.2.0.1\lib\net20\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
+    <Reference Include="CookieEncryption, Version=1.0.0.0, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\CookieEncryption.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.ASM.EkDavProtocol, Version=4.0.0.0, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.ASM.EkDavProtocol.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.ASM.EkHttpDavHandler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.ASM.EkHttpDavHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.BusinessObjects, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.BusinessObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.BusinessObjects.Caching, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.BusinessObjects.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Common, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework.UI, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Framework.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework.UI.Controls, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Framework.UI.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework.UI.Controls.EktronUI, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Framework.UI.Controls.EktronUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework.UI.Registration, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Framework.UI.Registration.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework.UI.Services, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Framework.UI.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Instrumentation, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Instrumentation.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.ObjectFactory, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.ObjectFactory.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Personalization, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Personalization.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Providers, Version=8.5.0.356, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Search, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Widget, Version=8.5.0.356, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Cms.Widget.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=1e97f90fc2b998db, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=1e97f90fc2b998db, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=1e97f90fc2b998db, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Newtonsoft.json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b9a188c8922137c6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Ektron.Newtonsoft.json.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\GoodlyFere.Ektron.Linq\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
     <Reference Include="NSubstitute">
       <HintPath>..\GoodlyFere.Ektron.Linq\packages\NSubstitute.1.4.3.0\lib\NET40\NSubstitute.dll</HintPath>
     </Reference>
+    <Reference Include="Remotion.Linq">
+      <HintPath>..\GoodlyFere.Ektron.Linq\packages\Remotion.Linq.1.13.179.0\lib\net35\Remotion.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -62,13 +194,33 @@
     <Reference Include="xunit.runner.utility">
       <HintPath>..\GoodlyFere.Ektron.Linq\packages\xunit.1.9.1\lib\net20\xunit.runner.utility.dll</HintPath>
     </Reference>
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.4.0.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IntegrationTests.cs" />
+    <Compile Include="EkAssert.cs" />
+    <Compile Include="Ektron\FromExpression.cs" />
+    <Compile Include="Ektron\OrderByExpression.cs" />
+    <Compile Include="Ektron\SelectExpression.cs" />
+    <Compile Include="Ektron\SS2010TransformVisitor.cs" />
+    <Compile Include="Ektron\WhereExpression.cs" />
+    <Compile Include="Integration\IntegrationTests.cs" />
+    <Compile Include="Model\Widget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Ektron\Config\ektron.cms.framework.ui.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ektron\Config\ektron.cms.framework.ui.unity.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ektron\Config\ektron.cms.framework.unity.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="log4net.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -78,9 +230,7 @@
       <Name>GoodlyFere.Ektron.Linq</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

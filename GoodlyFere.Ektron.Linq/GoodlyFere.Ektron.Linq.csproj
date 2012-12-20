@@ -71,6 +71,8 @@
     <Compile Include="EktronQueryable.cs" />
     <Compile Include="EktronQueryExecutor.cs" />
     <Compile Include="EktronQueryFactory.cs" />
+    <Compile Include="Extensions\ReflectionExtensions.cs" />
+    <Compile Include="Interfaces\IEktronIdProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
