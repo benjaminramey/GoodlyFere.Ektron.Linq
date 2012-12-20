@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging">
-      <HintPath>packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging.Log4Net">
-      <HintPath>packages\Common.Logging.Log4Net.2.0.1\lib\net20\Common.Logging.Log4Net.dll</HintPath>
+    <Reference Include="Common.Logging.Log4Net1211">
+      <HintPath>..\packages\Common.Logging.Log4Net1211.2.1.2\lib\net40\Common.Logging.Log4Net1211.dll</HintPath>
     </Reference>
     <Reference Include="Ektron.Cms.Common">
       <HintPath>..\lib\Ektron.Cms.Common.dll</HintPath>
@@ -49,10 +49,10 @@
       <HintPath>..\lib\Ektron.Cms.ObjectFactory.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Remotion.Linq">
-      <HintPath>packages\Remotion.Linq.1.13.179.0\lib\net35\Remotion.Linq.dll</HintPath>
+      <HintPath>..\packages\Remotion.Linq.1.13.179.0\lib\net35\Remotion.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -63,18 +63,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EktronModel\Attributes\ContentTypeAttribute.cs" />
-    <Compile Include="EktronModel\Attributes\CustomPropertyAttribute.cs" />
-    <Compile Include="EktronModel\Attributes\EktronPropertyAttribute.cs" />
-    <Compile Include="EktronModel\Attributes\FolderPathAttribute.cs" />
-    <Compile Include="EktronModel\Attributes\MetadataPropertyAttribute.cs" />
-    <Compile Include="EktronModel\Attributes\SmartFormAttribute.cs" />
-    <Compile Include="EktronModel\Attributes\SmartFormPropertyAttribute.cs" />
+    <Compile Include="Exceptions\InvalidQueryException.cs" />
+    <Compile Include="Generation\EkExpressionAggregator.cs" />
+    <Compile Include="Generation\EkExpressionQueryModelVisitor.cs" />
+    <Compile Include="Generation\Mappings\BinaryExpressionFactoryMethodMap.cs" />
+    <Compile Include="Generation\Mappings\ConstantExpressionMap.cs" />
+    <Compile Include="Generation\Mappings\ReverseOperatorMap.cs" />
+    <Compile Include="Generation\MethodCallHandlers\HandledMethodsMap.cs" />
+    <Compile Include="Generation\MethodCallHandlers\StringMethodHandlers.cs" />
+    <Compile Include="Generation\QueryBuildingVisitor.cs" />
+    <Compile Include="Helpers\PropertyExpressionHelper.cs" />
+    <Compile Include="Model\Attributes\ContentTypeAttribute.cs" />
+    <Compile Include="Model\Attributes\CustomPropertyAttribute.cs" />
+    <Compile Include="Model\Attributes\EktronPropertyAttribute.cs" />
+    <Compile Include="Model\Attributes\FolderPathAttribute.cs" />
+    <Compile Include="Model\Attributes\MetadataPropertyAttribute.cs" />
+    <Compile Include="Model\Attributes\SmartFormAttribute.cs" />
+    <Compile Include="Model\Attributes\SmartFormPropertyAttribute.cs" />
     <Compile Include="EktronQueryable.cs" />
     <Compile Include="EktronQueryExecutor.cs" />
     <Compile Include="EktronQueryFactory.cs" />
     <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Interfaces\IEktronIdProvider.cs" />
+    <Compile Include="Model\EkConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

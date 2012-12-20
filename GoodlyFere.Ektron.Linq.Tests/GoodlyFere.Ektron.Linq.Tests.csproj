@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging">
-      <HintPath>..\GoodlyFere.Ektron.Linq\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging.Log4Net">
-      <HintPath>..\GoodlyFere.Ektron.Linq\packages\Common.Logging.Log4Net.2.0.1\lib\net20\Common.Logging.Log4Net.dll</HintPath>
+    <Reference Include="Common.Logging.Log4Net1211">
+      <HintPath>..\packages\Common.Logging.Log4Net1211.2.1.2\lib\net40\Common.Logging.Log4Net1211.dll</HintPath>
     </Reference>
     <Reference Include="CookieEncryption, Version=1.0.0.0, Culture=neutral, PublicKeyToken=559a2c4fa21e63be, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -128,7 +128,7 @@
       <HintPath>..\lib\Ektron.Newtonsoft.json.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\GoodlyFere.Ektron.Linq\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -171,10 +171,10 @@
       <HintPath>..\lib\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
     <Reference Include="NSubstitute">
-      <HintPath>..\GoodlyFere.Ektron.Linq\packages\NSubstitute.1.4.3.0\lib\NET40\NSubstitute.dll</HintPath>
+      <HintPath>..\packages\NSubstitute.1.4.3.0\lib\NET40\NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="Remotion.Linq">
-      <HintPath>..\GoodlyFere.Ektron.Linq\packages\Remotion.Linq.1.13.179.0\lib\net35\Remotion.Linq.dll</HintPath>
+      <HintPath>..\packages\Remotion.Linq.1.13.179.0\lib\net35\Remotion.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -185,16 +185,16 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="xunit">
-      <HintPath>..\GoodlyFere.Ektron.Linq\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
     </Reference>
     <Reference Include="xunit.runner.msbuild">
-      <HintPath>..\GoodlyFere.Ektron.Linq\packages\xunit.1.9.1\lib\net20\xunit.runner.msbuild.dll</HintPath>
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.msbuild.dll</HintPath>
     </Reference>
     <Reference Include="xunit.runner.tdnet">
-      <HintPath>..\GoodlyFere.Ektron.Linq\packages\xunit.1.9.1\lib\net20\xunit.runner.tdnet.dll</HintPath>
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.tdnet.dll</HintPath>
     </Reference>
     <Reference Include="xunit.runner.utility">
-      <HintPath>..\GoodlyFere.Ektron.Linq\packages\xunit.1.9.1\lib\net20\xunit.runner.utility.dll</HintPath>
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.utility.dll</HintPath>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor, Version=1.4.0.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -203,12 +203,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EkAssert.cs" />
+    <Compile Include="Ektron\ThesaurusStringValueExpression.cs" />
+    <Compile Include="Ektron\InflectionalStringValueExpression.cs" />
     <Compile Include="Ektron\FromExpression.cs" />
     <Compile Include="Ektron\OrderByExpression.cs" />
     <Compile Include="Ektron\SelectExpression.cs" />
     <Compile Include="Ektron\SS2010ExpressionVisitor.cs" />
     <Compile Include="Ektron\SS2010TransformVisitor.cs" />
     <Compile Include="Ektron\WhereExpression.cs" />
+    <Compile Include="Integration\SelectFromTests.cs" />
+    <Compile Include="TestHelper.cs" />
+    <Compile Include="TestImplementations\IdProvider.cs" />
     <Compile Include="Integration\IntegrationTests.cs" />
     <Compile Include="Model\Widget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -224,7 +229,9 @@
     <Content Include="Ektron\Config\ektron.cms.framework.unity.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="log4net.config" />
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

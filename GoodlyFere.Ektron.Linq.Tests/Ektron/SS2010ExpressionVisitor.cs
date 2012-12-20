@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
-using Ektron.Cms.Search.SS2010.Expressions;
 
 #endregion
 

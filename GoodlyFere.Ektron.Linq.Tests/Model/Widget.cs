@@ -2,6 +2,8 @@
 
 using System;
 using System.Linq;
+using GoodlyFere.Ektron.Linq.EktronModel.Attributes;
+using GoodlyFere.Ektron.Linq.Model;
 
 #endregion
 
@@ -12,6 +14,9 @@ namespace GoodlyFere.Ektron.Linq.Tests.Model
         #region Public Properties
 
         public string Name { get; set; }
+
+        [EktronProperty(EkConstants.SearchProperties.ContentId)]
+        public long Id { get; set; }
 
         #endregion
     }
