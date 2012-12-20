@@ -2,8 +2,8 @@
 
 using System;
 using System.Linq;
-using GoodlyFere.Ektron.Linq.EktronModel.Attributes;
 using GoodlyFere.Ektron.Linq.Model;
+using GoodlyFere.Ektron.Linq.Model.Attributes;
 
 #endregion
 

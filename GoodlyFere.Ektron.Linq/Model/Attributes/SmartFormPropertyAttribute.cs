@@ -5,7 +5,7 @@ using System.Linq;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.EktronModel.Attributes
+namespace GoodlyFere.Ektron.Linq.Model.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class SmartFormPropertyAttribute : EktronPropertyAttribute
