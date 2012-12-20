@@ -64,8 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\InvalidQueryException.cs" />
-    <Compile Include="Generation\EkExpressionAggregator.cs" />
-    <Compile Include="Generation\EkExpressionQueryModelVisitor.cs" />
+    <Compile Include="Generation\Aggregators\CriteriaExpressionTreeAggregator.cs" />
+    <Compile Include="Generation\Aggregators\OrderByAggregator.cs" />
+    <Compile Include="Generation\SearchQueryModelVisitor.cs" />
     <Compile Include="Generation\Mappings\BinaryExpressionFactoryMethodMap.cs" />
     <Compile Include="Generation\Mappings\ConstantExpressionMap.cs" />
     <Compile Include="Generation\Mappings\ReverseOperatorMap.cs" />

@@ -7,9 +7,9 @@ using Ektron.Cms.Search.Expressions;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Generation
+namespace GoodlyFere.Ektron.Linq.Generation.Aggregators
 {
-    public class EkExpressionAggregator
+    public class CriteriaExpressionTreeAggregator
     {
         #region Constants and Fields
 
@@ -19,7 +19,7 @@ namespace GoodlyFere.Ektron.Linq.Generation
 
         #region Constructors and Destructors
 
-        public EkExpressionAggregator()
+        public CriteriaExpressionTreeAggregator()
         {
             _expressions = new Stack<Expression>();
         }

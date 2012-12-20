@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using GoodlyFere.Ektron.Linq.Interfaces;
 using Remotion.Linq;
 using Remotion.Linq.Parsing.Structure;
 
@@ -13,18 +14,18 @@ namespace GoodlyFere.Ektron.Linq
     {
         #region Public Methods
 
-        public static EktronQueryable<T> Queryable<T>()
+        public static EktronQueryable<T> Queryable<T>(IEktronIdProvider idProvider)
         {
-            return new EktronQueryable<T>(CreateQueryParser(), CreateExecutor());
+            return new EktronQueryable<T>(CreateQueryParser(), CreateExecutor(idProvider));
         }
 
         #endregion
 
         #region Methods
 
-        private static IQueryExecutor CreateExecutor()
+        private static IQueryExecutor CreateExecutor(IEktronIdProvider idProvider)
         {
-            return new EktronQueryExecutor();
+            return new EktronQueryExecutor(idProvider);
         }
 
         private static IQueryParser CreateQueryParser()

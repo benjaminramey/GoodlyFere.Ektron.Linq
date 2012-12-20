@@ -212,6 +212,7 @@
     <Compile Include="Ektron\SS2010TransformVisitor.cs" />
     <Compile Include="Ektron\WhereExpression.cs" />
     <Compile Include="Integration\SelectFromTests.cs" />
+    <Compile Include="Integration\SelectFromWhereTests.cs" />
     <Compile Include="TestHelper.cs" />
     <Compile Include="TestImplementations\IdProvider.cs" />
     <Compile Include="Integration\IntegrationTests.cs" />

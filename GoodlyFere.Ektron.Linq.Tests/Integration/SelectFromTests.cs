@@ -13,13 +13,20 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
 {
     public class SelectFromTests
     {
+        private readonly IdProvider _idProvider;
+
+        public SelectFromTests()
+        {
+            _idProvider = new IdProvider();
+        }
+
         #region Public Methods
 
         [Fact]
         public void SelectFrom_ContentTypeAttrObj_TranslateToIdenticalExpr()
         {
-            var expectedContentTypeId = new IdProvider().GetContentTypeId(ContentTypeWidget.ContentTypeName);
-            var query = from w in EktronQueryFactory.Queryable<ContentTypeWidget>()
+            var expectedContentTypeId = _idProvider.GetContentTypeId(ContentTypeWidget.ContentTypeName);
+            var query = from w in EktronQueryFactory.Queryable<ContentTypeWidget>(_idProvider)
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
@@ -30,11 +37,11 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         [Fact]
         public void SelectFrom_FolderPathAndContentTypeAttrsObj_TranslateToIdenticalExpr()
         {
-            var expectedContentTypeId = new IdProvider().GetContentTypeId(
+            var expectedContentTypeId = _idProvider.GetContentTypeId(
                 FolderPathAndContentTypeWidget.ContentTypeName);
             var expectedSubContentTypeId =
-                new IdProvider().GetContentTypeId(FolderPathAndContentTypeWidget.ContentSubTypeName);
-            var query = from w in EktronQueryFactory.Queryable<FolderPathAndContentTypeWidget>()
+                _idProvider.GetContentTypeId(FolderPathAndContentTypeWidget.ContentSubTypeName);
+            var query = from w in EktronQueryFactory.Queryable<FolderPathAndContentTypeWidget>(_idProvider)
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
@@ -47,8 +54,8 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         [Fact]
         public void SelectFrom_FolderPathAndSmartFormAttrsObj_TranslateToIdenticalExpr()
         {
-            var expectedSmartFormId = new IdProvider().GetSmartFormId(FolderPathAndSmartFormWidget.SmartFormName);
-            var query = from w in EktronQueryFactory.Queryable<FolderPathAndSmartFormWidget>()
+            var expectedSmartFormId = _idProvider.GetSmartFormId(FolderPathAndSmartFormWidget.SmartFormName);
+            var query = from w in EktronQueryFactory.Queryable<FolderPathAndSmartFormWidget>(_idProvider)
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
@@ -60,7 +67,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         [Fact]
         public void SelectFrom_FolderPathAttrObj_TranslateToIdenticalExpr()
         {
-            var query = from w in EktronQueryFactory.Queryable<FolderPathWidget>()
+            var query = from w in EktronQueryFactory.Queryable<FolderPathWidget>(_idProvider)
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
@@ -71,7 +78,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         [Fact]
         public void SelectFrom_PlainObject_TranslatesToNull()
         {
-            var query = from w in EktronQueryFactory.Queryable<Widget>()
+            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider)
                         select w;
 
             var translation = TestHelper.GetTranslation(query);
@@ -81,13 +88,13 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         [Fact]
         public void SelectFrom_SmartFormAndContentTypeAndFolderPathAttrsObj_TranslateToIdenticalExpr()
         {
-            var expectedContentTypeId = new IdProvider().GetContentTypeId(
+            var expectedContentTypeId = _idProvider.GetContentTypeId(
                 SmartFormAndContentTypeAndFolderPathWidget.ContentTypeName);
             var expectedSubContentTypeId =
-                new IdProvider().GetContentTypeId(SmartFormAndContentTypeAndFolderPathWidget.ContentSubTypeName);
+                _idProvider.GetContentTypeId(SmartFormAndContentTypeAndFolderPathWidget.ContentSubTypeName);
             var expectedSmartFormId =
-                new IdProvider().GetSmartFormId(SmartFormAndContentTypeAndFolderPathWidget.SmartFormName);
-            var query = from w in EktronQueryFactory.Queryable<SmartFormAndContentTypeAndFolderPathWidget>()
+                _idProvider.GetSmartFormId(SmartFormAndContentTypeAndFolderPathWidget.SmartFormName);
+            var query = from w in EktronQueryFactory.Queryable<SmartFormAndContentTypeAndFolderPathWidget>(_idProvider)
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
@@ -103,12 +110,12 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         [Fact]
         public void SelectFrom_SmartFormAndContentTypeAttrsObj_TranslateToIdenticalExpr()
         {
-            var expectedContentTypeId = new IdProvider().GetContentTypeId(
+            var expectedContentTypeId = _idProvider.GetContentTypeId(
                 SmartFormAndContentTypeWidget.ContentTypeName);
             var expectedSubContentTypeId =
-                new IdProvider().GetContentTypeId(SmartFormAndContentTypeWidget.ContentSubTypeName);
-            var expectedSmartFormId = new IdProvider().GetSmartFormId(SmartFormAndContentTypeWidget.SmartFormName);
-            var query = from w in EktronQueryFactory.Queryable<SmartFormAndContentTypeWidget>()
+                _idProvider.GetContentTypeId(SmartFormAndContentTypeWidget.ContentSubTypeName);
+            var expectedSmartFormId = _idProvider.GetSmartFormId(SmartFormAndContentTypeWidget.SmartFormName);
+            var query = from w in EktronQueryFactory.Queryable<SmartFormAndContentTypeWidget>(_idProvider)
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
@@ -121,8 +128,8 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         [Fact]
         public void SelectFrom_SmartFormAttrObj_TranslateToIdenticalExpr()
         {
-            var expectedSmartFormId = new IdProvider().GetSmartFormId(SmartFormWidget.SmartFormName);
-            var query = from w in EktronQueryFactory.Queryable<SmartFormWidget>()
+            var expectedSmartFormId = _idProvider.GetSmartFormId(SmartFormWidget.SmartFormName);
+            var query = from w in EktronQueryFactory.Queryable<SmartFormWidget>(_idProvider)
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
@@ -133,9 +140,9 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         [Fact]
         public void SelectFrom_SubContentTypeAttrObj_TranslateToIdenticalExpr()
         {
-            var expectedContentTypeId = new IdProvider().GetContentTypeId(SubContentTypeWidget.ContentTypeName);
-            var expectedSubContentTypeId = new IdProvider().GetContentTypeId(SubContentTypeWidget.ContentSubTypeName);
-            var query = from w in EktronQueryFactory.Queryable<SubContentTypeWidget>()
+            var expectedContentTypeId = _idProvider.GetContentTypeId(SubContentTypeWidget.ContentTypeName);
+            var expectedSubContentTypeId = _idProvider.GetContentTypeId(SubContentTypeWidget.ContentSubTypeName);
+            var query = from w in EktronQueryFactory.Queryable<SubContentTypeWidget>(_idProvider)
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
