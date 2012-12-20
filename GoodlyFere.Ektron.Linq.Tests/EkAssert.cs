@@ -15,7 +15,11 @@ namespace GoodlyFere.Ektron.Linq.Tests
 {
     public static class EkAssert
     {
+        #region Constants and Fields
+
         private static readonly ILog Log = LogManager.GetLogger(typeof(EkAssert));
+
+        #endregion
 
         #region Methods
 
@@ -25,6 +29,14 @@ namespace GoodlyFere.Ektron.Linq.Tests
                 new AdvancedSearchCriteria { ExpressionTree = expectedExpression });
             string actualQuery = CreateQueryString(
                 new AdvancedSearchCriteria { ExpressionTree = actualExpression });
+
+            Assert.Equal(expectedQuery, actualQuery);
+        }
+
+        internal static void Equal(AdvancedSearchCriteria expectedCriteria, AdvancedSearchCriteria actualCriteria)
+        {
+            string expectedQuery = CreateQueryString(expectedCriteria);
+            string actualQuery = CreateQueryString(actualCriteria);
 
             Assert.Equal(expectedQuery, actualQuery);
         }

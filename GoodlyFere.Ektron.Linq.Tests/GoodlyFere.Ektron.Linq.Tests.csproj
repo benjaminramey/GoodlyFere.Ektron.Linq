@@ -215,7 +215,7 @@
     <Compile Include="Integration\SelectFromWhereTests.cs" />
     <Compile Include="TestHelper.cs" />
     <Compile Include="TestImplementations\IdProvider.cs" />
-    <Compile Include="Integration\IntegrationTests.cs" />
+    <Compile Include="Integration\SelectFromOrderByTests.cs" />
     <Compile Include="Model\Widget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

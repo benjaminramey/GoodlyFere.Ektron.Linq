@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Model;
 using GoodlyFere.Ektron.Linq.Model.Attributes;
 
@@ -13,7 +14,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Model
     {
         #region Public Properties
 
-        [EktronProperty(EkConstants.SearchProperties.ContentId)]
+        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression))]
         public long Id { get; set; }
 
         public string Name { get; set; }
