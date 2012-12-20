@@ -3,9 +3,9 @@
 using System;
 using System.Linq;
 using Ektron.Cms.Search;
-using GoodlyFere.Ektron.Linq.EktronModel.Attributes;
 using GoodlyFere.Ektron.Linq.Extensions;
 using GoodlyFere.Ektron.Linq.Interfaces;
+using GoodlyFere.Ektron.Linq.Model.Attributes;
 using Remotion.Linq;
 using Remotion.Linq.Clauses;
 using Ek = Ektron.Cms.Search.Expressions;

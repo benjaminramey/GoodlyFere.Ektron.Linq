@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
-using GoodlyFere.Ektron.Linq.EktronModel.Attributes;
 using GoodlyFere.Ektron.Linq.Extensions;
+using GoodlyFere.Ektron.Linq.Model.Attributes;
 
 #endregion
 

@@ -3,7 +3,7 @@
 using System;
 using System.Linq;
 using Ektron.Cms.Search;
-using GoodlyFere.Ektron.Linq.EktronModel.Attributes;
+using GoodlyFere.Ektron.Linq.Model.Attributes;
 using GoodlyFere.Ektron.Linq.Tests.Model;
 using Xunit;
 using Ek = Ektron.Cms.Search.Expressions;
@@ -395,6 +395,8 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
             var expectedTranslation = new Ek.StringPropertyExpression("Name").Contains(expectedValue, Ek.WordForms.Inflections);
             EkAssert.Equal(expectedTranslation, actualTranslation);
         }
+
+
 
         #endregion
     }
