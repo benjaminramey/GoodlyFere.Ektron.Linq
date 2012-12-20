@@ -12,6 +12,8 @@
     <AssemblyName>GoodlyFere.Ektron.Linq.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -204,6 +206,7 @@
     <Compile Include="Ektron\FromExpression.cs" />
     <Compile Include="Ektron\OrderByExpression.cs" />
     <Compile Include="Ektron\SelectExpression.cs" />
+    <Compile Include="Ektron\SS2010ExpressionVisitor.cs" />
     <Compile Include="Ektron\SS2010TransformVisitor.cs" />
     <Compile Include="Ektron\WhereExpression.cs" />
     <Compile Include="Integration\IntegrationTests.cs" />
@@ -221,7 +224,7 @@
     <Content Include="Ektron\Config\ektron.cms.framework.unity.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="log4net.config" />
+    <Content Include="log4net.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +235,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

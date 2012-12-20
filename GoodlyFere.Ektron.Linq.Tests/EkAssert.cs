@@ -3,9 +3,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Common.Logging;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
-using Ektron.Cms.Search.SS2010;
 using GoodlyFere.Ektron.Linq.Tests.Ektron;
 using Xunit;
 
@@ -15,6 +15,8 @@ namespace GoodlyFere.Ektron.Linq.Tests
 {
     public static class EkAssert
     {
+        private static readonly ILog Log = LogManager.GetLogger(typeof(EkAssert));
+
         #region Methods
 
         internal static void Equal(Expression expectedExpression, Expression actualExpression)
@@ -44,12 +46,17 @@ namespace GoodlyFere.Ektron.Linq.Tests
                 orderDatas.Add(new OrderData(SearchContentProperty.Rank, OrderDirection.Descending));
                 criteria.OrderBy = orderDatas;
             }
-            SelectExpression selectExpression =
-                SelectExpression.Select(criteria.ReturnProperties).From().Where(tree).OrderBy(criteria.OrderBy);
+            SelectExpression selectExpression = SelectExpression
+                .Select(criteria.ReturnProperties)
+                .From()
+                .Where(tree)
+                .OrderBy(criteria.OrderBy);
             SS2010ExpressionVisitor sS2010ExpressionVisitor = new SS2010ExpressionVisitor();
             sS2010ExpressionVisitor.Visit(selectExpression);
 
-            return sS2010ExpressionVisitor.ToString();
+            string queryString = sS2010ExpressionVisitor.ToString();
+            Log.Info(queryString);
+            return queryString;
         }
 
         #endregion

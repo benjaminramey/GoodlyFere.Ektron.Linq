@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodlyFere.Ektron.Linq", "GoodlyFere.Ektron.Linq\GoodlyFere.Ektron.Linq.csproj", "{AC59AC57-19F4-4622-A89D-359657662B0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodlyFere.Ektron.Linq.Tests", "GoodlyFere.Ektron.Linq.Tests\GoodlyFere.Ektron.Linq.Tests.csproj", "{6672E84C-BFD3-4791-B2FD-6ACE1A5CDB9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{35988F74-614D-4785-A818-25D4C6848F31}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC59AC57-19F4-4622-A89D-359657662B0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC59AC57-19F4-4622-A89D-359657662B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC59AC57-19F4-4622-A89D-359657662B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC59AC57-19F4-4622-A89D-359657662B0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6672E84C-BFD3-4791-B2FD-6ACE1A5CDB9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6672E84C-BFD3-4791-B2FD-6ACE1A5CDB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6672E84C-BFD3-4791-B2FD-6ACE1A5CDB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6672E84C-BFD3-4791-B2FD-6ACE1A5CDB9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
