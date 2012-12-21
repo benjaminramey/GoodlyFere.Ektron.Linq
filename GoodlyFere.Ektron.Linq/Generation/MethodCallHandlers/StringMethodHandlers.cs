@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
+using GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors;
 using Ek = Ektron.Cms.Search.Expressions;
 
 #endregion

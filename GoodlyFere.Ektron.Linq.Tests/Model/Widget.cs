@@ -19,6 +19,9 @@ namespace GoodlyFere.Ektron.Linq.Tests.Model
 
         public string Name { get; set; }
 
+        [EktronProperty("Number", EktronExpressionType = typeof(IntegerPropertyExpression))]
+        public int Number { get; set; }
+
         #endregion
     }
 

@@ -6,10 +6,12 @@ using System.Linq;
 using Ektron.Cms.Search;
 using GoodlyFere.Ektron.Linq.Extensions;
 using GoodlyFere.Ektron.Linq.Generation.Aggregators;
+using GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors;
 using GoodlyFere.Ektron.Linq.Interfaces;
 using GoodlyFere.Ektron.Linq.Model.Attributes;
 using Remotion.Linq;
 using Remotion.Linq.Clauses;
+using Remotion.Linq.Clauses.Expressions;
 using Ek = Ektron.Cms.Search.Expressions;
 
 #endregion
@@ -116,16 +118,12 @@ namespace GoodlyFere.Ektron.Linq.Generation
 
             base.VisitOrdering(ordering, queryModel, orderByClause, index);
         }
-
-        public override void VisitQueryModel(QueryModel queryModel)
-        {
-            queryModel.MainFromClause.Accept(this, queryModel);
-            queryModel.SelectClause.Accept(this, queryModel);
-            VisitBodyClauses(queryModel.BodyClauses, queryModel);
-        }
-
+        
         public override void VisitWhereClause(WhereClause whereClause, QueryModel queryModel, int index)
         {
+            var subQueryVisitor = new SubQueryExpressionVisitor();
+            whereClause.TransformExpressions(subQueryVisitor.VisitExpression);
+
             _exprTreeAggregator.Add(QueryBuildingVisitor.Build(whereClause.Predicate));
 
             base.VisitWhereClause(whereClause, queryModel, index);

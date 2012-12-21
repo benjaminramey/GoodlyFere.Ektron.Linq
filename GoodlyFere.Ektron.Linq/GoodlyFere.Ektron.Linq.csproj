@@ -66,13 +66,15 @@
     <Compile Include="Exceptions\InvalidQueryException.cs" />
     <Compile Include="Generation\Aggregators\CriteriaExpressionTreeAggregator.cs" />
     <Compile Include="Generation\Aggregators\OrderByAggregator.cs" />
+    <Compile Include="Generation\ExpressionTreeVisitors\SubQueryExpressionVisitor.cs" />
     <Compile Include="Generation\SearchQueryModelVisitor.cs" />
     <Compile Include="Generation\Mappings\BinaryExpressionFactoryMethodMap.cs" />
     <Compile Include="Generation\Mappings\ConstantExpressionMap.cs" />
     <Compile Include="Generation\Mappings\ReverseOperatorMap.cs" />
     <Compile Include="Generation\MethodCallHandlers\HandledMethodsMap.cs" />
     <Compile Include="Generation\MethodCallHandlers\StringMethodHandlers.cs" />
-    <Compile Include="Generation\QueryBuildingVisitor.cs" />
+    <Compile Include="Generation\ExpressionTreeVisitors\QueryBuildingVisitor.cs" />
+    <Compile Include="Generation\SubQueryModelVisitor.cs" />
     <Compile Include="Helpers\PropertyExpressionHelper.cs" />
     <Compile Include="Model\Attributes\ContentTypeAttribute.cs" />
     <Compile Include="Model\Attributes\CustomPropertyAttribute.cs" />

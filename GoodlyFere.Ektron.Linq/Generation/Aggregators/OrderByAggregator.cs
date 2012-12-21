@@ -1,5 +1,11 @@
-﻿using System.Collections.Generic;
+﻿#region Usings
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Ektron.Cms.Search;
+
+#endregion
 
 namespace GoodlyFere.Ektron.Linq.Generation.Aggregators
 {
@@ -25,6 +31,11 @@ namespace GoodlyFere.Ektron.Linq.Generation.Aggregators
         public void Add(OrderData data)
         {
             _orderData.Add(data);
+        }
+
+        public void Add(List<OrderData> orderBy)
+        {
+            _orderData.AddRange(orderBy);
         }
 
         public List<OrderData> GetOrderByData()

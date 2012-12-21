@@ -13,23 +13,26 @@ using GoodlyFere.Ektron.Linq.Helpers;
 using GoodlyFere.Ektron.Linq.Model.Attributes;
 using Remotion.Linq.Clauses.ExpressionTreeVisitors;
 using Remotion.Linq.Parsing;
-using Ek = Ektron.Cms.Search.Expressions;
+using BinaryExpression = System.Linq.Expressions.BinaryExpression;
+using Expression = Ektron.Cms.Search.Expressions.Expression;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Generation
+namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
 {
     public class QueryBuildingVisitor : ThrowingExpressionTreeVisitor
     {
         #region Constants and Fields
 
-        private static readonly BinaryExpressionFactoryMethodMap BinaryExpressionMap = new BinaryExpressionFactoryMethodMap();
+        private static readonly BinaryExpressionFactoryMethodMap BinaryExpressionMap =
+            new BinaryExpressionFactoryMethodMap();
+
         private static readonly ConstantExpressionMap ConstantExpressionMap = new ConstantExpressionMap();
         private static readonly ILog Log = LogManager.GetLogger<QueryBuildingVisitor>();
         private static readonly HandledMethodsMap MethodCallMap = new HandledMethodsMap();
         private static readonly ReverseOperatorMap ReverseOperatorMap = new ReverseOperatorMap();
 
-        private readonly Stack<Ek.Expression> _ekExpressions;
+        private readonly Stack<Expression> _ekExpressions;
 
         #endregion
 
@@ -37,14 +40,14 @@ namespace GoodlyFere.Ektron.Linq.Generation
 
         private QueryBuildingVisitor()
         {
-            _ekExpressions = new Stack<Ek.Expression>();
+            _ekExpressions = new Stack<Expression>();
         }
 
         #endregion
 
         #region Public Methods
 
-        public static Ek.Expression Build(Expression expression)
+        public static global::Ektron.Cms.Search.Expressions.Expression Build(System.Linq.Expressions.Expression expression)
         {
             var visitor = new QueryBuildingVisitor();
             visitor.VisitExpression(expression);
@@ -58,7 +61,7 @@ namespace GoodlyFere.Ektron.Linq.Generation
 
         protected override Exception CreateUnhandledItemException<T>(T unhandledItem, string visitMethod)
         {
-            var itemAsExpression = unhandledItem as Expression;
+            var itemAsExpression = unhandledItem as System.Linq.Expressions.Expression;
             string formatted = itemAsExpression == null
                                    ? unhandledItem.ToString()
                                    : FormattingExpressionTreeVisitor.Format(itemAsExpression);
@@ -67,16 +70,16 @@ namespace GoodlyFere.Ektron.Linq.Generation
             return new Exception("I can't handle it! Expression type: " + typeof(T).Name);
         }
 
-        protected override Expression VisitBinaryExpression(BinaryExpression expression)
+        protected override System.Linq.Expressions.Expression VisitBinaryExpression(BinaryExpression expression)
         {
             VisitExpression(expression.Left);
-            Ek.Expression leftExpr = _ekExpressions.Pop();
+            global::Ektron.Cms.Search.Expressions.Expression leftExpr = _ekExpressions.Pop();
 
             VisitExpression(expression.Right);
-            Ek.Expression rightExpr = _ekExpressions.Pop();
+            global::Ektron.Cms.Search.Expressions.Expression rightExpr = _ekExpressions.Pop();
 
-            Ek.Expression propExpr;
-            Ek.Expression valueExpr;
+            global::Ektron.Cms.Search.Expressions.Expression propExpr;
+            global::Ektron.Cms.Search.Expressions.Expression valueExpr;
             ExpressionType operatorType;
             ReorderBinaryExpressions(
                 expression.NodeType, leftExpr, rightExpr, out propExpr, out valueExpr, out operatorType);
@@ -95,10 +98,10 @@ namespace GoodlyFere.Ektron.Linq.Generation
             return expression;
         }
 
-        protected override Expression VisitConstantExpression(ConstantExpression expression)
+        protected override System.Linq.Expressions.Expression VisitConstantExpression(ConstantExpression expression)
         {
             object value = expression.Value;
-            Ek.Expression valueExpression;
+            global::Ektron.Cms.Search.Expressions.Expression valueExpression;
             if (ConstantExpressionMap.ContainsKey(value.GetType()))
             {
                 valueExpression = ConstantExpressionMap[value.GetType()].Invoke(value);
@@ -113,15 +116,15 @@ namespace GoodlyFere.Ektron.Linq.Generation
             return expression;
         }
 
-        protected override Expression VisitMemberExpression(MemberExpression expression)
+        protected override System.Linq.Expressions.Expression VisitMemberExpression(MemberExpression expression)
         {
-            Ek.PropertyExpression propExr = GetPropertyExpression(expression);
+            global::Ektron.Cms.Search.Expressions.PropertyExpression propExr = GetPropertyExpression(expression);
             _ekExpressions.Push(propExr);
 
             return expression;
         }
 
-        protected override Expression VisitMethodCallExpression(MethodCallExpression expression)
+        protected override System.Linq.Expressions.Expression VisitMethodCallExpression(MethodCallExpression expression)
         {
             if (MethodCallMap.ContainsKey(expression.Method))
             {
@@ -135,28 +138,28 @@ namespace GoodlyFere.Ektron.Linq.Generation
             return base.VisitMethodCallExpression(expression);
         }
 
-        private Ek.PropertyExpression GetPropertyExpression(MemberExpression expression)
+        private global::Ektron.Cms.Search.Expressions.PropertyExpression GetPropertyExpression(MemberExpression expression)
         {
             var ekProp = expression.Member.GetCustomAttribute<EktronPropertyAttribute>();
-            Ek.PropertyExpression propExpr = ekProp != null
+            global::Ektron.Cms.Search.Expressions.PropertyExpression propExpr = ekProp != null
                                                  ? PropertyExpressionHelper.GetPropertyExpression(ekProp)
-                                                 : new Ek.StringPropertyExpression(expression.Member.Name);
+                                                 : new global::Ektron.Cms.Search.Expressions.StringPropertyExpression(expression.Member.Name);
 
             return propExpr;
         }
 
         private void ReorderBinaryExpressions(
             ExpressionType nodeType,
-            Ek.Expression leftExpr,
-            Ek.Expression rightExpr,
-            out Ek.Expression propExpr,
-            out Ek.Expression valueExpr,
+            global::Ektron.Cms.Search.Expressions.Expression leftExpr,
+            global::Ektron.Cms.Search.Expressions.Expression rightExpr,
+            out global::Ektron.Cms.Search.Expressions.Expression propExpr,
+            out global::Ektron.Cms.Search.Expressions.Expression valueExpr,
             out ExpressionType operatorType)
         {
             propExpr = leftExpr;
             valueExpr = rightExpr;
-            bool leftIsPropertyExpr = leftExpr is Ek.PropertyExpression;
-            bool rightIsPropertyExpr = rightExpr is Ek.PropertyExpression;
+            bool leftIsPropertyExpr = leftExpr is global::Ektron.Cms.Search.Expressions.PropertyExpression;
+            bool rightIsPropertyExpr = rightExpr is global::Ektron.Cms.Search.Expressions.PropertyExpression;
 
             if (leftIsPropertyExpr && rightIsPropertyExpr)
             {
