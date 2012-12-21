@@ -66,6 +66,7 @@
     <Compile Include="Exceptions\InvalidQueryException.cs" />
     <Compile Include="Generation\Aggregators\CriteriaExpressionTreeAggregator.cs" />
     <Compile Include="Generation\Aggregators\OrderByAggregator.cs" />
+    <Compile Include="Generation\Aggregators\SubQueryExpressionAggegrator.cs" />
     <Compile Include="Generation\ExpressionTreeVisitors\SubQueryExpressionVisitor.cs" />
     <Compile Include="Generation\SearchQueryModelVisitor.cs" />
     <Compile Include="Generation\Mappings\BinaryExpressionFactoryMethodMap.cs" />

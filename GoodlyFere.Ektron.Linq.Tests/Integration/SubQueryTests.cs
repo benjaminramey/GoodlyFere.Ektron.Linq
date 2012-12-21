@@ -32,7 +32,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
 
         #region Public Methods
 
-        //[Fact]
+        [Fact]
         public void IEnumerableContains()
         {
             int[] numbers = new[] { 1, 2, 3, 4 };
@@ -46,10 +46,10 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
             var actualCriteria = new EktronQueryExecutor(_idProvider).BuildCriteria(model);
             var expectedCriteria = new AdvancedSearchCriteria
                 {
-                    ExpressionTree = propExpr == numbers[0]
-                                     | propExpr == numbers[1]
-                                     | propExpr == numbers[2]
-                                     | propExpr == numbers[3]
+                    ExpressionTree =(propExpr == numbers[0]
+                                     | propExpr == numbers[1])
+                                     | (propExpr == numbers[2]
+                                     | propExpr == numbers[3])
                 };
             EkAssert.Equal(expectedCriteria, actualCriteria);
         }
