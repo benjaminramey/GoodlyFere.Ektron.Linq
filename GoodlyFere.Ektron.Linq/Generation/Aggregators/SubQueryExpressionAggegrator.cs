@@ -33,6 +33,11 @@ namespace GoodlyFere.Ektron.Linq.Generation.Aggregators
             _expressions.Push(expression);
         }
 
+        public void Add(List<Expression> list)
+        {
+            list.ForEach(i => _expressions.Push(i));
+        }
+
         public Expression GetExpression()
         {
             bool reverseLast = _expressions.Count % 2 != 0;
@@ -42,9 +47,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Aggregators
                 var right = inOrder.Dequeue();
                 var left = inOrder.Dequeue();
                 inOrder.Enqueue(
-                    inOrder.Count == 0 && reverseLast
-                        ? Expression.OrElse(right, left)
-                        : Expression.OrElse(left, right));
+                    inOrder.Count == 0 && reverseLast ? Expression.OrElse(right, left) : Expression.OrElse(left, right));
             }
 
             return inOrder.Count > 0 ? inOrder.Dequeue() : null;

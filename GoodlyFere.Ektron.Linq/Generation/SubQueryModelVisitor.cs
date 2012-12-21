@@ -4,13 +4,10 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
-
 using GoodlyFere.Ektron.Linq.Generation.Aggregators;
-using GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors;
-
+using GoodlyFere.Ektron.Linq.Generation.MethodCallHandlers.SubQueryHandlers;
 using Remotion.Linq;
 using Remotion.Linq.Clauses;
-using Remotion.Linq.Clauses.ResultOperators;
 
 #endregion
 
@@ -20,6 +17,7 @@ namespace GoodlyFere.Ektron.Linq.Generation
     {
         #region Constants and Fields
 
+        private static readonly ResultOperatorHandlersMap ResultOperatorHandlers = new ResultOperatorHandlersMap();
         private readonly SubQueryExpressionAggegrator _aggegrator;
 
         private IEnumerable _values;
@@ -70,22 +68,13 @@ namespace GoodlyFere.Ektron.Linq.Generation
 
         public override void VisitResultOperator(ResultOperatorBase resultOperator, QueryModel queryModel, int index)
         {
-            if (resultOperator is ContainsResultOperator)
+            if (ResultOperatorHandlers.ContainsKey(resultOperator.GetType()))
             {
-                var cro = resultOperator as ContainsResultOperator;
-                foreach (var v in _values)
-                {
-                    _aggegrator.Add(Expression.Equal(cro.Item, Expression.Constant(v)));
-                }
+                var method = ResultOperatorHandlers[resultOperator.GetType()];
+                _aggegrator.Add(method.Invoke(resultOperator, _values));
             }
 
             base.VisitResultOperator(resultOperator, queryModel, index);
-        }
-
-        public override void VisitWhereClause(WhereClause whereClause, QueryModel queryModel, int index)
-        {
-
-            base.VisitWhereClause(whereClause, queryModel, index);
         }
 
         #endregion
