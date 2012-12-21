@@ -27,16 +27,19 @@ task Clean {
 task Init -depends Clean {
 	mkdir @($release_dir, $build_dir) | out-null
 	
-	$fileVersion = gc $version_info_file | select-string "AssemblyFileVersion\(""(\d+\.\d+\.\d+\.\d+)""\)" | %{$_.Matches[0].Groups[1].Value}
-	$parts = $fileVersion.Split('.')
+	# assembly version
+	$assemblyVersion = gc $version_info_file | select-string "AssemblyVersion\(""(\d+\.\d+\.\d+\.\d+)""\)" | %{$_.Matches[0].Groups[1].Value}
+	$parts = $assemblyVersion.Split('.')
 	$major = $parts[0]
 	$minor = $parts[1]
 	$build = [int]$parts[2] + 1
 	$rev = $parts[3]
+	# file version
+	$fileVersion = gc $version_info_file | select-string "AssemblyFileVersion\(""(.+)""\)" | %{$_.Matches[0].Groups[1].Value}
 	$text = "using System.Reflection;
 
-[assembly: AssemblyVersion(""1.0.0.0"")]
-[assembly: AssemblyFileVersion(""$major.$minor.$build.$rev"")]
+[assembly: AssemblyVersion(""$major.$minor.$build.$rev"")]
+[assembly: AssemblyFileVersion(""$fileVersion"")]
 "
 	Write-Output $text > $version_info_file
 }
@@ -58,6 +61,6 @@ task Package -depends Compile, Test {
   {
 	$dir =  $($spec.Directory)
 	cd $dir
-    Exec { nuget pack -o $release_dir -Properties Configuration=Release`;OutDir=$release_build_dir\ -Version $version -Symbols } "nuget pack failed."
+    Exec { nuget pack -o $release_dir -Properties Configuration=Release`;OutDir=$release_build_dir\ -Symbols } "nuget pack failed."
   }
 }

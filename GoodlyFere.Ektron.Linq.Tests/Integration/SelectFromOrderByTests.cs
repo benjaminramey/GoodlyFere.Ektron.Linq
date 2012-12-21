@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Ektron.Cms;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Tests.Model;
@@ -42,7 +43,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
                         select w;
 
             var model = TestHelper.GetQueryModel(query);
-            var criteria = new EktronQueryExecutor(_idProvider).BuildCriteria(model);
+            var criteria = new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
 
             var actualCriteria = criteria;
             var expectedCriteria = new AdvancedSearchCriteria
@@ -63,7 +64,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
                         select w;
 
             var model = TestHelper.GetQueryModel(query);
-            var criteria = new EktronQueryExecutor(_idProvider).BuildCriteria(model);
+            var criteria = new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
 
             var actualCriteria = criteria;
             var expectedCriteria = new AdvancedSearchCriteria
@@ -84,7 +85,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
                         select w;
 
             var model = TestHelper.GetQueryModel(query);
-            var criteria = new EktronQueryExecutor(_idProvider).BuildCriteria(model);
+            var criteria = new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
 
             var actualCriteria = criteria;
             var expectedCriteria = new AdvancedSearchCriteria
@@ -109,7 +110,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
                         select w;
 
             var model = TestHelper.GetQueryModel(query);
-            var criteria = new EktronQueryExecutor(_idProvider).BuildCriteria(model);
+            var criteria = new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
 
             var actualCriteria = criteria;
             var expectedCriteria = new AdvancedSearchCriteria

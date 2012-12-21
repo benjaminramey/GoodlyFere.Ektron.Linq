@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using Ektron.Cms;
 using GoodlyFere.Ektron.Linq.Interfaces;
 using Remotion.Linq;
 using Remotion.Linq.Parsing.Structure;
@@ -25,7 +26,7 @@ namespace GoodlyFere.Ektron.Linq
 
         private static IQueryExecutor CreateExecutor(IEktronIdProvider idProvider)
         {
-            return new EktronQueryExecutor(idProvider);
+            return new EktronQueryExecutor(idProvider, ObjectFactory.GetSearchManager());
         }
 
         private static IQueryParser CreateQueryParser()
