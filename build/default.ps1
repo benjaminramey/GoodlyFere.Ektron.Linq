@@ -12,6 +12,7 @@ properties {
   $tools_dir = "$build_base_dir\Tools"
   $run_tests = $true
   $xunit_console = "$tools_dir\xunit.console.clr4.exe"
+  $version_info_file = "$base_dir\GoodlyFere.Ektron.Linq\Properties\VersionInfo.cs"
 }
 
 Framework "4.0"
@@ -25,6 +26,19 @@ task Clean {
 
 task Init -depends Clean {
 	mkdir @($release_dir, $build_dir) | out-null
+	
+	$fileVersion = gc $version_info_file | select-string "AssemblyFileVersion\(""(\d+\.\d+\.\d+\.\d+)""\)" | %{$_.Matches[0].Groups[1].Value}
+	$parts = $fileVersion.Split('.')
+	$major = $parts[0]
+	$minor = $parts[1]
+	$build = [int]$parts[2] + 1
+	$rev = $parts[3]
+	$text = "using System.Reflection;
+
+[assembly: AssemblyVersion(""1.0.0.0"")]
+[assembly: AssemblyFileVersion(""$major.$minor.$build.$rev"")]
+"
+	Write-Output $text > $version_info_file
 }
 
 task Compile -depends Init {

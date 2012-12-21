@@ -32,7 +32,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
 
         #region Public Methods
 
-        [Fact]
+        //[Fact]
         public void IEnumerableContains()
         {
             int[] numbers = new[] { 1, 2, 3, 4 };
