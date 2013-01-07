@@ -63,6 +63,7 @@
     <Compile Include="Generation\Aggregators\OrderByAggregator.cs" />
     <Compile Include="Generation\Aggregators\SubQueryExpressionAggegrator.cs" />
     <Compile Include="Generation\ExpressionTreeVisitors\SubQueryExpressionVisitor.cs" />
+    <Compile Include="Generation\Mappings\UnaryExpressionFactoryMethodMap.cs" />
     <Compile Include="Generation\MethodCallHandlers\SubQueryHandlers\IEnumerableMethodHandlers.cs" />
     <Compile Include="Generation\MethodCallHandlers\SubQueryHandlers\ResultOperatorHandlersMap.cs" />
     <Compile Include="Generation\SearchQueryModelVisitor.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Search\ResultsConverter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GoodlyFere.Ektron.Linq.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

@@ -135,7 +135,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
             var expectedTranslation = SearchContentProperty.Id == expectedValue;
             EkAssert.Equal(expectedTranslation, actualTranslation);
         }
-
+        
         [Fact]
         public void SelectFromWhere_GreaterThan()
         {

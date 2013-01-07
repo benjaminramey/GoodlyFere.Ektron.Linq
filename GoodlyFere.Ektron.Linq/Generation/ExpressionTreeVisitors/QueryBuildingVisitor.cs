@@ -25,10 +25,15 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
 
         private static readonly BinaryExpressionFactoryMethodMap BinaryExpressionMap =
             new BinaryExpressionFactoryMethodMap();
+
         private static readonly ConstantExpressionMap ConstantExpressionMap = new ConstantExpressionMap();
         private static readonly ILog Log = LogManager.GetLogger<QueryBuildingVisitor>();
         private static readonly HandledMethodsMap MethodCallMap = new HandledMethodsMap();
         private static readonly ReverseOperatorMap ReverseOperatorMap = new ReverseOperatorMap();
+
+        private static readonly UnaryExpressionFactoryMethodMap UnaryExpressionMap =
+            new UnaryExpressionFactoryMethodMap();
+
         private readonly Stack<Ek.Expression> _ekExpressions;
 
         #endregion
@@ -44,7 +49,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
 
         #region Public Methods
 
-        public static Ek.Expression Build(System.Linq.Expressions.Expression expression)
+        public static Ek.Expression Build(Expression expression)
         {
             var visitor = new QueryBuildingVisitor();
             visitor.VisitExpression(expression);
@@ -58,7 +63,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
 
         protected override Exception CreateUnhandledItemException<T>(T unhandledItem, string visitMethod)
         {
-            var itemAsExpression = unhandledItem as System.Linq.Expressions.Expression;
+            var itemAsExpression = unhandledItem as Expression;
             string formatted = itemAsExpression == null
                                    ? unhandledItem.ToString()
                                    : FormattingExpressionTreeVisitor.Format(itemAsExpression);
@@ -67,7 +72,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
             return new Exception("I can't handle it! Expression type: " + typeof(T).Name);
         }
 
-        protected override System.Linq.Expressions.Expression VisitBinaryExpression(BinaryExpression expression)
+        protected override Expression VisitBinaryExpression(BinaryExpression expression)
         {
             VisitExpression(expression.Left);
             Ek.Expression leftExpr = _ekExpressions.Pop();
@@ -88,14 +93,15 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
             }
             else
             {
-                throw new NotSupportedException(
-                    string.Format("Binary expression node type {0} not supported", expression.NodeType));
+                return base.VisitBinaryExpression(expression);
+                //throw new NotSupportedException(
+                //    string.Format("Binary expression node type {0} not supported", expression.NodeType));
             }
 
             return expression;
         }
 
-        protected override System.Linq.Expressions.Expression VisitConstantExpression(ConstantExpression expression)
+        protected override Expression VisitConstantExpression(ConstantExpression expression)
         {
             object value = expression.Value;
             Ek.Expression valueExpression;
@@ -113,7 +119,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
             return expression;
         }
 
-        protected override System.Linq.Expressions.Expression VisitMemberExpression(MemberExpression expression)
+        protected override Expression VisitMemberExpression(MemberExpression expression)
         {
             Ek.PropertyExpression propExr = GetPropertyExpression(expression);
             _ekExpressions.Push(propExr);
@@ -121,7 +127,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
             return expression;
         }
 
-        protected override System.Linq.Expressions.Expression VisitMethodCallExpression(MethodCallExpression expression)
+        protected override Expression VisitMethodCallExpression(MethodCallExpression expression)
         {
             if (MethodCallMap.ContainsKey(expression.Method))
             {
@@ -133,6 +139,25 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
             }
 
             return base.VisitMethodCallExpression(expression);
+        }
+
+        protected override Expression VisitUnaryExpression(UnaryExpression expression)
+        {
+            VisitExpression(expression.Operand);
+            Ek.Expression operand = _ekExpressions.Pop();
+
+            ExpressionType operatorType = expression.NodeType;
+            if (UnaryExpressionMap.ContainsKey(operatorType))
+            {
+                var factoryMethod = UnaryExpressionMap[operatorType];
+                _ekExpressions.Push(factoryMethod.Invoke(operand));
+            }
+            else
+            {
+                return base.VisitUnaryExpression(expression);
+            }
+
+            return expression;
         }
 
         private Ek.PropertyExpression GetPropertyExpression(MemberExpression expression)

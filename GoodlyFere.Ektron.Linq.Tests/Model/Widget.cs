@@ -16,7 +16,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Model
 
         [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression))]
         public long Id { get; set; }
-
+        
         public string Name { get; set; }
 
         [EktronProperty("Number", EktronExpressionType = typeof(IntegerPropertyExpression))]
