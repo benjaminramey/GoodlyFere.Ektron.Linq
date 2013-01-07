@@ -24,15 +24,11 @@ This is a simple example of a domain object used to query Ektron content.
 
     public class Widget
     {
-        #region Public Properties
-
         [EktronProperty(EkConstants.SearchProperties.ContentId,
             EktronExpressionType = typeof(IntegerPropertyExpression))]
         public long Id { get; set; }
 
         public string Name { get; set; }
-            
-        #endregion
     }
 
 ### AppSettingsIdProvider Class
@@ -47,8 +43,6 @@ or content type.
 
     public class AppSettingsIdProvider : IEktronIdProvider
     {
-        #region Public Methods
-
         public long GetContentTypeId(string name)
         {
             EnsureValidName(name);
@@ -62,10 +56,6 @@ or content type.
             string key = String.Concat(name, "SmartForm");
             return GetId(key);
         }
-
-        #endregion
-
-        #region Methods
 
         private static long GetId(string key)
         {
@@ -87,6 +77,4 @@ or content type.
                 throw new ArgumentNullException("name");
             }
         }
-
-        #endregion
     }
