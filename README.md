@@ -7,8 +7,8 @@ Linq to Ektron AdvancedSearchCriteria search provider.
 ## Basic Usage
 
 To use this Linq-to-Ektron implementation you need two basic things in place:
-- A class implementing the IEktronIdProvider interface (see the AppSettingsIdProvider example below)
-- One or more domain objects that map to data in your Ektron instance (see the Widget example class below)
+- A class implementing the IEktronIdProvider interface (see the [AppSettingsIdProvider][#appsettingsidprovider-class] example below)
+- One or more domain objects that map to data in your Ektron instance (see the [Widget][#widget-class] example class below)
 
 ### Example
     var widgets = EktronQueryFactory.Queryable<Widget>(new AppSettingsIdProvider());
