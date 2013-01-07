@@ -5,7 +5,12 @@
 Linq to Ektron AdvancedSearchCriteria search provider.
 
 ## Basic Usage
-   
+
+To use this Linq-to-Ektron implementation you need two basic things in place:
+- A class implementing the IEktronIdProvider interface (see the AppSettingsIdProvider example below)
+- A class representing data in Ektron
+
+### Example
     var widgets = EktronQueryFactory.Queryable<Widget>(new AppSettingsIdProvider());
 
     var query = from w in widgets
@@ -20,7 +25,9 @@ Linq to Ektron AdvancedSearchCriteria search provider.
 
     Console.ReadKey();
 
-## Widget Class
+### Widget Class
+This is a simple example of a domain object used to query Ektron content.  
+
     public class Widget
     {
         #region Public Properties
@@ -34,7 +41,15 @@ Linq to Ektron AdvancedSearchCriteria search provider.
         #endregion
     }
 
-## AppSettingsIdProvider Class
+### AppSettingsIdProvider Class
+You need to provide an implementation of `GoodlyFere.Ektron.Linq.Interfaces.IEktronIdProvider` when you call
+`EktronQueryFactory.Queryable<T>()`.  The library will use your class to translate smart form and content
+type names (that you provide as attributes on your domain object classes with the `SmartForm` and
+`ContentType` attributes) into Ektron content IDs.  
+
+With this simple implementation, the smart form or content type name is simply used (slightly modified) as a key for an appSetting
+in your application's configuration file.  The value of the appSetting key is the Ektron content ID for the corresponding smart form
+or content type.
 
     public class AppSettingsIdProvider : IEktronIdProvider
     {
