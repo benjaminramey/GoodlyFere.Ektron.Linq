@@ -45,9 +45,6 @@
     <Reference Include="Ektron.Cms.ObjectFactory">
       <HintPath>..\lib\Ektron.Cms.ObjectFactory.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Remotion.Linq">
       <HintPath>..\packages\Remotion.Linq.1.13.179.0\lib\net35\Remotion.Linq.dll</HintPath>
     </Reference>
