@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FF932FE2-6D4B-40FF-9AEC-54483B5843AB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GoodlyFere.Ektron.Linq.Samples</RootNamespace>
+    <AssemblyName>GoodlyFere.Ektron.Linq.Samples</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging, Version=2.1.2.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net1211">
+      <HintPath>..\packages\Common.Logging.Log4Net1211.2.1.2\lib\net40\Common.Logging.Log4Net1211.dll</HintPath>
+    </Reference>
+    <Reference Include="CookieEncryption">
+      <HintPath>..\lib\CookieEncryption.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.ASM.EkDavProtocol">
+      <HintPath>..\lib\Ektron.ASM.EkDavProtocol.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.ASM.EkHttpDavHandler">
+      <HintPath>..\lib\Ektron.ASM.EkHttpDavHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.BusinessObjects">
+      <HintPath>..\lib\Ektron.Cms.BusinessObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.BusinessObjects.Caching">
+      <HintPath>..\lib\Ektron.Cms.BusinessObjects.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Common">
+      <HintPath>..\lib\Ektron.Cms.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework">
+      <HintPath>..\lib\Ektron.Cms.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework.UI">
+      <HintPath>..\lib\Ektron.Cms.Framework.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework.UI.Controls">
+      <HintPath>..\lib\Ektron.Cms.Framework.UI.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework.UI.Controls.EktronUI">
+      <HintPath>..\lib\Ektron.Cms.Framework.UI.Controls.EktronUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework.UI.Registration">
+      <HintPath>..\lib\Ektron.Cms.Framework.UI.Registration.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Framework.UI.Services">
+      <HintPath>..\lib\Ektron.Cms.Framework.UI.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Instrumentation">
+      <HintPath>..\lib\Ektron.Cms.Instrumentation.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.ObjectFactory">
+      <HintPath>..\lib\Ektron.Cms.ObjectFactory.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Personalization">
+      <HintPath>..\lib\Ektron.Cms.Personalization.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Providers">
+      <HintPath>..\lib\Ektron.Cms.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Search">
+      <HintPath>..\lib\Ektron.Cms.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Cms.Widget">
+      <HintPath>..\lib\Ektron.Cms.Widget.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.EnterpriseLibrary.Caching">
+      <HintPath>..\lib\Ektron.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.EnterpriseLibrary.Common">
+      <HintPath>..\lib\Ektron.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.EnterpriseLibrary.Data">
+      <HintPath>..\lib\Ektron.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Ektron.Newtonsoft.json">
+      <HintPath>..\lib\Ektron.Newtonsoft.json.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\lib\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging">
+      <HintPath>..\lib\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database">
+      <HintPath>..\lib\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation">
+      <HintPath>..\lib\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>..\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\lib\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\lib\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\lib\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=1.13.181.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.1.13.181.0\lib\net35\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppSettingsIdProvider.cs" />
+    <Compile Include="BasicUsage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoodlyFere.Ektron.Linq\GoodlyFere.Ektron.Linq.csproj">
+      <Project>{AC59AC57-19F4-4622-A89D-359657662B0B}</Project>
+      <Name>GoodlyFere.Ektron.Linq</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <Content Include="Ektron\Config\ektron.cms.framework.ui.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ektron\Config\ektron.cms.framework.ui.unity.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ektron\Config\ektron.cms.framework.unity.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,41 +1,14 @@
-# GoodlyFere.Ektron.Linq Documentation
+#region Usings
 
-## Summary 
+using System.Configuration;
+using System.Linq;
+using System;
+using GoodlyFere.Ektron.Linq.Interfaces;
 
-Linq to Ektron AdvancedSearchCriteria search provider.
+#endregion
 
-## Basic Usage
-   
-    var widgets = EktronQueryFactory.Queryable<Widget>(new AppSettingsIdProvider());
-
-    var query = from w in widgets
-                where w.Id > 10
-                select w;
-
-    Widget[] itemWidgets = query.ToArray();
-    foreach (var widget in itemWidgets)
-    {
-        Console.WriteLine("Widget found: {0}", widget.Id);
-    }
-
-    Console.ReadKey();
-
-## Widget Class
-    public class Widget
-    {
-        #region Public Properties
-
-        [EktronProperty(EkConstants.SearchProperties.ContentId,
-            EktronExpressionType = typeof(IntegerPropertyExpression))]
-        public long Id { get; set; }
-
-        public string Name { get; set; }
-            
-        #endregion
-    }
-
-## AppSettingsIdProvider Class
-
+namespace GoodlyFere.Ektron.Linq.Samples
+{
     public class AppSettingsIdProvider : IEktronIdProvider
     {
         #region Public Methods
@@ -81,3 +54,4 @@ Linq to Ektron AdvancedSearchCriteria search provider.
 
         #endregion
     }
+}
