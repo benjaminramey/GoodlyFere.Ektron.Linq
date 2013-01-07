@@ -2,11 +2,14 @@
 
 ## Summary 
 
-Linq to Ektron AdvancedSearchCriteria search provider.
+GoodlyFere.Ektron.Linq provides a very basic (at the moment) implementation of Linq for Ektron by translating Linq expressions
+into valid `Ektron.Cms.Search.Expressions.Expression`s that then are submitted to the Ektron SearchManager via an
+`AdvancedSearchCriteria` search.
 
 ## Basic Usage
 
-To use this Linq-to-Ektron implementation you need two basic things in place:
+To use this Linq-to-Ektron implementation you need three basic things in place:
+- An Ektron 8.5 (this library has not been tested with any version <8.5) installation
 - A class implementing the IEktronIdProvider interface (see the [AppSettingsIdProvider](#appsettingsidprovider-class) example below)
 - One or more domain objects that map to data in your Ektron instance (see the [Widget](#widget-class) example class below)
 
@@ -20,7 +23,12 @@ To use this Linq-to-Ektron implementation you need two basic things in place:
     Widget[] itemWidgets = query.ToArray();
 
 ### Widget Class
-This is a simple example of a domain object used to query Ektron content.  
+This is a simple example of a domain object used to query Ektron content.  This Widget will
+match any content item in Ektron. See more documentation to come soon on how to setup
+domain objects to correspond to certain smart forms, folder paths and content types.
+
+It has one property that matches an Ektron property: Id.  See more documentation to come soon on
+setting up properties to match smart form, metadata and custom properties in Ektron.
 
     public class Widget
     {
