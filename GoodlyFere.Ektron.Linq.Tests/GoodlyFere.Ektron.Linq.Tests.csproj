@@ -212,19 +212,21 @@
     <Compile Include="Ektron\SS2010ExpressionVisitor.cs" />
     <Compile Include="Ektron\SS2010TransformVisitor.cs" />
     <Compile Include="Ektron\WhereExpression.cs" />
-    <Compile Include="Integration\SelectFromOrderByTests.cs">
+    <Compile Include="Integration\IntegrationTests.cs" />
+    <Compile Include="Integration\Practice.cs" />
+    <Compile Include="Query\SelectFromOrderByTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Integration\SelectFromTests.cs">
+    <Compile Include="Query\SelectFromTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Integration\SelectFromWhereTests.cs">
+    <Compile Include="Query\SelectFromWhereTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Integration\SubQueryTests.cs">
+    <Compile Include="Query\SubQueryTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Integration\UnaryTests.cs" />
+    <Compile Include="Query\UnaryTests.cs" />
     <Compile Include="Results\EktronQueryExecutorTests.cs" />
     <Compile Include="TestHelper.cs" />
     <Compile Include="TestImplementations\IdProvider.cs" />

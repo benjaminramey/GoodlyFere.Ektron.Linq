@@ -9,11 +9,10 @@ using GoodlyFere.Ektron.Linq.Interfaces;
 using GoodlyFere.Ektron.Linq.Tests.Model;
 using GoodlyFere.Ektron.Linq.Tests.TestImplementations;
 using Xunit;
-using Ek = Ektron.Cms.Search.Expressions;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.Integration
+namespace GoodlyFere.Ektron.Linq.Tests.Query
 {
     public class SubQueryTests
     {
@@ -38,11 +37,11 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         public void IEnumerableContains()
         {
             int[] numbers = new[] { 1, 2, 3, 4 };
-            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider)
+            var query = from w in EktronQueryFactory.Queryable<NumberTestWidget>(_idProvider)
                         where numbers.Contains(w.Number)
                         select w;
 
-            var propExpr = new Ek.IntegerPropertyExpression("Number");
+            var propExpr = new global::Ektron.Cms.Search.Expressions.IntegerPropertyExpression("Number");
             var model = TestHelper.GetQueryModel(query);
 
             var actualCriteria =

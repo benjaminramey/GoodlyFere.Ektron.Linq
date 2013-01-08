@@ -11,7 +11,7 @@ using Ek = Ektron.Cms.Search.Expressions;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.Integration
+namespace GoodlyFere.Ektron.Linq.Tests.Query
 {
     public class UnaryTests
     {
@@ -67,7 +67,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         public void SimpleCast_NoAssignedEktronExpressionType_AllowsCast()
         {
             long expectedValue = 1L;
-            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider)
+            var query = from w in EktronQueryFactory.Queryable<CastTestWidget>(_idProvider)
                         where (long)w.NoTypeObjectId == expectedValue
                         select w;
 
@@ -87,7 +87,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         public void SimpleCast_StringEktronExpressionTypeCastToLong_ThrowsException()
         {
             long expectedValue = 1L;
-            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider)
+            var query = from w in EktronQueryFactory.Queryable<CastTestWidget>(_idProvider)
                         where (long)w.StringTypeObjectId == expectedValue
                         select w;
 
@@ -98,7 +98,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         public void SimpleCast_StringEktronExpressionTypeCastToString_IgnoresCast()
         {
             string expectedValue = "1";
-            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider)
+            var query = from w in EktronQueryFactory.Queryable<CastTestWidget>(_idProvider)
                         where (string)w.StringTypeObjectId == expectedValue
                         select w;
 

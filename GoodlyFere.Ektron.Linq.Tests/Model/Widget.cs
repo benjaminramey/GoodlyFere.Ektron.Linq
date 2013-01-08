@@ -19,10 +19,56 @@ namespace GoodlyFere.Ektron.Linq.Tests.Model
         public long Id { get; set; }
 
         public string Name { get; set; }
-        public object NoTypeObjectId { get; set; }
+
+        #endregion
+    }
+
+    public class ModelWidget
+    {
+        [EktronProperty(EkConstants.SearchProperties.Title)]
+        public string ContentTitle { get; set; }
+
+        [EktronProperty(EkConstants.SearchProperties.DateCreated,
+            EktronExpressionType = typeof(DatePropertyExpression))]
+        public DateTime DateCreated { get; set; }
+
+        [EktronProperty(EkConstants.SearchProperties.DateModified,
+            EktronExpressionType = typeof(DatePropertyExpression))]
+        public DateTime DateModified { get; set; }
+
+        [EktronProperty(EkConstants.SearchProperties.FolderId,
+            EktronExpressionType = typeof(IntegerPropertyExpression))]
+        public long FolderId { get; set; }
+
+        [EktronProperty(EkConstants.SearchProperties.FolderPath)]
+        public string FolderPath { get; set; }
+
+        [EktronProperty(EkConstants.SearchProperties.ContentId,
+            EktronExpressionType = typeof(IntegerPropertyExpression))]
+        public object Id { get; set; }
+
+        [EktronProperty(EkConstants.SearchProperties.Path)]
+        public string Path { get; set; }
+
+        [EktronProperty(EkConstants.SearchProperties.QuickLink)]
+        public string QuickLink { get; set; }
+    }
+    
+    public class NumberTestWidget : Widget
+    {
+        #region Public Properties
 
         [EktronProperty("Number", EktronExpressionType = typeof(IntegerPropertyExpression))]
         public int Number { get; set; }
+
+        #endregion
+    }
+
+    public class CastTestWidget : Widget
+    {
+        #region Public Properties
+
+        public object NoTypeObjectId { get; set; }
 
         [EktronProperty("StringTypeObjectId", EktronExpressionType = typeof(StringPropertyExpression))]
         public object StringTypeObjectId { get; set; }

@@ -10,7 +10,7 @@ using Ek = Ektron.Cms.Search.Expressions;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.Integration
+namespace GoodlyFere.Ektron.Linq.Tests.Query
 {
     public class SelectFromWhereTests
     {

@@ -51,6 +51,8 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
 
         public static Ek.Expression Build(Expression expression)
         {
+            Log.DebugFormat("Visiting expression: {0}", FormattingExpressionTreeVisitor.Format(expression));
+
             var visitor = new QueryBuildingVisitor();
             visitor.VisitExpression(expression);
 

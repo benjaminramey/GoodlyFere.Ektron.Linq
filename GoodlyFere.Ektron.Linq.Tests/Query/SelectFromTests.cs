@@ -9,7 +9,7 @@ using Xunit;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.Integration
+namespace GoodlyFere.Ektron.Linq.Tests.Query
 {
     public class SelectFromTests
     {

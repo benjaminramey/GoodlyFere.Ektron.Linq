@@ -112,7 +112,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Results
         }
 
         [Fact]
-        public void ExecuteSingle_OneResult_RetursOne()
+        public void ExecuteSingle_OneResult_ReturnsOne()
         {
             var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider) select w;
             var model = TestHelper.GetQueryModel(query);
