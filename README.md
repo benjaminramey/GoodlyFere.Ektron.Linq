@@ -87,3 +87,67 @@ or content type.
             }
         }
     }
+
+## Reference
+
+### Class Attributes (GoodlyFere.Ektron.Linq.Model.Attributes)
+#### SmartFormAttribute
+
+Use this attribute to designate a domain object class to correspond to a smart form in Ektron.  This will tell 
+the library to add a `SearchContentProperty.XmlConfigId == <smart form id>` clause to the AdvancedSearchCriteria
+expression tree.
+
+    [SmartForm("Doctor")]
+    internal class SmartFormWidget
+    {
+        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression))]
+        public long Id { get; set; }
+    }
+
+The name that you pass to the SmartFormAttribute is the name that your IEktronIdProvider will use to find the ID
+for the smart form. Therefore, this name can be an arbitrary value as long as you know how to use it in your 
+IEktronIdProvider implementation.
+
+#### ContentTypeAttribute
+
+Use this attribute to designate a domain object class to correspond to a content type in Ektron.  This will tell 
+the library to add a `SearchContentProperty.ContentType == <content type id>` clause and a 
+`SearchContentProperty.ContentSubType == <content sub type id>` (if designated) to the AdvancedSearchCriteria
+expression tree.
+
+    [ContentType("ContentTypeName")]
+    internal class ContentTypeWidget
+    {
+        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression))]
+        public long Id { get; set; }
+    }
+
+    [ContentType("ContentTypeName", ContentSubTypeName = "SubTypeName")]
+    internal class SubContentTypeWidget
+    {
+        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression))]
+        public long Id { get; set; }
+    }
+
+The name that you pass to the ContentTypeAttribute is the name that your IEktronIdProvider will use to find the ID
+for the content type. Therefore, this name can be an arbitrary value as long as you know how to use it in your 
+IEktronIdProvider implementation.
+
+#### FolderPathAttribute
+
+Use this attribute to designate a domain object class to correspond to a certain folder path in in Ektron.  This will tell 
+the library to add a `SearchContentProperty.FolderPath == <folder path>` clause to the AdvancedSearchCriteria
+expression tree.
+
+    [FolderPath("Folders/Widgets")]
+    internal class FolderPathWidget
+    {
+        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression))]
+        public long Id { get; set; }
+    }
+
+### Property Attributes (GoodlyFere.Ektron.Linq.Model.Attributes)
+#### EktronPropertyAttribute
+#### SmartFormPropertyAttribute
+#### CustomPropertyAttribute
+#### MetadataPropertyAttribute
