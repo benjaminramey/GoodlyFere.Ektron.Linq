@@ -1,8 +1,8 @@
-# GoodlyFere.Ektron.Linq Documentation
+# LINQ to Ektron Search
 
 ## Summary 
 
-GoodlyFere.Ektron.Linq provides a very basic (at the moment) implementation of Linq for Ektron by translating Linq expressions
+LINQ to Ektron Search provides a very basic (at the moment) implementation of LINQ for Ektron by translating LINQ expressions
 into valid `Ektron.Cms.Search.Expressions.Expression`s that then are submitted to the Ektron SearchManager via an
 `AdvancedSearchCriteria` search.
 
