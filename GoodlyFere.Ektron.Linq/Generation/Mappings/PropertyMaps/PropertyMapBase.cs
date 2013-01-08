@@ -9,7 +9,8 @@ using Ektron.Cms.Search.Expressions;
 
 namespace GoodlyFere.Ektron.Linq.Generation.Mappings.PropertyMaps
 {
-    internal class PropertyMapBase : Dictionary<Type, Func<string, PropertyExpression>>
+    internal class PropertyMapBase : Dictionary<Type, Func<string, PropertyExpression>>,
+                                     IDefaultingMap<Type, Func<string, PropertyExpression>>
     {
         #region Public Properties
 

@@ -1,7 +1,11 @@
+#region Usings
+
 using System.Configuration;
 using System.Linq;
 using System;
 using GoodlyFere.Ektron.Linq.Interfaces;
+
+#endregion
 
 namespace GoodlyFere.Ektron.Linq.Tests.TestImplementations
 {

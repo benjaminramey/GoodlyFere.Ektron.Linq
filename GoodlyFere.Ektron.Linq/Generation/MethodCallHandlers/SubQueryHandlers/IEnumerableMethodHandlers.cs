@@ -25,7 +25,8 @@ namespace GoodlyFere.Ektron.Linq.Generation.MethodCallHandlers.SubQueryHandlers
                 var cro = resultOperator as ContainsResultOperator;
                 foreach (var v in values)
                 {
-                    expressions.Add(Expression.Equal(cro.Item, Expression.Constant(v)));
+                    expressions.Add(
+                        Expression.Equal(cro.Item, Expression.Convert(Expression.Constant(v), cro.Item.Type)));
                 }
             }
 

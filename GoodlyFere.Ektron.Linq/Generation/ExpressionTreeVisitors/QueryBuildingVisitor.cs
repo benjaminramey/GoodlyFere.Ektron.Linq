@@ -149,7 +149,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
             if (UnaryExpressionMap.ContainsKey(operatorType))
             {
                 var factoryMethod = UnaryExpressionMap[operatorType];
-                _ekExpressions.Push(factoryMethod.Invoke(operand));
+                _ekExpressions.Push(factoryMethod.Invoke(expression, operand));
             }
             else
             {

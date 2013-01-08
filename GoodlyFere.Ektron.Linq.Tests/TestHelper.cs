@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Ektron.Cms.Search;
-using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Generation;
 using GoodlyFere.Ektron.Linq.Helpers;
 using GoodlyFere.Ektron.Linq.Model.Attributes;
@@ -102,7 +101,7 @@ namespace GoodlyFere.Ektron.Linq.Tests
             return new SearchResponseData { Results = results };
         }
 
-        internal static Expression GetTranslation<T>(IQueryable<T> query)
+        internal static Ek.Expression GetTranslation<T>(IQueryable<T> query)
         {
             var queryModel = GetQueryModel(query);
             return SearchQueryModelVisitor.Translate(queryModel, new IdProvider()).ExpressionTree;

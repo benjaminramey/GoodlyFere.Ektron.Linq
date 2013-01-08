@@ -13,12 +13,20 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
 {
     public class SelectFromTests
     {
+        #region Constants and Fields
+
         private readonly IdProvider _idProvider;
+
+        #endregion
+
+        #region Constructors and Destructors
 
         public SelectFromTests()
         {
             _idProvider = new IdProvider();
         }
+
+        #endregion
 
         #region Public Methods
 

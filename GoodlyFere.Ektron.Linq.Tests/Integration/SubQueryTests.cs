@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Ektron.Cms;
 using Ektron.Cms.Search;
@@ -44,13 +45,38 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
             var propExpr = new Ek.IntegerPropertyExpression("Number");
             var model = TestHelper.GetQueryModel(query);
 
-            var actualCriteria = new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
+            var actualCriteria =
+                new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
             var expectedCriteria = new AdvancedSearchCriteria
                 {
-                    ExpressionTree =(propExpr == numbers[0]
-                                     | propExpr == numbers[1])
+                    ExpressionTree = (propExpr == numbers[0]
+                                      | propExpr == numbers[1])
                                      | (propExpr == numbers[2]
-                                     | propExpr == numbers[3])
+                                        | propExpr == numbers[3])
+                };
+            EkAssert.Equal(expectedCriteria, actualCriteria);
+        }
+
+        [Fact]
+        public void IEnumerableContains_DifferingSurfaceTypes()
+        {
+            long[] numbers = new long[] { 1, 2, 3, 4 };
+            IEnumerable<object> objectNumbers = numbers.Select(i => i).Cast<object>();
+            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider)
+                        where objectNumbers.Contains(w.Id)
+                        select w;
+
+            var propExpr = SearchContentProperty.Id;
+            var model = TestHelper.GetQueryModel(query);
+
+            var actualCriteria =
+                new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
+            var expectedCriteria = new AdvancedSearchCriteria
+                {
+                    ExpressionTree = (propExpr == numbers[0]
+                                      | propExpr == numbers[1])
+                                     | (propExpr == numbers[2]
+                                        | propExpr == numbers[3])
                 };
             EkAssert.Equal(expectedCriteria, actualCriteria);
         }

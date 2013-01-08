@@ -14,15 +14,18 @@ namespace GoodlyFere.Ektron.Linq.Tests.Model
     {
         #region Public Properties
 
-        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression))]
+        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression)
+            )]
         public long Id { get; set; }
 
-        public object ObjectId { get; set; }
-        
         public string Name { get; set; }
+        public object NoTypeObjectId { get; set; }
 
         [EktronProperty("Number", EktronExpressionType = typeof(IntegerPropertyExpression))]
         public int Number { get; set; }
+
+        [EktronProperty("StringTypeObjectId", EktronExpressionType = typeof(StringPropertyExpression))]
+        public object StringTypeObjectId { get; set; }
 
         #endregion
     }

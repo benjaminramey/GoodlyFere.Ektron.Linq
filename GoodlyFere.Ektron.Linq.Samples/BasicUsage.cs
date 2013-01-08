@@ -42,7 +42,7 @@ namespace GoodlyFere.Ektron.Linq.Samples
             public long Id { get; set; }
 
             public string Name { get; set; }
-            
+
             #endregion
         }
     }

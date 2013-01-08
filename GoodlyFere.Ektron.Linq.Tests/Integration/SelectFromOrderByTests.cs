@@ -89,14 +89,14 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
 
             var actualCriteria = criteria;
             var expectedCriteria = new AdvancedSearchCriteria
-            {
-                ExpressionTree = SearchContentProperty.XmlConfigId == expectedId,
-                OrderBy = new List<OrderData>
-                    {
-                        new OrderData(SearchContentProperty.Id, OrderDirection.Ascending),
-                        new OrderData(new StringPropertyExpression("Name"), OrderDirection.Ascending)
-                    }
-            };
+                {
+                    ExpressionTree = SearchContentProperty.XmlConfigId == expectedId,
+                    OrderBy = new List<OrderData>
+                        {
+                            new OrderData(SearchContentProperty.Id, OrderDirection.Ascending),
+                            new OrderData(new StringPropertyExpression("Name"), OrderDirection.Ascending)
+                        }
+                };
             EkAssert.Equal(expectedCriteria, actualCriteria);
         }
 
@@ -106,7 +106,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
             var expectedId = _idProvider.GetSmartFormId(SmartFormWidget.SmartFormName);
 
             var query = from w in EktronQueryFactory.Queryable<SmartFormWidget>(_idProvider)
-                        orderby w.Id, w.Name descending 
+                        orderby w.Id, w.Name descending
                         select w;
 
             var model = TestHelper.GetQueryModel(query);
@@ -114,14 +114,14 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
 
             var actualCriteria = criteria;
             var expectedCriteria = new AdvancedSearchCriteria
-            {
-                ExpressionTree = SearchContentProperty.XmlConfigId == expectedId,
-                OrderBy = new List<OrderData>
-                    {
-                        new OrderData(SearchContentProperty.Id, OrderDirection.Ascending),
-                        new OrderData(new StringPropertyExpression("Name"), OrderDirection.Descending)
-                    }
-            };
+                {
+                    ExpressionTree = SearchContentProperty.XmlConfigId == expectedId,
+                    OrderBy = new List<OrderData>
+                        {
+                            new OrderData(SearchContentProperty.Id, OrderDirection.Ascending),
+                            new OrderData(new StringPropertyExpression("Name"), OrderDirection.Descending)
+                        }
+                };
             EkAssert.Equal(expectedCriteria, actualCriteria);
         }
 

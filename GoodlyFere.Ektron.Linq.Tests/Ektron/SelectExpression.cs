@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
-using Ektron.Cms.Search.SS2010;
 
 #endregion
 
