@@ -28,7 +28,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Mappings.PropertyMaps
 
         public virtual Func<string, PropertyExpression> FirstOrDefault(Type propertyExpressionType)
         {
-            if (ContainsKey(propertyExpressionType))
+            if (propertyExpressionType != null && ContainsKey(propertyExpressionType))
             {
                 return this[propertyExpressionType];
             }

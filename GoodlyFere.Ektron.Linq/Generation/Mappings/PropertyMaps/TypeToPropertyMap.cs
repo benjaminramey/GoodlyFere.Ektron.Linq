@@ -41,7 +41,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Mappings.PropertyMaps
 
         public Func<PropertyExpression, PropertyExpression> FirstOrDefault(Type key)
         {
-            if (ContainsKey(key))
+            if (key != null && ContainsKey(key))
             {
                 return this[key];
             }
