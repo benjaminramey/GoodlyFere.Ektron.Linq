@@ -135,7 +135,7 @@ IEktronIdProvider implementation.
 
 #### FolderPathAttribute
 
-Use this attribute to designate a domain object class to correspond to a certain folder path in in Ektron.  This will tell 
+Use this attribute to designate a domain object class to correspond to a certain folder path in Ektron.  This will tell 
 the library to add a `SearchContentProperty.FolderPath == <folder path>` clause to the AdvancedSearchCriteria
 expression tree.
 
@@ -151,3 +151,6 @@ expression tree.
 #### SmartFormPropertyAttribute
 #### CustomPropertyAttribute
 #### MetadataPropertyAttribute
+
+## Version History
+- (1.0.6.0) Added support for unary not expressions.  For example, `!(w.Id == 1)`.
