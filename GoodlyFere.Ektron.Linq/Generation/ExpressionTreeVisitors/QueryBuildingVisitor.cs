@@ -23,16 +23,16 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
     {
         #region Constants and Fields
 
-        private static readonly BinaryExpressionFactoryMethodMap BinaryExpressionMap =
-            new BinaryExpressionFactoryMethodMap();
+        private static readonly BinaryExpressionMap BinaryExpressionMap =
+            new BinaryExpressionMap();
 
         private static readonly ConstantExpressionMap ConstantExpressionMap = new ConstantExpressionMap();
         private static readonly ILog Log = LogManager.GetLogger<QueryBuildingVisitor>();
         private static readonly HandledMethodsMap MethodCallMap = new HandledMethodsMap();
         private static readonly ReverseOperatorMap ReverseOperatorMap = new ReverseOperatorMap();
 
-        private static readonly UnaryExpressionFactoryMethodMap UnaryExpressionMap =
-            new UnaryExpressionFactoryMethodMap();
+        private static readonly UnaryExpressionMap UnaryExpressionMap =
+            new UnaryExpressionMap();
 
         private readonly Stack<Ek.Expression> _ekExpressions;
 

@@ -68,11 +68,11 @@
     <Compile Include="Generation\Mappings\PropertyMaps\MetadataPropertyMap.cs" />
     <Compile Include="Generation\Mappings\PropertyMaps\CustomPropertyMap.cs" />
     <Compile Include="Generation\Mappings\PropertyMaps\RegularPropertyMap.cs" />
-    <Compile Include="Generation\Mappings\UnaryExpressionFactoryMethodMap.cs" />
+    <Compile Include="Generation\Mappings\UnaryExpressionMap.cs" />
     <Compile Include="Generation\MethodCallHandlers\SubQueryHandlers\IEnumerableMethodHandlers.cs" />
     <Compile Include="Generation\MethodCallHandlers\SubQueryHandlers\ResultOperatorHandlersMap.cs" />
     <Compile Include="Generation\SearchQueryModelVisitor.cs" />
-    <Compile Include="Generation\Mappings\BinaryExpressionFactoryMethodMap.cs" />
+    <Compile Include="Generation\Mappings\BinaryExpressionMap.cs" />
     <Compile Include="Generation\Mappings\ConstantExpressionMap.cs" />
     <Compile Include="Generation\Mappings\ReverseOperatorMap.cs" />
     <Compile Include="Generation\MethodCallHandlers\HandledMethodsMap.cs" />
