@@ -11,7 +11,7 @@
     <projectUrl>https://github.com/benjaminramey/GoodlyFere.Ektron.Linq</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>LINQ provider for Ektron via Ektron's SearchManager using AdvancedSearchCriteria searches.</description>
-    <releaseNotes>Adds support for unary type-casting.</releaseNotes>
+    <releaseNotes>Fixes bugs in PropertyMapBase having to do with null dictionary keys.</releaseNotes>
     <tags>linq ektron advancedsearchcriteria search</tags>
     <dependencies>
       <dependency id="Remotion.Linq" version="[1.13.161, 2.0)" />
