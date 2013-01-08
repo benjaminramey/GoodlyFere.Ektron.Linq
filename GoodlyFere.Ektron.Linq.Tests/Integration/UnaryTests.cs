@@ -30,18 +30,18 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
 
         #region Public Methods
 
-        //[Fact]
-        //public void SimpleCast()
-        //{
-        //    long expectedValue = 1L;
-        //    var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider)
-        //                where (long)w.ObjectId == expectedValue
-        //                select w;
+        [Fact]
+        public void SimpleCast()
+        {
+            long expectedValue = 1L;
+            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider)
+                        where (long)w.ObjectId == expectedValue
+                        select w;
 
-        //    var actualTranslation = TestHelper.GetTranslation(query);
-        //    var expectedTranslation = SearchContentProperty.Id == expectedValue;
-        //    EkAssert.Equal(expectedTranslation, actualTranslation);
-        //}
+            var actualTranslation = TestHelper.GetTranslation(query);
+            var expectedTranslation = SearchContentProperty.Id == expectedValue;
+            EkAssert.Equal(expectedTranslation, actualTranslation);
+        }
 
         [Fact]
         public void Not()

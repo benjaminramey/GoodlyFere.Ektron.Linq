@@ -93,9 +93,8 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
             }
             else
             {
-                return base.VisitBinaryExpression(expression);
-                //throw new NotSupportedException(
-                //    string.Format("Binary expression node type {0} not supported", expression.NodeType));
+                throw new NotSupportedException(
+                    string.Format("Binary expression node type {0} not supported in Ektron.", expression.NodeType));
             }
 
             return expression;

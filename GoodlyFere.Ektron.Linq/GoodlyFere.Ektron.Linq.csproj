@@ -63,6 +63,11 @@
     <Compile Include="Generation\Aggregators\OrderByAggregator.cs" />
     <Compile Include="Generation\Aggregators\SubQueryExpressionAggegrator.cs" />
     <Compile Include="Generation\ExpressionTreeVisitors\SubQueryExpressionVisitor.cs" />
+    <Compile Include="Generation\Mappings\PropertyMaps\PropertyMapBase.cs" />
+    <Compile Include="Generation\Mappings\PropertyMaps\SmartFormPropertyMap.cs" />
+    <Compile Include="Generation\Mappings\PropertyMaps\MetadataPropertyMap.cs" />
+    <Compile Include="Generation\Mappings\PropertyMaps\CustomPropertyMap.cs" />
+    <Compile Include="Generation\Mappings\PropertyMaps\RegularPropertyMap.cs" />
     <Compile Include="Generation\Mappings\UnaryExpressionFactoryMethodMap.cs" />
     <Compile Include="Generation\MethodCallHandlers\SubQueryHandlers\IEnumerableMethodHandlers.cs" />
     <Compile Include="Generation\MethodCallHandlers\SubQueryHandlers\ResultOperatorHandlersMap.cs" />

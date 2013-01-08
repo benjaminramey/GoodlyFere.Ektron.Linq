@@ -11,7 +11,6 @@ using GoodlyFere.Ektron.Linq.Interfaces;
 using GoodlyFere.Ektron.Linq.Model.Attributes;
 using Remotion.Linq;
 using Remotion.Linq.Clauses;
-using Remotion.Linq.Clauses.Expressions;
 using Ek = Ektron.Cms.Search.Expressions;
 
 #endregion
@@ -118,7 +117,7 @@ namespace GoodlyFere.Ektron.Linq.Generation
 
             base.VisitOrdering(ordering, queryModel, orderByClause, index);
         }
-        
+
         public override void VisitWhereClause(WhereClause whereClause, QueryModel queryModel, int index)
         {
             var subQueryVisitor = new SubQueryExpressionVisitor();

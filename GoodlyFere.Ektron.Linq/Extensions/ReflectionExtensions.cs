@@ -44,7 +44,7 @@ namespace GoodlyFere.Ektron.Linq.Extensions
             CustomAttributes.Add(key, type.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T);
             return CustomAttributes[key] as T;
         }
-        
+
         public static T GetCustomAttribute<T>(this MemberInfo memberInfo) where T : Attribute
         {
             if (memberInfo == null)
