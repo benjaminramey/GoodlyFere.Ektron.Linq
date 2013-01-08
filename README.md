@@ -152,4 +152,5 @@ expression tree.
 #### MetadataPropertyAttribute
 
 ## Version History
+- (1.0.7.0) Added support for unary type-casting.  For example, `(long)w.Id == 1L`.
 - (1.0.6.0) Added support for unary not expressions.  For example, `!(w.Id == 1)`.
