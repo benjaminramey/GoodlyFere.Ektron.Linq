@@ -61,7 +61,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Integration
         {
             object expectedId = 4294967325L;
             var asc = new AdvancedSearchCriteria();
-            asc.ExpressionTree = SearchContentProperty.XmlConfigId == 4294967296
+            asc.ExpressionTree = SearchContentProperty.XmlConfigId == _idProvider.GetSmartFormId("Practice")
                 & SearchContentProperty.Id == (long)expectedId;
             asc.PagingInfo.RecordsPerPage = 10000;
             asc.ReturnProperties = new HashSet<PropertyExpression> { SearchContentProperty.Id };
