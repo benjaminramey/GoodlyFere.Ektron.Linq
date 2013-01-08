@@ -25,8 +25,7 @@ setting this up.
 
 ### Widget Class
 This is a simple example of a domain object used to query Ektron content.  This Widget will
-match any content item in Ektron. See more documentation to come soon on how to setup
-domain objects to correspond to certain smart forms, folder paths and content types.
+match any content item in Ektron.
 
 It has one property that matches an Ektron property: Id.  See more documentation to come soon on
 setting up properties to match smart form, metadata and custom properties in Ektron.
