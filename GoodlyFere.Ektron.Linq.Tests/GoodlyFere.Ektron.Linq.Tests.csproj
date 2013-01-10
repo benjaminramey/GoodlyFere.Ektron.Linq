@@ -221,7 +221,7 @@
     </Compile>
     <Compile Include="Query\UnaryTests.cs" />
     <Compile Include="Results\EktronQueryExecutorTests.cs" />
-    <Compile Include="Tools\Extensions\TestExpressionVisitor.cs" />
+    <Compile Include="Tools\Visitors\TestExpressionVisitor.cs" />
     <Compile Include="Tools\TestHelper.cs" />
     <Compile Include="TestImplementations\IdProvider.cs" />
     <Compile Include="Model\Widget.cs" />

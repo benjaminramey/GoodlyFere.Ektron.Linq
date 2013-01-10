@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using Ektron.Cms.Search.Expressions;
+using GoodlyFere.Ektron.Linq.Tests.Tools.Visitors;
 
 #endregion
 

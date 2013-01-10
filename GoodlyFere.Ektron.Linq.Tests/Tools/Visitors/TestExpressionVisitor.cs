@@ -8,7 +8,7 @@ using Ektron.Cms.Search.Expressions;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.Tools.Extensions
+namespace GoodlyFere.Ektron.Linq.Tests.Tools.Visitors
 {
     internal class TestExpressionVisitor : ExpressionVisitor
     {
