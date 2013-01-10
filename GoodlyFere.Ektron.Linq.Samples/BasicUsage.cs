@@ -37,10 +37,9 @@ namespace GoodlyFere.Ektron.Linq.Samples
         {
             #region Public Properties
 
-            [EktronProperty(EkConstants.SearchProperties.ContentId,
-                EktronExpressionType = typeof(IntegerPropertyExpression))]
+            [EktronIntegerProperty(EkConstants.SearchProperties.ContentId)]
             public long Id { get; set; }
-
+            
             public string Name { get; set; }
 
             #endregion

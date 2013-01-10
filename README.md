@@ -41,8 +41,7 @@ setting up properties to match smart form, metadata and custom properties in Ekt
 
     public class Widget
     {
-        [EktronProperty(EkConstants.SearchProperties.ContentId,
-            EktronExpressionType = typeof(IntegerPropertyExpression))]
+        [EktronIntegerProperty(EkConstants.SearchProperties.ContentId)]
         public long Id { get; set; }
 
         public string Name { get; set; }
@@ -108,7 +107,7 @@ expression tree.
     [SmartForm("Doctor")]
     internal class SmartFormWidget
     {
-        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression))]
+        [EktronIntegerProperty(EkConstants.SearchProperties.ContentId)]
         public long Id { get; set; }
     }
 
@@ -126,14 +125,14 @@ expression tree.
     [ContentType("ContentTypeName")]
     internal class ContentTypeWidget
     {
-        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression))]
+        [EktronIntegerProperty(EkConstants.SearchProperties.ContentId)]
         public long Id { get; set; }
     }
 
     [ContentType("ContentTypeName", ContentSubTypeName = "SubTypeName")]
     internal class SubContentTypeWidget
     {
-        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression))]
+        [EktronIntegerProperty(EkConstants.SearchProperties.ContentId)]
         public long Id { get; set; }
     }
 
@@ -150,17 +149,34 @@ expression tree.
     [FolderPath("Folders/Widgets")]
     internal class FolderPathWidget
     {
-        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression))]
+        [EktronIntegerProperty(EkConstants.SearchProperties.ContentId)]
         public long Id { get; set; }
     }
 
 ### Property Attributes (GoodlyFere.Ektron.Linq.Model.Attributes)
+
+Each of the attributes detailed below has the following convenience attributes which let you avoid specifying
+the EktronExpressionType property explicitly.
+- <type>BooleanPropertyAttribute
+- <type>DatePropertyAttribute
+- <type>DecimalPropertyAttribute
+- <type>IntegerPropertyAttribute
+- <type>StringPropertyAttribute
+
+For example, for smart form properties there are the following convenience attributes:
+- SmartFormBooleanPropertyAttribute
+- SmartFormDatePropertyAttribute
+- SmartFormDecimalPropertyAttribute
+- SmartFormIntegerPropertyAttribute
+- SmartFormStringPropertyAttribute
+
 #### EktronPropertyAttribute
 #### SmartFormPropertyAttribute
 #### CustomPropertyAttribute
 #### MetadataPropertyAttribute
 
 ## Version History
+- (1.0.8.0) Added convenience Ektron property attributes to avoid specifying the EktronExpressionType explicitly
 - (1.0.7.1) Fixed bugs in PropertyMapBase having to do with passing a null value to FirstOrDefault.
 - (1.0.7.0) Added support for unary type-casting.  For example, `(long)w.Id == 1L`.
 - (1.0.6.0) Added support for unary not expressions.  For example, `!(w.Id == 1)`.
