@@ -12,11 +12,11 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("GoodlyFere.Ektron.Linq")]
-[assembly: AssemblyDescription("Provides a simple Linq interface to Ektron's AdvancedSearchCriteria search model.")]
+[assembly: AssemblyDescription("Provides a simple LINQ interface to Ektron's AdvancedSearchCriteria search model.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("GoodlyFere.Ektron.Linq")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
