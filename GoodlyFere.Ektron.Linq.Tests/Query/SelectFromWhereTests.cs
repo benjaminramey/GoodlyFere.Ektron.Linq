@@ -33,6 +33,20 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
         #region Public Methods
 
         [Fact]
+        public void SelectFromWhere_NullComparisonConstantTurnsIntoEmptyString()
+        {
+            string expectedValue = null;
+
+            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider)
+                        where w.Name == expectedValue
+                        select w;
+
+            var actualTranslation = TestHelper.GetTranslation(query);
+            var expectedTranslation = new Ek.StringPropertyExpression("Name").EqualTo(expectedValue);
+            EkAssert.Equal(expectedTranslation, actualTranslation);
+        }
+
+        [Fact]
         public void SelectFromWhere_3Clauses()
         {
             string expectedName = "anything";

@@ -104,7 +104,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.ExpressionTreeVisitors
 
         protected override Expression VisitConstantExpression(ConstantExpression expression)
         {
-            object value = expression.Value;
+            object value = expression.Value ?? string.Empty;
             Ek.Expression valueExpression;
             if (ConstantExpressionMap.ContainsKey(value.GetType()))
             {

@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyFileVersion("1.0.0.1")]
 // matches GoodlyFere.Ektron.Linq information version
-[assembly: AssemblyInformationalVersion("1.0.8.0")]
+[assembly: AssemblyInformationalVersion("1.0.8.1")]
 [assembly: AssemblyVersion("1.0.0.0")]
