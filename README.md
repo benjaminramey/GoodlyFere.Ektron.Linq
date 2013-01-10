@@ -157,11 +157,11 @@ expression tree.
 
 Each of the attributes detailed below has the following convenience attributes which let you avoid specifying
 the EktronExpressionType property explicitly.
-- <type>BooleanPropertyAttribute
-- <type>DatePropertyAttribute
-- <type>DecimalPropertyAttribute
-- <type>IntegerPropertyAttribute
-- <type>StringPropertyAttribute
+- \*type\*BooleanPropertyAttribute
+- \*type\*DatePropertyAttribute
+- \*type\*DecimalPropertyAttribute
+- \*type\*IntegerPropertyAttribute
+- \*type\*StringPropertyAttribute
 
 For example, for smart form properties there are the following convenience attributes:
 - SmartFormBooleanPropertyAttribute
