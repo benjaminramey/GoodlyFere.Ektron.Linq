@@ -205,8 +205,6 @@
   <ItemGroup>
     <Compile Include="Tools\EkAssert.cs" />
     <Compile Include="Tools\Extensions\EktronExpressionExtensions.cs" />
-    <Compile Include="Integration\IntegrationTests.cs" />
-    <Compile Include="Integration\Practice.cs" />
     <Compile Include="Query\SelectFromOrderByTests.cs">
       <SubType>Code</SubType>
     </Compile>

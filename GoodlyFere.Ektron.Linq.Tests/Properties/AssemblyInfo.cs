@@ -30,7 +30,7 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("a3cc853f-b4ae-4418-a99a-e7ac939959ec")]
 
-[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyFileVersion("1.0.2.0")]
 // matches GoodlyFere.Ektron.Linq information version
 [assembly: AssemblyInformationalVersion("1.0.7.1")]
 [assembly: AssemblyVersion("1.0.0.0")]
