@@ -5,6 +5,7 @@ using System;
 using Ektron.Cms.Search;
 using GoodlyFere.Ektron.Linq.Tests.Model;
 using GoodlyFere.Ektron.Linq.Tests.TestImplementations;
+using GoodlyFere.Ektron.Linq.Tests.Tools;
 using Xunit;
 using Ek = Ektron.Cms.Search.Expressions;
 

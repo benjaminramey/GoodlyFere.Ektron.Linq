@@ -8,6 +8,7 @@ using Ektron.Cms.Search;
 using GoodlyFere.Ektron.Linq.Interfaces;
 using GoodlyFere.Ektron.Linq.Tests.Model;
 using GoodlyFere.Ektron.Linq.Tests.TestImplementations;
+using GoodlyFere.Ektron.Linq.Tests.Tools;
 using Xunit;
 
 #endregion

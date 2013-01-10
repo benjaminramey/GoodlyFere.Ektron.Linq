@@ -203,15 +203,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EkAssert.cs" />
-    <Compile Include="Ektron\ThesaurusStringValueExpression.cs" />
-    <Compile Include="Ektron\InflectionalStringValueExpression.cs" />
-    <Compile Include="Ektron\FromExpression.cs" />
-    <Compile Include="Ektron\OrderByExpression.cs" />
-    <Compile Include="Ektron\SelectExpression.cs" />
-    <Compile Include="Ektron\SS2010ExpressionVisitor.cs" />
-    <Compile Include="Ektron\SS2010TransformVisitor.cs" />
-    <Compile Include="Ektron\WhereExpression.cs" />
+    <Compile Include="Tools\EkAssert.cs" />
+    <Compile Include="Tools\Extensions\EktronExpressionExtensions.cs" />
     <Compile Include="Integration\IntegrationTests.cs" />
     <Compile Include="Integration\Practice.cs" />
     <Compile Include="Query\SelectFromOrderByTests.cs">
@@ -228,7 +221,8 @@
     </Compile>
     <Compile Include="Query\UnaryTests.cs" />
     <Compile Include="Results\EktronQueryExecutorTests.cs" />
-    <Compile Include="TestHelper.cs" />
+    <Compile Include="Tools\Extensions\TestExpressionVisitor.cs" />
+    <Compile Include="Tools\TestHelper.cs" />
     <Compile Include="TestImplementations\IdProvider.cs" />
     <Compile Include="Model\Widget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

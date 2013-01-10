@@ -11,11 +11,10 @@ using GoodlyFere.Ektron.Linq.Model.Attributes;
 using GoodlyFere.Ektron.Linq.Tests.TestImplementations;
 using Remotion.Linq;
 using Remotion.Linq.Parsing.Structure;
-using Ek = Ektron.Cms.Search.Expressions;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests
+namespace GoodlyFere.Ektron.Linq.Tests.Tools
 {
     internal class TestHelper
     {
@@ -101,7 +100,7 @@ namespace GoodlyFere.Ektron.Linq.Tests
             return new SearchResponseData { Results = results };
         }
 
-        internal static Ek.Expression GetTranslation<T>(IQueryable<T> query)
+        internal static global::Ektron.Cms.Search.Expressions.Expression GetTranslation<T>(IQueryable<T> query)
         {
             var queryModel = GetQueryModel(query);
             return SearchQueryModelVisitor.Translate(queryModel, new IdProvider()).ExpressionTree;
