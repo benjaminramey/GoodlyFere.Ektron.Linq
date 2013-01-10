@@ -30,16 +30,7 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("8430740e-a66f-4982-a3d0-d97f7b8904f4")]
 
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-
-[assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+// matches GoodlyFere.Ektron.Linq information version
+[assembly: AssemblyInformationalVersion("1.0.7.1")]
+[assembly: AssemblyVersion("1.0.0.0")]
