@@ -18,3 +18,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 http://www.gnu.org/licenses/lgpl-2.1-standalone.html
 
 You can contact me at ben.ramey@gmail.com.
+
+Remotion.Linq (re-linq)
+This library makes use of the Remotion.Linq (re-linq) library which is licensed
+under the LGPL license.
+http://relinq.codeplex.com/license
+
+Common.Logging
+This library makes use of the Common.Logging library which is licensed
+under the Apache 2.0 Licence.
+http://netcommon.sourceforge.net/license.html
+http://www.apache.org/licenses/LICENSE-2.0
