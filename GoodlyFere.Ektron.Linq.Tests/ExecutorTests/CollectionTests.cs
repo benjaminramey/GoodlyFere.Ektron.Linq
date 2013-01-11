@@ -1,7 +1,7 @@
 ﻿#region License
 
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EktronQueryExecutorTests.cs">
+// <copyright file="CollectionTests.cs">
 // LINQ to Ektron Search, a LINQ interface to the Ektron AdvancedSearchCriteria search engine
 // 
 // Copyright (C) 2013 Benjamin Ramey
@@ -41,9 +41,9 @@ using Xunit;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.Results
+namespace GoodlyFere.Ektron.Linq.Tests.ExecutorTests
 {
-    public class EktronQueryExecutorTests
+    public class CollectionTests
     {
         #region Constants and Fields
 
@@ -55,7 +55,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Results
 
         #region Constructors and Destructors
 
-        public EktronQueryExecutorTests()
+        public CollectionTests()
         {
             _idProvider = new IdProvider();
             _searchManager = Substitute.For<ISearchManager>();
@@ -96,64 +96,6 @@ namespace GoodlyFere.Ektron.Linq.Tests.Results
 
             Assert.NotNull(result);
             Assert.Equal(0, result.Count());
-        }
-
-        [Fact]
-        public void ExecuteSingleOrDefault_NoResults_ReturnsNull()
-        {
-            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider) select w;
-            var model = TestHelper.GetQueryModel(query);
-
-            _searchManager.Search(Arg.Any<AdvancedSearchCriteria>()).ReturnsForAnyArgs(
-                TestHelper.GetResponseData<Widget>(0)
-                );
-
-            Widget result = _executor.ExecuteSingle<Widget>(model, true);
-
-            Assert.Null(result);
-        }
-
-        [Fact]
-        public void ExecuteSingleOrDefault_OneResult_ReturnsOne()
-        {
-            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider) select w;
-            var model = TestHelper.GetQueryModel(query);
-
-            _searchManager.Search(Arg.Any<AdvancedSearchCriteria>()).ReturnsForAnyArgs(
-                TestHelper.GetResponseData<Widget>(1)
-                );
-
-            Widget result = _executor.ExecuteSingle<Widget>(model, true);
-
-            Assert.NotNull(result);
-        }
-
-        [Fact]
-        public void ExecuteSingle_NoResults_ThrowsException()
-        {
-            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider) select w;
-            var model = TestHelper.GetQueryModel(query);
-
-            _searchManager.Search(Arg.Any<AdvancedSearchCriteria>()).ReturnsForAnyArgs(
-                TestHelper.GetResponseData<Widget>(0)
-                );
-
-            Assert.Throws<InvalidOperationException>(() => _executor.ExecuteSingle<Widget>(model, false));
-        }
-
-        [Fact]
-        public void ExecuteSingle_OneResult_ReturnsOne()
-        {
-            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider) select w;
-            var model = TestHelper.GetQueryModel(query);
-
-            _searchManager.Search(Arg.Any<AdvancedSearchCriteria>()).ReturnsForAnyArgs(
-                TestHelper.GetResponseData<Widget>(1)
-                );
-
-            Widget result = _executor.ExecuteSingle<Widget>(model, false);
-
-            Assert.NotNull(result);
         }
 
         #endregion

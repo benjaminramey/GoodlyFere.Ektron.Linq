@@ -32,15 +32,15 @@
 using System.Linq;
 using System;
 using Ektron.Cms.Search;
+using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Tests.Model;
 using GoodlyFere.Ektron.Linq.Tests.TestImplementations;
 using GoodlyFere.Ektron.Linq.Tests.Tools;
 using Xunit;
-using Ek = Ektron.Cms.Search.Expressions;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.Query
+namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
 {
     public class SelectFromWhereTests
     {
@@ -72,7 +72,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = (new Ek.StringPropertyExpression("Name")
+            var expectedTranslation = (new StringPropertyExpression("Name")
                                        == expectedName
                                        & SearchContentProperty.Id < expectedIdHigh)
                                       & SearchContentProperty.Id > expectedIdLow;
@@ -94,11 +94,11 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = new Ek.StringPropertyExpression("Name")
+            var expectedTranslation = new StringPropertyExpression("Name")
                                       == expectedName
                                       & SearchContentProperty.Id < expectedIdHigh
                                       & SearchContentProperty.Id > expectedIdLow
-                                      & new Ek.StringPropertyExpression("Name")
+                                      & new StringPropertyExpression("Name")
                                       == expectedName2;
             EkAssert.Equal(expectedTranslation, actualTranslation);
         }
@@ -118,11 +118,11 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = (new Ek.StringPropertyExpression("Name")
+            var expectedTranslation = (new StringPropertyExpression("Name")
                                        == expectedName
                                        & SearchContentProperty.Id < expectedIdHigh)
                                       & (SearchContentProperty.Id > expectedIdLow
-                                         & new Ek.StringPropertyExpression("Name")
+                                         & new StringPropertyExpression("Name")
                                          == expectedName2);
             EkAssert.Equal(expectedTranslation, actualTranslation);
         }
@@ -280,7 +280,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = new Ek.StringPropertyExpression("Name")
+            var expectedTranslation = new StringPropertyExpression("Name")
                                       == expectedName
                                       & SearchContentProperty.Id == expectedId;
             EkAssert.Equal(expectedTranslation, actualTranslation);
@@ -297,9 +297,9 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = new Ek.StringPropertyExpression("Name")
+            var expectedTranslation = new StringPropertyExpression("Name")
                                       != expectedName2
-                                      & new Ek.StringPropertyExpression("Name")
+                                      & new StringPropertyExpression("Name")
                                         == expectedName
                                       | SearchContentProperty.Id == expectedId;
             EkAssert.Equal(expectedTranslation, actualTranslation);
@@ -316,9 +316,9 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = new Ek.StringPropertyExpression("Name")
+            var expectedTranslation = new StringPropertyExpression("Name")
                                       != expectedName2
-                                      & new Ek.StringPropertyExpression("Name")
+                                      & new StringPropertyExpression("Name")
                                         == expectedName
                                       | SearchContentProperty.Id == expectedId;
             EkAssert.Equal(expectedTranslation, actualTranslation);
@@ -335,9 +335,9 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = new Ek.StringPropertyExpression("Name")
+            var expectedTranslation = new StringPropertyExpression("Name")
                                       != expectedName2
-                                      & (new Ek.StringPropertyExpression("Name")
+                                      & (new StringPropertyExpression("Name")
                                          == expectedName
                                          | SearchContentProperty.Id == expectedId);
             EkAssert.Equal(expectedTranslation, actualTranslation);
@@ -353,7 +353,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = new Ek.StringPropertyExpression("Name")
+            var expectedTranslation = new StringPropertyExpression("Name")
                                       == expectedName
                                       | SearchContentProperty.Id == expectedId;
             EkAssert.Equal(expectedTranslation, actualTranslation);
@@ -395,7 +395,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = new Ek.StringPropertyExpression("Name").EqualTo(expectedValue);
+            var expectedTranslation = new StringPropertyExpression("Name").EqualTo(expectedValue);
             EkAssert.Equal(expectedTranslation, actualTranslation);
         }
 
@@ -408,9 +408,9 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = new Ek.StringPropertyExpression("Name")
+            var expectedTranslation = new StringPropertyExpression("Name")
                 .Contains(
-                    expectedValue, Ek.WordForms.Inflections);
+                    expectedValue, WordForms.Inflections);
             EkAssert.Equal(expectedTranslation, actualTranslation);
         }
 
@@ -423,7 +423,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = new Ek.StringPropertyExpression("Name")
+            var expectedTranslation = new StringPropertyExpression("Name")
                                       == expectedValue;
             EkAssert.Equal(expectedTranslation, actualTranslation);
         }

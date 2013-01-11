@@ -32,16 +32,16 @@
 using System;
 using System.Linq;
 using Ektron.Cms.Search;
+using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Exceptions;
 using GoodlyFere.Ektron.Linq.Tests.Model;
 using GoodlyFere.Ektron.Linq.Tests.TestImplementations;
 using GoodlyFere.Ektron.Linq.Tests.Tools;
 using Xunit;
-using Ek = Ektron.Cms.Search.Expressions;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.Query
+namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
 {
     public class UnaryTests
     {
@@ -86,9 +86,9 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
             var actualTranslation = TestHelper.GetTranslation(query);
             var expectedTranslation = SearchContentProperty.Id == (long)expectedValue;
 
-            Assert.True(actualTranslation is Ek.BinaryExpression);
+            Assert.True(actualTranslation is BinaryExpression);
             Assert.True(
-                (actualTranslation as Ek.BinaryExpression).Left is Ek.IntegerPropertyExpression,
+                (actualTranslation as BinaryExpression).Left is IntegerPropertyExpression,
                 "Left is not a IntegerPropertyExpression");
             EkAssert.Equal(expectedTranslation, actualTranslation);
         }
@@ -101,14 +101,14 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         where (long)w.NoTypeObjectId == expectedValue
                         select w;
 
-            var propExpr = new Ek.IntegerPropertyExpression("NoTypeObjectId");
+            var propExpr = new IntegerPropertyExpression("NoTypeObjectId");
 
             var actualTranslation = TestHelper.GetTranslation(query);
             var expectedTranslation = propExpr == expectedValue;
 
-            Assert.True(actualTranslation is Ek.BinaryExpression);
+            Assert.True(actualTranslation is BinaryExpression);
             Assert.True(
-                (actualTranslation as Ek.BinaryExpression).Left is Ek.IntegerPropertyExpression,
+                (actualTranslation as BinaryExpression).Left is IntegerPropertyExpression,
                 "Left is not an IntegerPropertyExpression");
             EkAssert.Equal(expectedTranslation, actualTranslation);
         }
@@ -132,14 +132,14 @@ namespace GoodlyFere.Ektron.Linq.Tests.Query
                         where (string)w.StringTypeObjectId == expectedValue
                         select w;
 
-            var propExpr = new Ek.StringPropertyExpression("StringTypeObjectId");
+            var propExpr = new StringPropertyExpression("StringTypeObjectId");
 
             var actualTranslation = TestHelper.GetTranslation(query);
             var expectedTranslation = propExpr == expectedValue;
 
-            Assert.True(actualTranslation is Ek.BinaryExpression);
+            Assert.True(actualTranslation is BinaryExpression);
             Assert.True(
-                (actualTranslation as Ek.BinaryExpression).Left is Ek.StringPropertyExpression,
+                (actualTranslation as BinaryExpression).Left is StringPropertyExpression,
                 "Left is not a StringPropertyExpression");
             EkAssert.Equal(expectedTranslation, actualTranslation);
         }

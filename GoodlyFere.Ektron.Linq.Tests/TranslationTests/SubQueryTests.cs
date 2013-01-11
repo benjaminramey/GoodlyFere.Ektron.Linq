@@ -43,7 +43,7 @@ using Xunit;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.Query
+namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
 {
     public class SubQueryTests
     {
