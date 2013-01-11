@@ -1,7 +1,7 @@
-﻿#region License
+#region License
 
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ScalarTests.cs">
+// <copyright file="AppSettingsIdProvider.cs">
 // LINQ to Ektron Search, a LINQ interface to the Ektron AdvancedSearchCriteria search engine
 // 
 // Copyright (C) 2013 Benjamin Ramey
@@ -29,46 +29,56 @@
 
 #region Usings
 
-using System;
+using System.Configuration;
 using System.Linq;
-using Ektron.Cms.Search;
-using GoodlyFere.Ektron.Linq.Tests.Model;
-using GoodlyFere.Ektron.Linq.Tests.TestImplementations;
-using NSubstitute;
-using Xunit;
+using System;
+using GoodlyFere.Ektron.Linq.Interfaces;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.ExecutorTests
+namespace GoodlyFere.Ektron.Linq.IdProviders
 {
-    public class ScalarTests
+    public class AppSettingsIdProvider : IEktronIdProvider
     {
-        #region Constants and Fields
+        #region Public Methods
 
-        private readonly EktronQueryExecutor _executor;
-        private readonly IdProvider _idProvider;
-        private readonly ISearchManager _searchManager;
+        public long GetContentTypeId(string name)
+        {
+            EnsureValidName(name);
+            string key = String.Concat(name, "ContentType");
+            return GetId(key);
+        }
+
+        public long GetSmartFormId(string name)
+        {
+            EnsureValidName(name);
+            string key = String.Concat(name, "SmartForm");
+            return GetId(key);
+        }
 
         #endregion
 
-        #region Constructors and Destructors
+        #region Methods
 
-        public ScalarTests()
+        private static long GetId(string key)
         {
-            _idProvider = new IdProvider();
-            _searchManager = Substitute.For<ISearchManager>();
-            _executor = new EktronQueryExecutor(_idProvider, _searchManager);
+            string value = ConfigurationManager.AppSettings[key];
+
+            if (String.IsNullOrEmpty(value))
+            {
+                throw new ArgumentOutOfRangeException(
+                    "key", String.Format("Could not find {0} in application settings.", key));
+            }
+
+            return Int64.Parse(value);
         }
 
-        // count returns integer of number of results found
-
-        [Fact]
-        public void Count()
+        private void EnsureValidName(string name)
         {
-            string expectedName = "bob";
-            var query = EktronQueryFactory.Queryable<Widget>(_idProvider).Count(w => w.Name == expectedName);
-
-
+            if (String.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException("name");
+            }
         }
 
         #endregion

@@ -50,6 +50,7 @@
       <HintPath>..\packages\Remotion.Linq.1.13.181.0\lib\net35\Remotion.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -83,6 +84,7 @@
     <Compile Include="Generation\ExpressionTreeVisitors\QueryBuildingVisitor.cs" />
     <Compile Include="Generation\SubQueryModelVisitor.cs" />
     <Compile Include="Helpers\PropertyExpressionHelper.cs" />
+    <Compile Include="IdProviders\AppSettingsIdProvider.cs" />
     <Compile Include="Model\Attributes\ContentTypeAttribute.cs" />
     <Compile Include="Model\Attributes\CustomBooleanPropertyAttribute.cs" />
     <Compile Include="Model\Attributes\CustomDatePropertyAttribute.cs" />

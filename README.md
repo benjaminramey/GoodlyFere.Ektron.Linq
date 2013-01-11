@@ -178,6 +178,7 @@ For example, for smart form properties there are the following convenience attri
 #### MetadataPropertyAttribute
 
 ## Version History
+- (1.0.8.2) Added an overload method for EktronQueryFactory.Queryable<T> to use a default IdProvider (AppSettingsIdProvider).
 - (1.0.8.1) Fixed bug when a constant in a comparison was null.
 - (1.0.8.0) Added convenience Ektron property attributes to avoid specifying the EktronExpressionType explicitly
 - (1.0.7.1) Fixed bugs in PropertyMapBase having to do with passing a null value to FirstOrDefault.

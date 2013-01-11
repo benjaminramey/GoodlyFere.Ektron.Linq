@@ -32,6 +32,7 @@
 using System;
 using System.Linq;
 using Ektron.Cms;
+using GoodlyFere.Ektron.Linq.IdProviders;
 using GoodlyFere.Ektron.Linq.Interfaces;
 using Remotion.Linq;
 using Remotion.Linq.Parsing.Structure;
@@ -44,6 +45,27 @@ namespace GoodlyFere.Ektron.Linq
     {
         #region Public Methods
 
+        /// <summary>
+        ///     Creates an <see cref="EktronQueryable" /> for a domain object
+        ///     using the default <see cref="AppSettingsIdProvider" /> id provider.
+        /// </summary>
+        /// <typeparam name="T">Domain object to wrap in an IQueryable.</typeparam>
+        /// <returns>
+        ///     <see cref="EktronQueryable<T>"/>
+        /// </returns>
+        public static EktronQueryable<T> Queryable<T>()
+        {
+            return Queryable<T>(new AppSettingsIdProvider());
+        }
+
+        /// <summary>
+        ///     Creates an <see cref="EktronQueryable" /> for a domain object
+        ///     using the provided <see cref="IEktronIdProvider"/>.
+        /// </summary>
+        /// <typeparam name="T">Domain object to wrap in an IQueryable.</typeparam>
+        /// <returns>
+        ///     <see cref="EktronQueryable<T>"/>
+        /// </returns>
         public static EktronQueryable<T> Queryable<T>(IEktronIdProvider idProvider)
         {
             return new EktronQueryable<T>(CreateQueryParser(), CreateExecutor(idProvider));
