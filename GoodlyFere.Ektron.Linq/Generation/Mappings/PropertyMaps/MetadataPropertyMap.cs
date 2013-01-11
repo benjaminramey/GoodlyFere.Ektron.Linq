@@ -20,6 +20,8 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 // http://www.gnu.org/licenses/lgpl-2.1-standalone.html
+// 
+// You can contact me at ben.ramey@gmail.com.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
