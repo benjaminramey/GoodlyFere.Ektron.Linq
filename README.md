@@ -9,7 +9,9 @@ into valid `Ektron.Cms.Search.Expressions.Expression`s that then are submitted t
 ## Installation
 
 I recommend installing via the NuGet package through Visual Studio.  See generic instructions here:
-[NuGet package installation instructions](http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog).
+[NuGet package installation instructions](http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog). The
+best way to find the package through the NuGet interface is to search for "ektron" or "goodlyfere".  If you search for anything
+with "linq" a bunch of other stuff will come up.
 
 You can also download the source code and build your DLLs from that.  However, to do so, you will need to reference several
 Ektron DLLs not included in this repository.  You can see which ones you'll need by looking at the broken references
