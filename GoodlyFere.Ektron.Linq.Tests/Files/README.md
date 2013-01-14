@@ -1,0 +1,4 @@
+﻿# LINQ to Ektron Search Tests
+
+## Version History
+- (1.0.2.3) Use CriteriaGenerator in tests instead of EktronQueryExecutor to follow refactoring in GoodlyFere.Ektron.Linq
