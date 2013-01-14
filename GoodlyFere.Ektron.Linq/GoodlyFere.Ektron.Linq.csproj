@@ -62,7 +62,7 @@
     <Compile Include="Exceptions\InvalidQueryException.cs" />
     <Compile Include="Generation\Translation\Aggregators\CriteriaExpressionTreeAggregator.cs" />
     <Compile Include="Generation\Translation\Aggregators\OrderByAggregator.cs" />
-    <Compile Include="Generation\Translation\Aggregators\SubQueryExpressionAggegrator.cs" />
+    <Compile Include="Generation\Transformation\Aggregators\SubQueryExpressionAggegrator.cs" />
     <Compile Include="Generation\Translation\Handlers\Expressions\UnaryExpressionHandlers.cs" />
     <Compile Include="Generation\Transformation\ExpressionVisitors\SubQueryExpressionVisitor.cs" />
     <Compile Include="Generation\Translation\Maps\IDefaultingMap.cs" />
@@ -128,9 +128,7 @@
     <None Include="GoodlyFere.Ektron.Linq.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Generation\MethodCallHandlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -36,7 +36,7 @@ using System.Linq.Expressions;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Generation.Translation.Aggregators
+namespace GoodlyFere.Ektron.Linq.Generation.Transformation.Aggregators
 {
     internal class SubQueryExpressionAggegrator
     {
