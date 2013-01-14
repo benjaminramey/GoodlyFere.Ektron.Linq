@@ -60,29 +60,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\InvalidQueryException.cs" />
-    <Compile Include="Generation\Aggregators\CriteriaExpressionTreeAggregator.cs" />
-    <Compile Include="Generation\Aggregators\OrderByAggregator.cs" />
-    <Compile Include="Generation\Aggregators\SubQueryExpressionAggegrator.cs" />
-    <Compile Include="Generation\ExpressionHandlers\UnaryExpressionHandlers.cs" />
-    <Compile Include="Generation\ExpressionTreeVisitors\SubQueryExpressionVisitor.cs" />
-    <Compile Include="Generation\Mappings\IDefaultingMap.cs" />
-    <Compile Include="Generation\Mappings\PropertyMaps\PropertyMapBase.cs" />
-    <Compile Include="Generation\Mappings\PropertyMaps\SmartFormPropertyMap.cs" />
-    <Compile Include="Generation\Mappings\PropertyMaps\MetadataPropertyMap.cs" />
-    <Compile Include="Generation\Mappings\PropertyMaps\CustomPropertyMap.cs" />
-    <Compile Include="Generation\Mappings\PropertyMaps\RegularPropertyMap.cs" />
-    <Compile Include="Generation\Mappings\PropertyMaps\TypeToPropertyMap.cs" />
-    <Compile Include="Generation\Mappings\UnaryExpressionMap.cs" />
-    <Compile Include="Generation\MethodCallHandlers\SubQueryHandlers\IEnumerableMethodHandlers.cs" />
-    <Compile Include="Generation\MethodCallHandlers\SubQueryHandlers\ResultOperatorHandlersMap.cs" />
-    <Compile Include="Generation\SearchQueryModelVisitor.cs" />
-    <Compile Include="Generation\Mappings\BinaryExpressionMap.cs" />
-    <Compile Include="Generation\Mappings\ConstantExpressionMap.cs" />
-    <Compile Include="Generation\Mappings\ReverseOperatorMap.cs" />
-    <Compile Include="Generation\MethodCallHandlers\HandledMethodsMap.cs" />
-    <Compile Include="Generation\MethodCallHandlers\StringMethodHandlers.cs" />
-    <Compile Include="Generation\ExpressionTreeVisitors\QueryBuildingVisitor.cs" />
-    <Compile Include="Generation\SubQueryModelVisitor.cs" />
+    <Compile Include="Generation\Translation\Aggregators\CriteriaExpressionTreeAggregator.cs" />
+    <Compile Include="Generation\Translation\Aggregators\OrderByAggregator.cs" />
+    <Compile Include="Generation\Translation\Aggregators\SubQueryExpressionAggegrator.cs" />
+    <Compile Include="Generation\Translation\Handlers\Expressions\UnaryExpressionHandlers.cs" />
+    <Compile Include="Generation\Transformation\ExpressionVisitors\SubQueryExpressionVisitor.cs" />
+    <Compile Include="Generation\Translation\Maps\IDefaultingMap.cs" />
+    <Compile Include="Generation\Translation\Maps\PropertyMaps\PropertyMapBase.cs" />
+    <Compile Include="Generation\Translation\Maps\PropertyMaps\SmartFormPropertyMap.cs" />
+    <Compile Include="Generation\Translation\Maps\PropertyMaps\MetadataPropertyMap.cs" />
+    <Compile Include="Generation\Translation\Maps\PropertyMaps\CustomPropertyMap.cs" />
+    <Compile Include="Generation\Translation\Maps\PropertyMaps\RegularPropertyMap.cs" />
+    <Compile Include="Generation\Translation\Maps\PropertyMaps\TypeToPropertyMap.cs" />
+    <Compile Include="Generation\Translation\Maps\UnaryExpressionMap.cs" />
+    <Compile Include="Generation\Transformation\Handlers\IEnumerableMethodHandlers.cs" />
+    <Compile Include="Generation\Transformation\Maps\ResultOperatorHandlersMap.cs" />
+    <Compile Include="Execution\Handlers\BoolResultHandlers.cs" />
+    <Compile Include="Execution\Maps\BoolResultHandlersMap.cs" />
+    <Compile Include="Generation\Translation\ModelVisitors\SearchQueryModelVisitor.cs" />
+    <Compile Include="Generation\Translation\Maps\BinaryExpressionMap.cs" />
+    <Compile Include="Generation\Translation\Maps\ConstantExpressionMap.cs" />
+    <Compile Include="Generation\Translation\Maps\ReverseOperatorMap.cs" />
+    <Compile Include="Generation\Translation\Maps\ObjectMethodsMap.cs" />
+    <Compile Include="Generation\Translation\Handlers\Objects\StringMethodHandlers.cs" />
+    <Compile Include="Generation\Translation\ExpressionVisitors\QueryBuildingVisitor.cs" />
+    <Compile Include="Generation\Transformation\ModelVisitors\SubQueryModelVisitor.cs" />
     <Compile Include="Helpers\PropertyExpressionHelper.cs" />
     <Compile Include="IdProviders\AppSettingsIdProvider.cs" />
     <Compile Include="Model\Attributes\ContentTypeAttribute.cs" />
@@ -119,12 +121,15 @@
     <Compile Include="Interfaces\IEktronIdProvider.cs" />
     <Compile Include="Model\EkConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Search\EktronSearcher.cs" />
-    <Compile Include="Search\ResultsConverter.cs" />
+    <Compile Include="Execution\Search\EktronSearcher.cs" />
+    <Compile Include="Execution\Search\ResultsConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GoodlyFere.Ektron.Linq.nuspec" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Generation\MethodCallHandlers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

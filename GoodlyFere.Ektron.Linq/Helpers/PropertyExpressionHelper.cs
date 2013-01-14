@@ -34,7 +34,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Extensions;
-using GoodlyFere.Ektron.Linq.Generation.Mappings.PropertyMaps;
+using GoodlyFere.Ektron.Linq.Generation.Translation.Maps.PropertyMaps;
 using GoodlyFere.Ektron.Linq.Model.Attributes;
 
 #endregion

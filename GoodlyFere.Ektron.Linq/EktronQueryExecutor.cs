@@ -34,10 +34,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Common.Logging;
 using Ektron.Cms.Search;
-using GoodlyFere.Ektron.Linq.Generation;
+using GoodlyFere.Ektron.Linq.Execution.Search;
+using GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors;
 using GoodlyFere.Ektron.Linq.Helpers;
 using GoodlyFere.Ektron.Linq.Interfaces;
-using GoodlyFere.Ektron.Linq.Search;
 using Remotion.Linq;
 using Ek = Ektron.Cms.Search.Expressions;
 
@@ -84,10 +84,7 @@ namespace GoodlyFere.Ektron.Linq
 
         public T ExecuteScalar<T>(QueryModel queryModel)
         {
-            var criteria = CreateCriteria<T>(queryModel, 10000);
-
-            List<SearchResultData> results = _searcher.DoSearch(criteria);
-
+            throw new NotImplementedException();
         }
 
         public T ExecuteSingle<T>(QueryModel queryModel, bool returnDefaultWhenEmpty)

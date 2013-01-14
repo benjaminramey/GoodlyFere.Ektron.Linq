@@ -35,7 +35,7 @@ using System.Data;
 using System.Linq;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
-using GoodlyFere.Ektron.Linq.Generation;
+using GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors;
 using GoodlyFere.Ektron.Linq.Helpers;
 using GoodlyFere.Ektron.Linq.Model.Attributes;
 using GoodlyFere.Ektron.Linq.Tests.TestImplementations;
