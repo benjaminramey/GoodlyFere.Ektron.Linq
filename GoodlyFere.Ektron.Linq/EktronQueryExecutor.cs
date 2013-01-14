@@ -30,10 +30,13 @@
 #region Usings
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Common.Logging;
 using Ektron.Cms.Search;
+using GoodlyFere.Ektron.Linq.Exceptions;
+using GoodlyFere.Ektron.Linq.Execution.Maps;
 using GoodlyFere.Ektron.Linq.Execution.Search;
 using GoodlyFere.Ektron.Linq.Generation;
 using GoodlyFere.Ektron.Linq.Helpers;
@@ -52,6 +55,7 @@ namespace GoodlyFere.Ektron.Linq
         private static readonly ILog Log = LogManager.GetLogger<EktronQueryExecutor>();
 
         private readonly IEktronIdProvider _idProvider;
+        private readonly ScalarResultMaps _scalarResultMappings;
         private readonly EktronSearcher _searcher;
 
         #endregion
@@ -62,6 +66,7 @@ namespace GoodlyFere.Ektron.Linq
         {
             _idProvider = idProvider;
             _searcher = new EktronSearcher(searchManager);
+            _scalarResultMappings = new ScalarResultMaps();
         }
 
         #endregion
@@ -79,7 +84,29 @@ namespace GoodlyFere.Ektron.Linq
 
         public T ExecuteScalar<T>(QueryModel queryModel)
         {
-            throw new NotImplementedException();
+            if (!_scalarResultMappings.ContainsKey(typeof(T)))
+            {
+                throw new InvalidQueryException(
+                    string.Format("'{0}' result operators are not supported.", typeof(T).Name));
+            }
+
+            AdvancedSearchCriteria criteria = CreateScalarCriteria<T>(queryModel);
+            IDictionary handlerMap = _scalarResultMappings[typeof(T)];
+            T returnValue = default(T);
+
+            foreach (var resultOperator in queryModel.ResultOperators)
+            {
+                if (!handlerMap.Contains(resultOperator.GetType()))
+                {
+                    throw new InvalidQueryException(
+                        string.Format("'{0}' result operator is not supported.", resultOperator.GetType().Name));
+                }
+
+                var handler = (ScalarResultHandlerMethod<T>)handlerMap[resultOperator.GetType()];
+                returnValue = handler.Invoke(criteria, _searcher);
+            }
+
+            return returnValue;
         }
 
         public T ExecuteSingle<T>(QueryModel queryModel, bool returnDefaultWhenEmpty)
@@ -108,6 +135,15 @@ namespace GoodlyFere.Ektron.Linq
             criteria.PagingInfo.RecordsPerPage = recordsPerPage;
             criteria.Permission = Permission.CreateAdministratorPermission();
             criteria.ReturnProperties = PropertyExpressionHelper.GetPropertyExpressionsForType(typeof(T));
+            return criteria;
+        }
+
+        private AdvancedSearchCriteria CreateScalarCriteria<T>(QueryModel queryModel)
+        {
+            AdvancedSearchCriteria criteria = CriteriaGenerator.Generate(queryModel, _idProvider);
+            criteria.Permission = Permission.CreateAdministratorPermission();
+            criteria.ReturnProperties = new HashSet<Ek.PropertyExpression> { SearchContentProperty.Id };
+
             return criteria;
         }
 

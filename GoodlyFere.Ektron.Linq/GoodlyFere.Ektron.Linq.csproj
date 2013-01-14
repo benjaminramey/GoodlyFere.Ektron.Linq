@@ -60,6 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\InvalidQueryException.cs" />
+    <Compile Include="Execution\Handlers\Int64ResultHandlers.cs" />
+    <Compile Include="Execution\Handlers\Int32ResultHandlers.cs" />
+    <Compile Include="Execution\Maps\Int64ResultMap.cs" />
+    <Compile Include="Execution\Maps\Int32ResultMap.cs" />
+    <Compile Include="Execution\Maps\ScalarResultMaps.cs" />
     <Compile Include="Generation\CriteriaGenerator.cs" />
     <Compile Include="Generation\Transformation\ModelVisitors\TransformationVisitor.cs" />
     <Compile Include="Generation\Translation\Aggregators\CriteriaExpressionTreeAggregator.cs" />
@@ -78,7 +83,7 @@
     <Compile Include="Generation\Transformation\Handlers\IEnumerableMethodHandlers.cs" />
     <Compile Include="Generation\Transformation\Maps\ResultOperatorHandlersMap.cs" />
     <Compile Include="Execution\Handlers\BoolResultHandlers.cs" />
-    <Compile Include="Execution\Maps\BoolResultHandlersMap.cs" />
+    <Compile Include="Execution\Maps\BoolResultMap.cs" />
     <Compile Include="Generation\Translation\ModelVisitors\TranslationVisitor.cs" />
     <Compile Include="Generation\Translation\Maps\BinaryExpressionMap.cs" />
     <Compile Include="Generation\Translation\Maps\ConstantExpressionMap.cs" />
