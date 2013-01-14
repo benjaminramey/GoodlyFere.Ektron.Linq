@@ -1,7 +1,7 @@
 ﻿#region License
 
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SearchQueryModelVisitor.cs">
+// <copyright file="TranslationVisitor.cs">
 // LINQ to Ektron Search, a LINQ interface to the Ektron AdvancedSearchCriteria search engine
 // 
 // Copyright (C) 2013 Benjamin Ramey
@@ -35,7 +35,6 @@ using System.Linq;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Extensions;
-using GoodlyFere.Ektron.Linq.Generation.Transformation.ExpressionVisitors;
 using GoodlyFere.Ektron.Linq.Generation.Translation.Aggregators;
 using GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors;
 using GoodlyFere.Ektron.Linq.Interfaces;
@@ -48,7 +47,7 @@ using EktronExpression = Ektron.Cms.Search.Expressions.Expression;
 
 namespace GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors
 {
-    public class SearchQueryModelVisitor : QueryModelVisitorBase
+    public class TranslationVisitor : QueryModelVisitorBase
     {
         #region Constants and Fields
 
@@ -60,7 +59,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors
 
         #region Constructors and Destructors
 
-        public SearchQueryModelVisitor(IEktronIdProvider idProvider)
+        public TranslationVisitor(IEktronIdProvider idProvider)
         {
             _exprTreeAggregator = new CriteriaExpressionTreeAggregator();
             _orderByAggregator = new OrderByAggregator();
@@ -93,7 +92,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors
 
         public static AdvancedSearchCriteria Translate(QueryModel queryModel, IEktronIdProvider idProvider)
         {
-            var visitor = new SearchQueryModelVisitor(idProvider);
+            var visitor = new TranslationVisitor(idProvider);
             visitor.VisitQueryModel(queryModel);
 
             AdvancedSearchCriteria criteria = new AdvancedSearchCriteria
@@ -153,9 +152,6 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors
 
         public override void VisitWhereClause(WhereClause whereClause, QueryModel queryModel, int index)
         {
-            var subQueryVisitor = new SubQueryExpressionVisitor();
-            whereClause.TransformExpressions(subQueryVisitor.VisitExpression);
-
             _exprTreeAggregator.Add(QueryBuildingVisitor.Build(whereClause.Predicate));
 
             base.VisitWhereClause(whereClause, queryModel, index);

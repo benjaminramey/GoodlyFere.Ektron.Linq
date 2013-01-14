@@ -46,7 +46,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Transformation.ExpressionVisitors
 
         protected override Expression VisitSubQueryExpression(SubQueryExpression expression)
         {
-            return SubQueryModelVisitor.Expand(expression.QueryModel);
+            return SubQueryTransformationVisitor.Expand(expression.QueryModel);
         }
 
         #endregion

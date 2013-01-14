@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\InvalidQueryException.cs" />
     <Compile Include="Generation\CriteriaGenerator.cs" />
+    <Compile Include="Generation\Transformation\ModelVisitors\TransformationVisitor.cs" />
     <Compile Include="Generation\Translation\Aggregators\CriteriaExpressionTreeAggregator.cs" />
     <Compile Include="Generation\Translation\Aggregators\OrderByAggregator.cs" />
     <Compile Include="Generation\Transformation\Aggregators\SubQueryExpressionAggegrator.cs" />
@@ -78,14 +79,14 @@
     <Compile Include="Generation\Transformation\Maps\ResultOperatorHandlersMap.cs" />
     <Compile Include="Execution\Handlers\BoolResultHandlers.cs" />
     <Compile Include="Execution\Maps\BoolResultHandlersMap.cs" />
-    <Compile Include="Generation\Translation\ModelVisitors\SearchQueryModelVisitor.cs" />
+    <Compile Include="Generation\Translation\ModelVisitors\TranslationVisitor.cs" />
     <Compile Include="Generation\Translation\Maps\BinaryExpressionMap.cs" />
     <Compile Include="Generation\Translation\Maps\ConstantExpressionMap.cs" />
     <Compile Include="Generation\Translation\Maps\ReverseOperatorMap.cs" />
     <Compile Include="Generation\Translation\Maps\ObjectMethodsMap.cs" />
     <Compile Include="Generation\Translation\Handlers\Objects\StringMethodHandlers.cs" />
     <Compile Include="Generation\Translation\ExpressionVisitors\QueryBuildingVisitor.cs" />
-    <Compile Include="Generation\Transformation\ModelVisitors\SubQueryModelVisitor.cs" />
+    <Compile Include="Generation\Transformation\ModelVisitors\SubQueryTransformationVisitor.cs" />
     <Compile Include="Helpers\PropertyExpressionHelper.cs" />
     <Compile Include="IdProviders\AppSettingsIdProvider.cs" />
     <Compile Include="Model\Attributes\ContentTypeAttribute.cs" />

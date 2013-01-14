@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using Ektron.Cms.Search;
+using GoodlyFere.Ektron.Linq.Generation.Transformation.ModelVisitors;
 using GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors;
 using GoodlyFere.Ektron.Linq.Interfaces;
 using Remotion.Linq;
@@ -17,7 +18,10 @@ namespace GoodlyFere.Ektron.Linq.Generation
 
         public static AdvancedSearchCriteria Generate(QueryModel model, IEktronIdProvider idProvider)
         {
-            return SearchQueryModelVisitor.Translate(model, idProvider);
+            TransformationVisitor.Transform(model);
+            AdvancedSearchCriteria criteria = TranslationVisitor.Translate(model, idProvider);
+
+            return criteria;
         }
 
         #endregion

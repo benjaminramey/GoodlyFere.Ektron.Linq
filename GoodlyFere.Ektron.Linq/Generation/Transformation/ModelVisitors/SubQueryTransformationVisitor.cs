@@ -1,7 +1,7 @@
 ﻿#region License
 
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SubQueryModelVisitor.cs">
+// <copyright file="SubQueryTransformationVisitor.cs">
 // LINQ to Ektron Search, a LINQ interface to the Ektron AdvancedSearchCriteria search engine
 // 
 // Copyright (C) 2013 Benjamin Ramey
@@ -42,7 +42,7 @@ using Remotion.Linq.Clauses;
 
 namespace GoodlyFere.Ektron.Linq.Generation.Transformation.ModelVisitors
 {
-    public class SubQueryModelVisitor : QueryModelVisitorBase
+    public class SubQueryTransformationVisitor : QueryModelVisitorBase
     {
         #region Constants and Fields
 
@@ -55,7 +55,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Transformation.ModelVisitors
 
         #region Constructors and Destructors
 
-        public SubQueryModelVisitor()
+        public SubQueryTransformationVisitor()
         {
             _aggegrator = new SubQueryExpressionAggegrator();
         }
@@ -78,7 +78,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Transformation.ModelVisitors
 
         public static Expression Expand(QueryModel queryModel)
         {
-            var visitor = new SubQueryModelVisitor();
+            var visitor = new SubQueryTransformationVisitor();
             queryModel.Accept(visitor);
 
             return visitor.ExpressionTree;

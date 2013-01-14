@@ -133,7 +133,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Tools
         internal static Expression GetTranslation<T>(IQueryable<T> query)
         {
             var queryModel = GetQueryModel(query);
-            return SearchQueryModelVisitor.Translate(queryModel, new IdProvider()).ExpressionTree;
+            return TranslationVisitor.Translate(queryModel, new IdProvider()).ExpressionTree;
         }
 
         #endregion
