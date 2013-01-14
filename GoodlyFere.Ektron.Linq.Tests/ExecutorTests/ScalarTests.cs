@@ -71,11 +71,20 @@ namespace GoodlyFere.Ektron.Linq.Tests.ExecutorTests
         #endregion
 
         #region Public Methods
-
+        
         [Fact]
         public void Any()
         {
             Assert.True(_widgets.Any());
+        }
+
+        [Fact]
+        public void AnyWhere()
+        {
+            string expectedName = (string)_testData.Results[0]["Name"];
+            bool expectedResult = _testData.Results.Any(td => (string)td["Name"] == expectedName);
+
+            Assert.Equal(expectedResult, _widgets.Any(w => w.Name == expectedName));
         }
 
         [Fact]
@@ -93,19 +102,19 @@ namespace GoodlyFere.Ektron.Linq.Tests.ExecutorTests
         [Fact]
         public void CountWhere()
         {
-            string expectedName = "bob";
+            string expectedName = (string)_testData.Results[0]["Name"];
             int expectedCount = _testData.Results.Count(r => (string)r["Name"] == expectedName);
 
-            Assert.Equal(_widgets.Count(w => w.Name == expectedName), expectedCount);
+            Assert.Equal(expectedCount, _widgets.Count(w => w.Name == expectedName));
         }
 
         [Fact]
         public void LongCountWhere()
         {
-            string expectedName = "bob";
+            string expectedName = (string)_testData.Results[0]["Name"];
             long expectedCount = _testData.Results.LongCount(r => (string)r["Name"] == expectedName);
 
-            Assert.Equal(_widgets.LongCount(w => w.Name == expectedName), expectedCount);
+            Assert.Equal(expectedCount, _widgets.LongCount(w => w.Name == expectedName));
         }
 
         #endregion

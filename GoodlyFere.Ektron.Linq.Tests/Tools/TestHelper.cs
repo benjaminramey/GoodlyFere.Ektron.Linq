@@ -33,6 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors;
@@ -65,11 +66,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Tools
                     columnType = typeof(long);
                 }
 
-                var attribute =
-                    prop.GetCustomAttributes(typeof(EktronPropertyAttribute), true)
-                        .Cast<EktronPropertyAttribute>()
-                        .FirstOrDefault();
-                string columnName = attribute == null ? prop.Name : PropertyExpressionHelper.GetPropertyName(attribute);
+                string columnName = GetColumnName<T>(prop);
 
                 dataTableMock.Columns.Add(columnName, columnType);
             }
@@ -77,11 +74,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Tools
             var dataRowMock = dataTableMock.NewRow();
             foreach (var prop in dummyObjectProps)
             {
-                var attribute =
-                    prop.GetCustomAttributes(typeof(EktronPropertyAttribute), true)
-                        .Cast<EktronPropertyAttribute>()
-                        .FirstOrDefault();
-                string columnName = attribute == null ? prop.Name : PropertyExpressionHelper.GetPropertyName(attribute);
+                string columnName = GetColumnName<T>(prop);
 
                 var columnType = prop.PropertyType;
                 if (columnType == typeof(DateTime))
@@ -134,6 +127,16 @@ namespace GoodlyFere.Ektron.Linq.Tests.Tools
         {
             var queryModel = GetQueryModel(query);
             return TranslationVisitor.Translate(queryModel, new IdProvider()).ExpressionTree;
+        }
+
+        private static string GetColumnName<T>(PropertyInfo prop)
+        {
+            var attribute =
+                prop.GetCustomAttributes(typeof(EktronPropertyAttribute), true)
+                    .Cast<EktronPropertyAttribute>()
+                    .FirstOrDefault();
+            string columnName = attribute == null ? prop.Name : PropertyExpressionHelper.GetPropertyName(attribute);
+            return columnName;
         }
 
         #endregion

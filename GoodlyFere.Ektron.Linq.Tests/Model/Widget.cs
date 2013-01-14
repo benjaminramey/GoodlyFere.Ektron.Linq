@@ -41,10 +41,18 @@ namespace GoodlyFere.Ektron.Linq.Tests.Model
 {
     public class Widget
     {
+        #region Constructors and Destructors
+
+        public Widget()
+        {
+            Name = Guid.NewGuid().ToString();
+        }
+
+        #endregion
+
         #region Public Properties
 
-        [EktronProperty(EkConstants.SearchProperties.ContentId, EktronExpressionType = typeof(IntegerPropertyExpression)
-            )]
+        [EktronIntegerProperty(EkConstants.SearchProperties.ContentId)]
         public long Id { get; set; }
 
         public string Name { get; set; }
