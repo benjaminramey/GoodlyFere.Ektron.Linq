@@ -32,9 +32,10 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Linq.Expressions;
+using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors;
 using EktronExpression = Ektron.Cms.Search.Expressions.Expression;
+using Expression = System.Linq.Expressions.Expression;
 
 #endregion
 
@@ -47,12 +48,12 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.Handlers.Objects
         public static EktronExpression HandleStringContains(
             Expression obj, ReadOnlyCollection<Expression> arguments)
         {
-            global::Ektron.Cms.Search.Expressions.StringPropertyExpression objectExpr =
-                QueryBuildingVisitor.Build(obj) as global::Ektron.Cms.Search.Expressions.StringPropertyExpression;
-            global::Ektron.Cms.Search.Expressions.StringValueExpression argExpr =
-                QueryBuildingVisitor.Build(arguments[0]) as global::Ektron.Cms.Search.Expressions.StringValueExpression;
+            StringPropertyExpression objectExpr =
+                QueryBuildingVisitor.Build(obj) as StringPropertyExpression;
+            StringValueExpression argExpr =
+                QueryBuildingVisitor.Build(arguments[0]) as StringValueExpression;
 
-            return objectExpr.Contains(argExpr.Value, global::Ektron.Cms.Search.Expressions.WordForms.Inflections);
+            return objectExpr.Contains(argExpr.Value, WordForms.Inflections);
         }
 
         #endregion

@@ -32,6 +32,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Exceptions;
 using GoodlyFere.Ektron.Linq.Extensions;
 using GoodlyFere.Ektron.Linq.Generation.Translation.Maps.PropertyMaps;
@@ -55,16 +56,14 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.Handlers.Expressions
                     "unaryExpression", "unaryExpression must be of NodeType ExpressionType.Convert");
             }
 
-            if (operand is global::Ektron.Cms.Search.Expressions.PropertyExpression
-                && unaryExpression.Operand is MemberExpression)
+            if (operand is PropertyExpression && unaryExpression.Operand is MemberExpression)
             {
                 MemberExpression memberExpr = (MemberExpression)unaryExpression.Operand;
                 EktronPropertyAttribute ekProp = memberExpr.Member
                                                            .GetCustomAttribute<EktronPropertyAttribute>();
                 TypeToPropertyMap map = new TypeToPropertyMap();
                 var factoryMethod = map.FirstOrDefault(unaryExpression.Type);
-                global::Ektron.Cms.Search.Expressions.PropertyExpression castedExpr =
-                    factoryMethod.Invoke(operand as global::Ektron.Cms.Search.Expressions.PropertyExpression);
+                PropertyExpression castedExpr = factoryMethod.Invoke(operand as PropertyExpression);
 
                 if (ekProp == null || ekProp.EktronExpressionType == null)
                 {

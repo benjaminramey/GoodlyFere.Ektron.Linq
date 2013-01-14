@@ -33,6 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Ektron.Cms.Search;
+using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Extensions;
 using GoodlyFere.Ektron.Linq.Generation.Transformation.ExpressionVisitors;
 using GoodlyFere.Ektron.Linq.Generation.Translation.Aggregators;
@@ -138,9 +139,9 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors
         public override void VisitOrdering(
             Ordering ordering, QueryModel queryModel, OrderByClause orderByClause, int index)
         {
-            global::Ektron.Cms.Search.Expressions.PropertyExpression propExpr =
+            PropertyExpression propExpr =
                 QueryBuildingVisitor.Build(ordering.Expression) as
-                global::Ektron.Cms.Search.Expressions.PropertyExpression;
+                PropertyExpression;
             OrderDirection direction = ordering.OrderingDirection == OrderingDirection.Asc
                                            ? OrderDirection.Ascending
                                            : OrderDirection.Descending;

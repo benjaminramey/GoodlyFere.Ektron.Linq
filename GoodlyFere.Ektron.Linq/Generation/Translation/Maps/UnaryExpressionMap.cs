@@ -33,6 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Generation.Translation.Handlers.Expressions;
 using EktronExpression = Ektron.Cms.Search.Expressions.Expression;
 
@@ -49,7 +50,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.Maps
 
         public UnaryExpressionMap()
         {
-            Add(ExpressionType.Not, (ue, operand) => new global::Ektron.Cms.Search.Expressions.NotExpression(operand));
+            Add(ExpressionType.Not, (ue, operand) => new NotExpression(operand));
             Add(ExpressionType.Convert, UnaryExpressionHandlers.HandleConvert);
         }
 

@@ -33,6 +33,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Ektron.Cms.Search.Expressions;
 using EktronExpression = Ektron.Cms.Search.Expressions.Expression;
 
 #endregion
@@ -49,24 +50,14 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.Maps
 
         public BinaryExpressionMap()
         {
-            Add(ExpressionType.Equal, (pe, ve) => new global::Ektron.Cms.Search.Expressions.EqualsExpression(pe, ve));
-            Add(ExpressionType.AndAlso, (pe, ve) => new global::Ektron.Cms.Search.Expressions.AndExpression(pe, ve));
-            Add(ExpressionType.OrElse, (pe, ve) => new global::Ektron.Cms.Search.Expressions.OrExpression(pe, ve));
-            Add(
-                ExpressionType.GreaterThan,
-                (pe, ve) => new global::Ektron.Cms.Search.Expressions.GreaterThanExpression(pe, ve));
-            Add(
-                ExpressionType.LessThan,
-                (pe, ve) => new global::Ektron.Cms.Search.Expressions.LessThanExpression(pe, ve));
-            Add(
-                ExpressionType.GreaterThanOrEqual,
-                (pe, ve) => new global::Ektron.Cms.Search.Expressions.GreaterThanOrEqualsExpression(pe, ve));
-            Add(
-                ExpressionType.LessThanOrEqual,
-                (pe, ve) => new global::Ektron.Cms.Search.Expressions.LessThanOrEqualsExpression(pe, ve));
-            Add(
-                ExpressionType.NotEqual,
-                (pe, ve) => new global::Ektron.Cms.Search.Expressions.NotEqualsExpression(pe, ve));
+            Add(ExpressionType.Equal, (pe, ve) => new EqualsExpression(pe, ve));
+            Add(ExpressionType.AndAlso, (pe, ve) => new AndExpression(pe, ve));
+            Add(ExpressionType.OrElse, (pe, ve) => new OrExpression(pe, ve));
+            Add(ExpressionType.GreaterThan, (pe, ve) => new GreaterThanExpression(pe, ve));
+            Add(ExpressionType.LessThan, (pe, ve) => new LessThanExpression(pe, ve));
+            Add(ExpressionType.GreaterThanOrEqual, (pe, ve) => new GreaterThanOrEqualsExpression(pe, ve));
+            Add(ExpressionType.LessThanOrEqual, (pe, ve) => new LessThanOrEqualsExpression(pe, ve));
+            Add(ExpressionType.NotEqual, (pe, ve) => new NotEqualsExpression(pe, ve));
         }
 
         #endregion
