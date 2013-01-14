@@ -41,6 +41,7 @@ using GoodlyFere.Ektron.Linq.Interfaces;
 using GoodlyFere.Ektron.Linq.Model.Attributes;
 using Remotion.Linq;
 using Remotion.Linq.Clauses;
+using EktronExpression = Ektron.Cms.Search.Expressions.Expression;
 
 #endregion
 
@@ -69,7 +70,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors
 
         #region Properties
 
-        private global::Ektron.Cms.Search.Expressions.Expression ExpressionTree
+        private EktronExpression ExpressionTree
         {
             get
             {

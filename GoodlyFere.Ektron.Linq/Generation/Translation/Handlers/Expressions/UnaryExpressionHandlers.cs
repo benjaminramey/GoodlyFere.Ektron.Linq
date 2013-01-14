@@ -36,6 +36,7 @@ using GoodlyFere.Ektron.Linq.Exceptions;
 using GoodlyFere.Ektron.Linq.Extensions;
 using GoodlyFere.Ektron.Linq.Generation.Translation.Maps.PropertyMaps;
 using GoodlyFere.Ektron.Linq.Model.Attributes;
+using EktronExpression = Ektron.Cms.Search.Expressions.Expression;
 
 #endregion
 
@@ -45,8 +46,8 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.Handlers.Expressions
     {
         #region Public Methods
 
-        public static global::Ektron.Cms.Search.Expressions.Expression HandleConvert(
-            UnaryExpression unaryExpression, global::Ektron.Cms.Search.Expressions.Expression operand)
+        public static EktronExpression HandleConvert(
+            UnaryExpression unaryExpression, EktronExpression operand)
         {
             if (unaryExpression.NodeType != ExpressionType.Convert)
             {

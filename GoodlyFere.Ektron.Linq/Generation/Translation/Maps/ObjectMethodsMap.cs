@@ -36,12 +36,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using GoodlyFere.Ektron.Linq.Generation.Translation.Handlers.Objects;
+using EktronExpression = Ektron.Cms.Search.Expressions.Expression;
 
 #endregion
 
 namespace GoodlyFere.Ektron.Linq.Generation.Translation.Maps
 {
-    internal delegate global::Ektron.Cms.Search.Expressions.Expression MethodCallHandler(
+    internal delegate EktronExpression MethodCallHandler(
         Expression obj, ReadOnlyCollection<Expression> arguments);
 
     internal class ObjectMethodsMap : Dictionary<MethodInfo, MethodCallHandler>

@@ -34,13 +34,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using GoodlyFere.Ektron.Linq.Generation.Translation.Handlers.Expressions;
+using EktronExpression = Ektron.Cms.Search.Expressions.Expression;
 
 #endregion
 
 namespace GoodlyFere.Ektron.Linq.Generation.Translation.Maps
 {
-    internal delegate global::Ektron.Cms.Search.Expressions.Expression UnaryExpressionFactoryMethod(
-        UnaryExpression unaryExpression, global::Ektron.Cms.Search.Expressions.Expression operand);
+    internal delegate EktronExpression UnaryExpressionFactoryMethod(
+        UnaryExpression unaryExpression, EktronExpression operand);
 
     internal class UnaryExpressionMap : Dictionary<ExpressionType, UnaryExpressionFactoryMethod>
     {

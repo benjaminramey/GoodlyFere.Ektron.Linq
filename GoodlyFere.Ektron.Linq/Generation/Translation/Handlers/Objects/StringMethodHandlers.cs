@@ -34,6 +34,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 using GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors;
+using EktronExpression = Ektron.Cms.Search.Expressions.Expression;
 
 #endregion
 
@@ -43,7 +44,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.Handlers.Objects
     {
         #region Public Methods
 
-        public static global::Ektron.Cms.Search.Expressions.Expression HandleStringContains(
+        public static EktronExpression HandleStringContains(
             Expression obj, ReadOnlyCollection<Expression> arguments)
         {
             global::Ektron.Cms.Search.Expressions.StringPropertyExpression objectExpr =

@@ -35,7 +35,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using GoodlyFere.Ektron.Linq.Generation.Transformation.Aggregators;
 using GoodlyFere.Ektron.Linq.Generation.Transformation.Maps;
-using GoodlyFere.Ektron.Linq.Generation.Translation.Aggregators;
 using Remotion.Linq;
 using Remotion.Linq.Clauses;
 

@@ -33,14 +33,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using EktronExpression = Ektron.Cms.Search.Expressions.Expression;
 
 #endregion
 
 namespace GoodlyFere.Ektron.Linq.Generation.Translation.Maps
 {
-    internal delegate global::Ektron.Cms.Search.Expressions.Expression BinaryExpressionFactoryMethod(
-        global::Ektron.Cms.Search.Expressions.Expression propExpr,
-        global::Ektron.Cms.Search.Expressions.Expression valueExpr);
+    internal delegate EktronExpression BinaryExpressionFactoryMethod(
+        EktronExpression propExpr,
+        EktronExpression valueExpr);
 
     internal class BinaryExpressionMap : Dictionary<ExpressionType, BinaryExpressionFactoryMethod>
     {
