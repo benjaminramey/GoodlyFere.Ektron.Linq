@@ -75,29 +75,26 @@ namespace GoodlyFere.Ektron.Linq
 
         public IEnumerable<T> ExecuteCollection<T>(QueryModel queryModel)
         {
-            AdvancedSearchCriteria criteria = BuildCriteria(queryModel);
-            criteria.PagingInfo.RecordsPerPage = 10000;
-            criteria.Permission = Permission.CreateAdministratorPermission();
-            criteria.ReturnProperties = PropertyExpressionHelper.GetPropertyExpressionsForType(typeof(T));
+            var criteria = CreateCriteria<T>(queryModel, 10000);
 
-            var results = _searcher.DoSearch(criteria);
+            List<SearchResultData> results = _searcher.DoSearch(criteria);
             var converter = new ResultsConverter<T>();
             return converter.GetMany(results, criteria);
         }
 
         public T ExecuteScalar<T>(QueryModel queryModel)
         {
-            throw new NotImplementedException();
+            var criteria = CreateCriteria<T>(queryModel, 10000);
+
+            List<SearchResultData> results = _searcher.DoSearch(criteria);
+
         }
 
         public T ExecuteSingle<T>(QueryModel queryModel, bool returnDefaultWhenEmpty)
         {
-            AdvancedSearchCriteria criteria = BuildCriteria(queryModel);
-            criteria.PagingInfo.RecordsPerPage = 1;
-            criteria.Permission = Permission.CreateAdministratorPermission();
-            criteria.ReturnProperties = PropertyExpressionHelper.GetPropertyExpressionsForType(typeof(T));
+            var criteria = CreateCriteria<T>(queryModel, 1);
 
-            var results = _searcher.DoSearch(criteria);
+            List<SearchResultData> results = _searcher.DoSearch(criteria);
             var converter = new ResultsConverter<T>();
 
             T result = converter.GetSingle(results, criteria);
@@ -107,6 +104,19 @@ namespace GoodlyFere.Ektron.Linq
             }
 
             return result;
+        }
+
+        #endregion
+
+        #region Methods
+
+        private AdvancedSearchCriteria CreateCriteria<T>(QueryModel queryModel, int recordsPerPage)
+        {
+            AdvancedSearchCriteria criteria = BuildCriteria(queryModel);
+            criteria.PagingInfo.RecordsPerPage = recordsPerPage;
+            criteria.Permission = Permission.CreateAdministratorPermission();
+            criteria.ReturnProperties = PropertyExpressionHelper.GetPropertyExpressionsForType(typeof(T));
+            return criteria;
         }
 
         #endregion

@@ -34,6 +34,7 @@ using System.Linq;
 using Ektron.Cms.Search;
 using GoodlyFere.Ektron.Linq.Tests.Model;
 using GoodlyFere.Ektron.Linq.Tests.TestImplementations;
+using GoodlyFere.Ektron.Linq.Tests.Tools;
 using NSubstitute;
 using Xunit;
 
@@ -45,9 +46,10 @@ namespace GoodlyFere.Ektron.Linq.Tests.ExecutorTests
     {
         #region Constants and Fields
 
-        private readonly EktronQueryExecutor _executor;
         private readonly IdProvider _idProvider;
         private readonly ISearchManager _searchManager;
+        private readonly SearchResponseData _testData;
+        private readonly EktronQueryable<Widget> _widgets;
 
         #endregion
 
@@ -56,19 +58,54 @@ namespace GoodlyFere.Ektron.Linq.Tests.ExecutorTests
         public ScalarTests()
         {
             _idProvider = new IdProvider();
+            _testData = TestHelper.GetResponseData<Widget>(10);
+
             _searchManager = Substitute.For<ISearchManager>();
-            _executor = new EktronQueryExecutor(_idProvider, _searchManager);
+            _searchManager.Search(Arg.Any<AdvancedSearchCriteria>()).ReturnsForAnyArgs(
+                _testData
+                );
+
+            _widgets = EktronQueryFactory.Queryable<Widget>(_idProvider, _searchManager);
         }
 
-        // count returns integer of number of results found
+        #endregion
+
+        #region Public Methods
+
+        [Fact]
+        public void Any()
+        {
+            Assert.True(_widgets.Any());
+        }
 
         [Fact]
         public void Count()
         {
+            Assert.Equal(_widgets.Count(), 10);
+        }
+
+        [Fact]
+        public void CountLong()
+        {
+            Assert.Equal(_widgets.LongCount(), 10L);
+        }
+
+        [Fact]
+        public void CountWhere()
+        {
             string expectedName = "bob";
-            var query = EktronQueryFactory.Queryable<Widget>(_idProvider).Count(w => w.Name == expectedName);
+            int expectedCount = _testData.Results.Count(r => (string)r["Name"] == expectedName);
 
+            Assert.Equal(_widgets.Count(w => w.Name == expectedName), expectedCount);
+        }
 
+        [Fact]
+        public void LongCountWhere()
+        {
+            string expectedName = "bob";
+            long expectedCount = _testData.Results.LongCount(r => (string)r["Name"] == expectedName);
+
+            Assert.Equal(_widgets.LongCount(w => w.Name == expectedName), expectedCount);
         }
 
         #endregion

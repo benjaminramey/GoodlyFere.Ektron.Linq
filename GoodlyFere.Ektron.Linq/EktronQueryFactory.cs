@@ -32,6 +32,7 @@
 using System;
 using System.Linq;
 using Ektron.Cms;
+using Ektron.Cms.Search;
 using GoodlyFere.Ektron.Linq.IdProviders;
 using GoodlyFere.Ektron.Linq.Interfaces;
 using Remotion.Linq;
@@ -55,29 +56,54 @@ namespace GoodlyFere.Ektron.Linq
         /// </returns>
         public static EktronQueryable<T> Queryable<T>()
         {
-            return Queryable<T>(new AppSettingsIdProvider());
+            return Queryable<T>(null, null);
         }
 
         /// <summary>
         ///     Creates an <see cref="EktronQueryable" /> for a domain object
-        ///     using the provided <see cref="IEktronIdProvider"/>.
+        ///     with the provided <see cref="IEktronIdProvider" />.
         /// </summary>
         /// <typeparam name="T">Domain object to wrap in an IQueryable.</typeparam>
+        /// <param name="idProvider">
+        ///     Implementation of <see cref="IEktronIdProvider" /> to use when searching.
+        /// </param>
         /// <returns>
         ///     <see cref="EktronQueryable<T>"/>
         /// </returns>
         public static EktronQueryable<T> Queryable<T>(IEktronIdProvider idProvider)
         {
-            return new EktronQueryable<T>(CreateQueryParser(), CreateExecutor(idProvider));
+            return Queryable<T>(idProvider, null);
+        }
+
+        /// <summary>
+        ///     Creates an <see cref="EktronQueryable" /> for a domain object
+        ///     with the provided <see cref="IEktronIdProvider" /> and <see cref="ISearchManager" />.
+        /// </summary>
+        /// <typeparam name="T">Domain object to wrap in an IQueryable.</typeparam>
+        /// <param name="idProvider">
+        ///     Implementation of <see cref="IEktronIdProvider" /> to use when searching.
+        /// </param>
+        /// <param name="searchManager">
+        ///     Implementation of ISearchManager, usually obtained via <code>ObjectFactory.GetSearchManager()</code>.
+        /// </param>
+        /// <returns>
+        ///     <see cref="EktronQueryable<T>"/>
+        /// </returns>
+        public static EktronQueryable<T> Queryable<T>(IEktronIdProvider idProvider, ISearchManager searchManager)
+        {
+            return new EktronQueryable<T>(CreateQueryParser(), CreateExecutor(idProvider, searchManager));
         }
 
         #endregion
 
         #region Methods
 
-        private static IQueryExecutor CreateExecutor(IEktronIdProvider idProvider)
+        private static IQueryExecutor CreateExecutor(IEktronIdProvider idProvider, ISearchManager searchManager)
         {
-            return new EktronQueryExecutor(idProvider, ObjectFactory.GetSearchManager());
+            idProvider = idProvider ?? new AppSettingsIdProvider();
+            searchManager = searchManager ?? ObjectFactory.GetSearchManager();
+
+            return new EktronQueryExecutor(idProvider, searchManager);
         }
 
         private static IQueryParser CreateQueryParser()
