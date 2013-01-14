@@ -35,7 +35,7 @@ using System.Linq;
 using Common.Logging;
 using Ektron.Cms.Search;
 using GoodlyFere.Ektron.Linq.Execution.Search;
-using GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors;
+using GoodlyFere.Ektron.Linq.Generation;
 using GoodlyFere.Ektron.Linq.Helpers;
 using GoodlyFere.Ektron.Linq.Interfaces;
 using Remotion.Linq;
@@ -67,11 +67,6 @@ namespace GoodlyFere.Ektron.Linq
         #endregion
 
         #region Public Methods
-
-        public AdvancedSearchCriteria BuildCriteria(QueryModel queryModel)
-        {
-            return SearchQueryModelVisitor.Translate(queryModel, _idProvider);
-        }
 
         public IEnumerable<T> ExecuteCollection<T>(QueryModel queryModel)
         {
@@ -109,7 +104,7 @@ namespace GoodlyFere.Ektron.Linq
 
         private AdvancedSearchCriteria CreateCriteria<T>(QueryModel queryModel, int recordsPerPage)
         {
-            AdvancedSearchCriteria criteria = BuildCriteria(queryModel);
+            AdvancedSearchCriteria criteria = CriteriaGenerator.Generate(queryModel, _idProvider);
             criteria.PagingInfo.RecordsPerPage = recordsPerPage;
             criteria.Permission = Permission.CreateAdministratorPermission();
             criteria.ReturnProperties = PropertyExpressionHelper.GetPropertyExpressionsForType(typeof(T));

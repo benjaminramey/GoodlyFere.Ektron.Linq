@@ -35,6 +35,7 @@ using System.Linq;
 using Ektron.Cms;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
+using GoodlyFere.Ektron.Linq.Generation;
 using GoodlyFere.Ektron.Linq.Interfaces;
 using GoodlyFere.Ektron.Linq.Tests.Model;
 using GoodlyFere.Ektron.Linq.Tests.TestImplementations;
@@ -75,8 +76,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
             var propExpr = new IntegerPropertyExpression("Number");
             var model = TestHelper.GetQueryModel(query);
 
-            var actualCriteria =
-                new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
+            var actualCriteria = CriteriaGenerator.Generate(model, _idProvider);
             var expectedCriteria = new AdvancedSearchCriteria
                 {
                     ExpressionTree = (propExpr == numbers[0]
@@ -99,8 +99,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
             var propExpr = SearchContentProperty.Id;
             var model = TestHelper.GetQueryModel(query);
 
-            var actualCriteria =
-                new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
+            var actualCriteria = CriteriaGenerator.Generate(model, _idProvider);
             var expectedCriteria = new AdvancedSearchCriteria
                 {
                     ExpressionTree = (propExpr == numbers[0]

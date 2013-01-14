@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\InvalidQueryException.cs" />
+    <Compile Include="Generation\CriteriaGenerator.cs" />
     <Compile Include="Generation\Translation\Aggregators\CriteriaExpressionTreeAggregator.cs" />
     <Compile Include="Generation\Translation\Aggregators\OrderByAggregator.cs" />
     <Compile Include="Generation\Transformation\Aggregators\SubQueryExpressionAggegrator.cs" />

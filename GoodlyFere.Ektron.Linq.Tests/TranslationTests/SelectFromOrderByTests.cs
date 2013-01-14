@@ -35,6 +35,7 @@ using System.Linq;
 using Ektron.Cms;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
+using GoodlyFere.Ektron.Linq.Generation;
 using GoodlyFere.Ektron.Linq.Tests.Model;
 using GoodlyFere.Ektron.Linq.Tests.TestImplementations;
 using GoodlyFere.Ektron.Linq.Tests.Tools;
@@ -73,7 +74,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
                         select w;
 
             var model = TestHelper.GetQueryModel(query);
-            var criteria = new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
+            var criteria = CriteriaGenerator.Generate(model, _idProvider);
 
             var actualCriteria = criteria;
             var expectedCriteria = new AdvancedSearchCriteria
@@ -94,7 +95,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
                         select w;
 
             var model = TestHelper.GetQueryModel(query);
-            var criteria = new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
+            var criteria = CriteriaGenerator.Generate(model, _idProvider);
 
             var actualCriteria = criteria;
             var expectedCriteria = new AdvancedSearchCriteria
@@ -115,7 +116,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
                         select w;
 
             var model = TestHelper.GetQueryModel(query);
-            var criteria = new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
+            var criteria = CriteriaGenerator.Generate(model, _idProvider);
 
             var actualCriteria = criteria;
             var expectedCriteria = new AdvancedSearchCriteria
@@ -140,7 +141,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
                         select w;
 
             var model = TestHelper.GetQueryModel(query);
-            var criteria = new EktronQueryExecutor(_idProvider, ObjectFactory.GetSearchManager()).BuildCriteria(model);
+            var criteria = CriteriaGenerator.Generate(model, _idProvider);
 
             var actualCriteria = criteria;
             var expectedCriteria = new AdvancedSearchCriteria
