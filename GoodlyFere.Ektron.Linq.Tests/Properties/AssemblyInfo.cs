@@ -41,7 +41,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("GoodlyFere.Ektron.Linq.Tests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Tests for the GoodlyFere.Ektron.Linq LINQ to Ektron Search library.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("GoodlyFere.Ektron.Linq.Tests")]
@@ -59,5 +59,5 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("a3cc853f-b4ae-4418-a99a-e7ac939959ec")]
 [assembly: AssemblyFileVersion("1.0.2.4")]
-[assembly: AssemblyInformationalVersion("1.0.9.0")]
+[assembly: AssemblyInformationalVersion("1.0.9.1")]
 [assembly: AssemblyVersion("1.0.0.0")]

@@ -11,7 +11,10 @@
     <projectUrl>https://github.com/benjaminramey/GoodlyFere.Ektron.Linq</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>LINQ provider for Ektron via Ektron's SearchManager using AdvancedSearchCriteria searches.</description>
-    <releaseNotes>Adds convenience ektron property attributes for the available data types.</releaseNotes>
+    <releaseNotes>
+        Added support for Any, Count and LongCount methods. Updated ReflectionExtensions to use built-in MemoryCache.
+        Added overload for EktronQueryFactory.Queryable&lt;T&gt; to use a default IdProvider. Included bug fixes.
+    </releaseNotes>
     <tags>linq ektron advancedsearchcriteria search</tags>
     <dependencies>
       <dependency id="Remotion.Linq" version="[1.13.161, 2.0)" />

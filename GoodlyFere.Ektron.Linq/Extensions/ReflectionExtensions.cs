@@ -30,9 +30,10 @@
 #region Usings
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Caching;
+using Common.Logging;
 
 #endregion
 
@@ -42,7 +43,9 @@ namespace GoodlyFere.Ektron.Linq.Extensions
     {
         #region Constants and Fields
 
-        private static readonly Dictionary<string, object> CustomAttributes;
+        private static readonly MemoryCache AttributeCache;
+        private static readonly ILog Log = LogManager.GetLogger(typeof(ReflectionExtensions));
+        private static readonly CacheItemPolicy Policy;
 
         #endregion
 
@@ -50,7 +53,8 @@ namespace GoodlyFere.Ektron.Linq.Extensions
 
         static ReflectionExtensions()
         {
-            CustomAttributes = new Dictionary<string, object>();
+            AttributeCache = MemoryCache.Default;
+            Policy = new CacheItemPolicy { SlidingExpiration = new TimeSpan(0, 1, 0, 0) };
         }
 
         #endregion
@@ -64,14 +68,10 @@ namespace GoodlyFere.Ektron.Linq.Extensions
                 return null;
             }
 
-            string key = GetKey<T>(type);
-            if (CustomAttributes.ContainsKey(key))
-            {
-                return CustomAttributes[key] as T;
-            }
+            Log.DebugFormat("Getting custom attribute for: {0}", type.Name);
 
-            CustomAttributes.Add(key, type.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T);
-            return CustomAttributes[key] as T;
+            string key = GetKey<T>(type);
+            return GetFromCache(key, () => type.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T);
         }
 
         public static T GetCustomAttribute<T>(this MemberInfo memberInfo) where T : Attribute
@@ -81,29 +81,44 @@ namespace GoodlyFere.Ektron.Linq.Extensions
                 return null;
             }
 
-            string key = GetKey<T>(memberInfo);
-            if (CustomAttributes.ContainsKey(key))
-            {
-                return CustomAttributes[key] as T;
-            }
+            Log.DebugFormat("Getting custom attribute for: {0}", memberInfo.Name);
 
-            CustomAttributes.Add(key, memberInfo.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T);
-            return CustomAttributes[key] as T;
+            string key = GetKey<T>(memberInfo);
+            return GetFromCache(key, () => memberInfo.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T);
         }
 
         #endregion
 
         #region Methods
 
+        private static T GetFromCache<T>(string key, Func<T> getAttribute) where T : Attribute
+        {
+            T attribute = AttributeCache[key] as T;
+            if (attribute == null)
+            {
+                attribute = getAttribute.Invoke();
+                if (attribute != null)
+                {
+                    AttributeCache.Set(key, attribute, Policy);
+                }
+            }
+
+            return attribute;
+        }
+
         private static string GetKey<T>(Type type)
         {
-            return string.Concat(type.FullName, "!!!~!!!", typeof(T).FullName);
+            string key = string.Concat(type.FullName, "!!!~!!!", typeof(T).FullName);
+            Log.DebugFormat("Getting key: {0}", key);
+            return key;
         }
 
         private static string GetKey<T>(MemberInfo memberInfo)
         {
-            return string.Concat(
+            string key = string.Concat(
                 memberInfo.ReflectedType.FullName, "!!!~!!!", memberInfo.Name, "!!!~!!!", typeof(T).FullName);
+            Log.DebugFormat("Getting key: {0}", key);
+            return key;
         }
 
         #endregion
