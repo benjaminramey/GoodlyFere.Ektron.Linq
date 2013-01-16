@@ -220,16 +220,16 @@ EktronStringPropertyAttribute.
 
 ##### IsSmartFormProperty
 When set to true, the EktronPropertyName will be converted using the corresponding `SearchSmartFormProperty.Get*Property()`
-when the search expression tree is built.  Therefore, the EktronPropertyName should be the full path
+method when the search expression tree is built.  Therefore, the EktronPropertyName should be the full path
 to the SmartForm attribute you are mapping to.
 
 ##### IsMetadataProperty
 When set to true, the EktronPropertyName will be converted using the corresponding `SearchMetadataProperty.Get*Property()`
-when the search expression tree is built.
+method when the search expression tree is built.
 
 ##### IsCustomProperty
 When set to true, the EktronPropertyName will be converted using the corresponding `SearchCustomProperty.Get*Property()`
-when the search expression tree is built.
+method when the search expression tree is built.
 
 #### SmartFormPropertyAttribute
 The SmartFormPropertyAttribute is a convenience attribute equivalent to setting `IsSmartFormProperty = true` on
