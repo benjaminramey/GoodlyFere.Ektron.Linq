@@ -157,6 +157,35 @@ expression tree.
 
 ### Property Attributes (GoodlyFere.Ektron.Linq.Model.Attributes)
 
+#### Defaults
+You may use any property (without any type of GoodlyFere.Ektron.Linq.Model.Attributes.* attribute
+attached) in a LINQ expression to search in Ektron.  If you do not supply an attribute, the library will
+use the name of the property and assume it is a StringPropertyExpression.  This may be updated in the future
+to assume a PropertyExpression type from the actual property type (so that a `long` property, for example, 
+would auto-translate into an IntegerPropertyExpression instead of a StringPropertyExpression).
+
+Note that if your property name does not exactly (except for casing) match a property in Ektron,
+Ektron's search manager will throw an exception and you will receive an empty results list.
+
+For example, suppose you define an Id property on a class like this:
+
+    public class ObjectWithId
+    {
+        public long Id { get; set; }
+    }
+
+If you use Id in a query, Ektron will throw an exception because the real name of the Id property in Ektron
+is "contentid".  Renaming your property to "ContentId" as following would work:
+
+    public class ObjectWithId
+    {
+        public long ContentId { get; set; }
+    }
+
+#### Using Attributes
+The have more fine-tuned control over how the library builds your queries from your class properties, use
+the attributes detailed below.
+
 Each of the attributes detailed below has the following convenience attributes which let you avoid specifying
 the EktronExpressionType property explicitly.
 - \*type\*BooleanPropertyAttribute
@@ -173,11 +202,50 @@ For example, for smart form properties there are the following convenience attri
 - SmartFormStringPropertyAttribute
 
 #### EktronPropertyAttribute
+This is the base class for all of the property attributes.  From it, you can construct the equivalent of all other
+property attributes.
+
+##### EktronPropertyName
+The name of the Ektron property that this class property maps to.  For a regular, custom or metadata property, this must be the exact
+name of the corresponding Ektron property.  For a smart form property, this must be the absolute path to the
+element in the SmartForm.
+
+##### EktronExpressionType
+This is the type of Ektron.Cms.Search.Expressions.PropertyExpression that this property should be translated
+into by the library when constructing the AdvancedSearchCriteria.ExpressionTree. 
+
+All types of PropertyExpressions in Ektron 8.5 have convenience attributes as described above.  For example,
+setting `EktronExpressionType = typeof(StringPropertyExpression)` it equivalent to using an
+EktronStringPropertyAttribute.
+
+##### IsSmartFormProperty
+When set to true, the EktronPropertyName will be converted using the corresponding `SearchSmartFormProperty.Get*Property()`
+when the search expression tree is built.  Therefore, the EktronPropertyName should be the full path
+to the SmartForm attribute you are mapping to.
+
+##### IsMetadataProperty
+When set to true, the EktronPropertyName will be converted using the corresponding `SearchMetadataProperty.Get*Property()`
+when the search expression tree is built.
+
+##### IsCustomProperty
+When set to true, the EktronPropertyName will be converted using the corresponding `SearchCustomProperty.Get*Property()`
+when the search expression tree is built.
+
 #### SmartFormPropertyAttribute
+The SmartFormPropertyAttribute is a convenience attribute equivalent to setting `IsSmartFormProperty = true` on
+an EktronPropertyAttribute.
+
 #### CustomPropertyAttribute
+The CustomPropertyAttribute is a convenience attribute equivalent to setting `IsCustomProperty = true` on
+an EktronPropertyAttribute.
+
 #### MetadataPropertyAttribute
+The MetadataPropertyAttribute is a convenience attribute equivalent to setting `IsMetadataProperty = true` on
+an EktronPropertyAttribute.
 
 ## Version History
+- (1.0.9.2) Constricted the EktronExpressionType property on EktronPropertyAttribute to throw an exception if it is not a
+type assignable to Ektron.Cms.Search.Expressions.PropertyExpression.
 - (1.0.9.1) Updated ReflectionExtensions to use the built-in MemoryCache instead of just a static dictionary.
 - (1.0.9.0) Added support for Any, Count and LongCount result operator LINQ methods.
 - (1.0.8.2) Added an overload method for EktronQueryFactory.Queryable<T> to use a default IdProvider (AppSettingsIdProvider).
