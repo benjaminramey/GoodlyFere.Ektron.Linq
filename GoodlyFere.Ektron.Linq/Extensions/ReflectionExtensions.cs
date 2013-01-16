@@ -44,7 +44,6 @@ namespace GoodlyFere.Ektron.Linq.Extensions
         #region Constants and Fields
 
         private static readonly MemoryCache AttributeCache;
-        private static readonly ILog Log = LogManager.GetLogger(typeof(ReflectionExtensions));
         private static readonly CacheItemPolicy Policy;
 
         #endregion
@@ -67,9 +66,7 @@ namespace GoodlyFere.Ektron.Linq.Extensions
             {
                 return null;
             }
-
-            Log.DebugFormat("Getting custom attribute for: {0}", type.Name);
-
+            
             string key = GetKey<T>(type);
             return GetFromCache(key, () => type.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T);
         }
@@ -80,9 +77,7 @@ namespace GoodlyFere.Ektron.Linq.Extensions
             {
                 return null;
             }
-
-            Log.DebugFormat("Getting custom attribute for: {0}", memberInfo.Name);
-
+            
             string key = GetKey<T>(memberInfo);
             return GetFromCache(key, () => memberInfo.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T);
         }
@@ -109,7 +104,6 @@ namespace GoodlyFere.Ektron.Linq.Extensions
         private static string GetKey<T>(Type type)
         {
             string key = string.Concat(type.FullName, "!!!~!!!", typeof(T).FullName);
-            Log.DebugFormat("Getting key: {0}", key);
             return key;
         }
 
@@ -117,7 +111,6 @@ namespace GoodlyFere.Ektron.Linq.Extensions
         {
             string key = string.Concat(
                 memberInfo.ReflectedType.FullName, "!!!~!!!", memberInfo.Name, "!!!~!!!", typeof(T).FullName);
-            Log.DebugFormat("Getting key: {0}", key);
             return key;
         }
 
