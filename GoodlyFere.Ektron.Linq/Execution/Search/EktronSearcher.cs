@@ -35,7 +35,6 @@ using System.Linq;
 using Common.Logging;
 using Ektron.Cms.Search;
 using GoodlyFere.Ektron.Linq.Extensions;
-using GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors;
 
 #endregion
 

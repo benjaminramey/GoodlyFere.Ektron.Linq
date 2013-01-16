@@ -64,6 +64,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors
             new UnaryExpressionMap();
 
         private readonly Stack<EktronExpression> _ekExpressions;
+        private readonly List<PropertyExpression> _propertiesUsed;
 
         #endregion
 
@@ -72,20 +73,26 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors
         private QueryBuildingVisitor()
         {
             _ekExpressions = new Stack<EktronExpression>();
+            _propertiesUsed = new List<PropertyExpression>();
         }
 
         #endregion
 
         #region Public Methods
 
-        public static EktronExpression Build(Expression expression)
+        public static QueryBuildResult Build(Expression expression)
         {
             Log.DebugFormat("Visiting expression: {0}", FormattingExpressionTreeVisitor.Format(expression));
 
             var visitor = new QueryBuildingVisitor();
             visitor.VisitExpression(expression);
 
-            return visitor._ekExpressions.Pop();
+            var result = new QueryBuildResult
+                {
+                    Expression = visitor._ekExpressions.Pop(),
+                    PropertiesUsed = visitor._propertiesUsed.ToArray()
+                };
+            return result;
         }
 
         #endregion
@@ -151,8 +158,9 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors
 
         protected override Expression VisitMemberExpression(MemberExpression expression)
         {
-            PropertyExpression propExr = PropertyExpressionHelper.GetPropertyExpression(expression);
-            _ekExpressions.Push(propExr);
+            PropertyExpression propExpr = PropertyExpressionHelper.GetPropertyExpression(expression);
+            _ekExpressions.Push(propExpr);
+            _propertiesUsed.Add(propExpr);
 
             return expression;
         }

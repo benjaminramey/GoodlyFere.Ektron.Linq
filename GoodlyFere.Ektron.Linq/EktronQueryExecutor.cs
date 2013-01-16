@@ -57,7 +57,6 @@ namespace GoodlyFere.Ektron.Linq
         private readonly IEktronIdProvider _idProvider;
         private readonly ScalarResultMaps _scalarResultMappings;
         private readonly EktronSearcher _searcher;
-        private CriteriaGenerator _generator;
 
         #endregion
 
@@ -68,7 +67,6 @@ namespace GoodlyFere.Ektron.Linq
             _idProvider = idProvider;
             _searcher = new EktronSearcher(searchManager);
             _scalarResultMappings = new ScalarResultMaps();
-            _generator = new CriteriaGenerator();
         }
 
         #endregion
@@ -133,18 +131,18 @@ namespace GoodlyFere.Ektron.Linq
 
         protected AdvancedSearchCriteria CreateCriteria<T>(QueryModel queryModel, int recordsPerPage)
         {
-            AdvancedSearchCriteria criteria = _generator.Generate(queryModel, _idProvider);
+            AdvancedSearchCriteria criteria = CriteriaGenerator.Generate(queryModel, _idProvider);
             criteria.PagingInfo.RecordsPerPage = recordsPerPage;
             criteria.Permission = Permission.CreateAdministratorPermission();
-            criteria.ReturnProperties = PropertyExpressionHelper.GetPropertyExpressionsForType(typeof(T));
+            criteria.ReturnProperties.UnionWith(PropertyExpressionHelper.GetPropertyExpressionsForType(typeof(T)));
             return criteria;
         }
 
         protected AdvancedSearchCriteria CreateScalarCriteria(QueryModel queryModel)
         {
-            AdvancedSearchCriteria criteria = _generator.Generate(queryModel, _idProvider);
+            AdvancedSearchCriteria criteria = CriteriaGenerator.Generate(queryModel, _idProvider);
             criteria.Permission = Permission.CreateAdministratorPermission();
-            criteria.ReturnProperties = new HashSet<Ek.PropertyExpression> { SearchContentProperty.Id };
+            criteria.ReturnProperties.Add(SearchContentProperty.Id);
 
             return criteria;
         }

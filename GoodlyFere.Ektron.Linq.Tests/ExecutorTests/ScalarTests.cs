@@ -71,7 +71,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.ExecutorTests
         #endregion
 
         #region Public Methods
-        
+
         [Fact]
         public void Any()
         {

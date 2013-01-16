@@ -86,22 +86,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Tools
                     dataRowMock[columnName] = prop.GetValue(dummyObj, null);
                 }
             }
-
-            //dataRowMock["RandomDateTime"] = dateTimeValue;
-            //dataRowMock["RandomString"] = stringValue;
-            //dataRowMock["RandomString2"] = stringValue;
-            //dataRowMock["RandomNonEktronProp"] = stringValue;
-            //dataRowMock["RandomInteger"] = integerValue;
-
-            //string propName =
-            //    PropertyExpressionHelper.GetSmartFormPropertyExpression(
-            //        "RandomSmartFormProperty", typeof(Ek.StringPropertyExpression)).Name;
-            //dataRowMock[propName] = stringValue;
-            //propName =
-            //    PropertyExpressionHelper.GetCustomPropertyExpression(
-            //        "RandomCustomProperty", typeof(Ek.StringPropertyExpression)).Name;
-            //dataRowMock[propName] = stringValue;
-
+            
             return dataRowMock;
         }
 

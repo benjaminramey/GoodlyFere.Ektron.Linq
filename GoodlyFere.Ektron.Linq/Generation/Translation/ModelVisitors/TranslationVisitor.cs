@@ -54,6 +54,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors
         private readonly CriteriaExpressionTreeAggregator _exprTreeAggregator;
         private readonly IEktronIdProvider _idProvider;
         private readonly OrderByAggregator _orderByAggregator;
+        private readonly List<PropertyExpression> _returnProperties;
 
         #endregion
 
@@ -64,6 +65,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors
             _exprTreeAggregator = new CriteriaExpressionTreeAggregator();
             _orderByAggregator = new OrderByAggregator();
             _idProvider = idProvider;
+            _returnProperties = new List<PropertyExpression>();
         }
 
         #endregion
@@ -94,12 +96,18 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors
         {
             var visitor = new TranslationVisitor(idProvider);
             visitor.VisitQueryModel(queryModel);
-
+            
             AdvancedSearchCriteria criteria = new AdvancedSearchCriteria
                 {
                     ExpressionTree = visitor.ExpressionTree,
-                    OrderBy = visitor.OrderByData
+                    OrderBy = visitor.OrderByData,
+                    ReturnProperties = new HashSet<PropertyExpression>(visitor._returnProperties)
                 };
+
+            if (criteria.ExpressionTree == null)
+            {
+                criteria.ExpressionTree = SearchType.IsContent();
+            }
 
             return criteria;
         }
@@ -138,21 +146,23 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors
         public override void VisitOrdering(
             Ordering ordering, QueryModel queryModel, OrderByClause orderByClause, int index)
         {
-            PropertyExpression propExpr =
-                QueryBuildingVisitor.Build(ordering.Expression) as
-                PropertyExpression;
+            QueryBuildResult result = QueryBuildingVisitor.Build(ordering.Expression);
+            PropertyExpression propExpr = result.Expression as PropertyExpression;
             OrderDirection direction = ordering.OrderingDirection == OrderingDirection.Asc
                                            ? OrderDirection.Ascending
                                            : OrderDirection.Descending;
 
             _orderByAggregator.Add(new OrderData(propExpr, direction));
+            _returnProperties.AddRange(result.PropertiesUsed);
 
             base.VisitOrdering(ordering, queryModel, orderByClause, index);
         }
 
         public override void VisitWhereClause(WhereClause whereClause, QueryModel queryModel, int index)
         {
-            _exprTreeAggregator.Add(QueryBuildingVisitor.Build(whereClause.Predicate));
+            QueryBuildResult result = QueryBuildingVisitor.Build(whereClause.Predicate);
+            _exprTreeAggregator.Add(result.Expression);
+            _returnProperties.AddRange(result.PropertiesUsed);
 
             base.VisitWhereClause(whereClause, queryModel, index);
         }

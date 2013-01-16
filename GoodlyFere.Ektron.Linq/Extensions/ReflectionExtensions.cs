@@ -33,7 +33,6 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Caching;
-using Common.Logging;
 
 #endregion
 
@@ -66,7 +65,7 @@ namespace GoodlyFere.Ektron.Linq.Extensions
             {
                 return null;
             }
-            
+
             string key = GetKey<T>(type);
             return GetFromCache(key, () => type.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T);
         }
@@ -77,7 +76,7 @@ namespace GoodlyFere.Ektron.Linq.Extensions
             {
                 return null;
             }
-            
+
             string key = GetKey<T>(memberInfo);
             return GetFromCache(key, () => memberInfo.GetCustomAttributes(typeof(T), true).FirstOrDefault() as T);
         }

@@ -73,7 +73,7 @@
     <Compile Include="Generation\Translation\Aggregators\OrderByAggregator.cs" />
     <Compile Include="Generation\Transformation\Aggregators\SubQueryExpressionAggegrator.cs" />
     <Compile Include="Generation\Translation\ExpressionVisitors\FormattingExpressionVisitor.cs" />
-    <Compile Include="Generation\Translation\ExpressionVisitors\PropertyCollectingVisitor.cs" />
+    <Compile Include="Generation\Translation\ExpressionVisitors\QueryBuildResult.cs" />
     <Compile Include="Generation\Translation\Handlers\Expressions\UnaryExpressionHandlers.cs" />
     <Compile Include="Generation\Transformation\ExpressionVisitors\SubQueryExpressionVisitor.cs" />
     <Compile Include="Generation\Translation\Maps\IDefaultingMap.cs" />
@@ -96,7 +96,6 @@
     <Compile Include="Generation\Translation\Handlers\Objects\StringMethodHandlers.cs" />
     <Compile Include="Generation\Translation\ExpressionVisitors\QueryBuildingVisitor.cs" />
     <Compile Include="Generation\Transformation\ModelVisitors\SubQueryTransformationVisitor.cs" />
-    <Compile Include="Generation\Translation\ModelVisitors\WhereClauseVisitor.cs" />
     <Compile Include="Helpers\PropertyExpressionHelper.cs" />
     <Compile Include="IdProviders\AppSettingsIdProvider.cs" />
     <Compile Include="Model\Attributes\ContentTypeAttribute.cs" />

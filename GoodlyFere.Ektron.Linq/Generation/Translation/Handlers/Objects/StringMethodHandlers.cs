@@ -48,10 +48,11 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.Handlers.Objects
         public static EktronExpression HandleStringContains(
             Expression obj, ReadOnlyCollection<Expression> arguments)
         {
-            StringPropertyExpression objectExpr =
-                QueryBuildingVisitor.Build(obj) as StringPropertyExpression;
-            StringValueExpression argExpr =
-                QueryBuildingVisitor.Build(arguments[0]) as StringValueExpression;
+            QueryBuildResult objectResult = QueryBuildingVisitor.Build(obj);
+            QueryBuildResult argResult = QueryBuildingVisitor.Build(arguments[0]);
+
+            StringPropertyExpression objectExpr = objectResult.Expression as StringPropertyExpression;
+            StringValueExpression argExpr = argResult.Expression as StringValueExpression;
 
             return objectExpr.Contains(argExpr.Value, WordForms.Inflections);
         }

@@ -114,13 +114,15 @@ namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
         }
 
         [Fact]
-        public void SelectFrom_PlainObject_TranslatesToNull()
+        public void SelectFrom_PlainObject_TranslatesToIsContent()
         {
             var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider)
                         select w;
 
-            var translation = TestHelper.GetTranslation(query);
-            Assert.Null(translation);
+            var actualTranslation = TestHelper.GetTranslation(query);
+            var expectedTranslation = SearchType.IsContent();
+
+            EkAssert.Equal(expectedTranslation, actualTranslation);
         }
 
         [Fact]
