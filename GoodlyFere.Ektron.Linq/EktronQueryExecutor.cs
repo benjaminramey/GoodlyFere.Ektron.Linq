@@ -57,6 +57,7 @@ namespace GoodlyFere.Ektron.Linq
         private readonly IEktronIdProvider _idProvider;
         private readonly ScalarResultMaps _scalarResultMappings;
         private readonly EktronSearcher _searcher;
+        private CriteriaGenerator _generator;
 
         #endregion
 
@@ -67,6 +68,7 @@ namespace GoodlyFere.Ektron.Linq
             _idProvider = idProvider;
             _searcher = new EktronSearcher(searchManager);
             _scalarResultMappings = new ScalarResultMaps();
+            _generator = new CriteriaGenerator();
         }
 
         #endregion
@@ -90,7 +92,7 @@ namespace GoodlyFere.Ektron.Linq
                     string.Format("'{0}' result operators are not supported.", typeof(T).Name));
             }
 
-            AdvancedSearchCriteria criteria = CreateScalarCriteria<T>(queryModel);
+            AdvancedSearchCriteria criteria = CreateScalarCriteria(queryModel);
             IDictionary handlerMap = _scalarResultMappings[typeof(T)];
             T returnValue = default(T);
 
@@ -129,18 +131,18 @@ namespace GoodlyFere.Ektron.Linq
 
         #region Methods
 
-        private AdvancedSearchCriteria CreateCriteria<T>(QueryModel queryModel, int recordsPerPage)
+        protected AdvancedSearchCriteria CreateCriteria<T>(QueryModel queryModel, int recordsPerPage)
         {
-            AdvancedSearchCriteria criteria = CriteriaGenerator.Generate(queryModel, _idProvider);
+            AdvancedSearchCriteria criteria = _generator.Generate(queryModel, _idProvider);
             criteria.PagingInfo.RecordsPerPage = recordsPerPage;
             criteria.Permission = Permission.CreateAdministratorPermission();
             criteria.ReturnProperties = PropertyExpressionHelper.GetPropertyExpressionsForType(typeof(T));
             return criteria;
         }
 
-        private AdvancedSearchCriteria CreateScalarCriteria<T>(QueryModel queryModel)
+        protected AdvancedSearchCriteria CreateScalarCriteria(QueryModel queryModel)
         {
-            AdvancedSearchCriteria criteria = CriteriaGenerator.Generate(queryModel, _idProvider);
+            AdvancedSearchCriteria criteria = _generator.Generate(queryModel, _idProvider);
             criteria.Permission = Permission.CreateAdministratorPermission();
             criteria.ReturnProperties = new HashSet<Ek.PropertyExpression> { SearchContentProperty.Id };
 

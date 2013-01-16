@@ -36,10 +36,8 @@ using System.Linq.Expressions;
 using Common.Logging;
 using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Exceptions;
-using GoodlyFere.Ektron.Linq.Extensions;
 using GoodlyFere.Ektron.Linq.Generation.Translation.Maps;
 using GoodlyFere.Ektron.Linq.Helpers;
-using GoodlyFere.Ektron.Linq.Model.Attributes;
 using Remotion.Linq.Clauses.ExpressionTreeVisitors;
 using Remotion.Linq.Parsing;
 using BinaryExpression = System.Linq.Expressions.BinaryExpression;
@@ -153,7 +151,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors
 
         protected override Expression VisitMemberExpression(MemberExpression expression)
         {
-            PropertyExpression propExr = GetPropertyExpression(expression);
+            PropertyExpression propExr = PropertyExpressionHelper.GetPropertyExpression(expression);
             _ekExpressions.Push(propExr);
 
             return expression;
@@ -190,19 +188,6 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors
             }
 
             return expression;
-        }
-
-        private PropertyExpression GetPropertyExpression(
-            MemberExpression expression)
-        {
-            var ekProp = expression.Member.GetCustomAttribute<EktronPropertyAttribute>();
-            PropertyExpression propExpr = ekProp != null
-                                              ? PropertyExpressionHelper
-                                                    .GetPropertyExpression(ekProp)
-                                              : new StringPropertyExpression(
-                                                    expression.Member.Name);
-
-            return propExpr;
         }
 
         private void ReorderBinaryExpressions(

@@ -60,6 +60,16 @@ namespace GoodlyFere.Ektron.Linq.Tests.Model
         #endregion
     }
 
+    public class NoAttributesWidget
+    {
+        #region Public Properties
+
+        public long ContentId { get; set; }
+        public string Path { get; set; }
+
+        #endregion
+    }
+
     public class ModelWidget
     {
         #region Public Properties

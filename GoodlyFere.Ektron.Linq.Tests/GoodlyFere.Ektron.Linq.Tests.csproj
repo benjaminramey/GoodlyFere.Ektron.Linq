@@ -203,8 +203,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExecutorTests\ReturnPropertiesTests.cs" />
     <Compile Include="ExecutorTests\ScalarTests.cs" />
     <Compile Include="ExecutorTests\SingleTests.cs" />
+    <Compile Include="TestImplementations\TestableExecutor.cs" />
     <Compile Include="Tools\EkAssert.cs" />
     <Compile Include="TranslationTests\SelectFromOrderByTests.cs">
       <SubType>Code</SubType>

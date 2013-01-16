@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using Ektron.Cms.Search;
 using GoodlyFere.Ektron.Linq.Generation.Transformation.ModelVisitors;
+using GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors;
 using GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors;
 using GoodlyFere.Ektron.Linq.Interfaces;
 using Remotion.Linq;
@@ -12,12 +13,14 @@ using Remotion.Linq;
 
 namespace GoodlyFere.Ektron.Linq.Generation
 {
-    public static class CriteriaGenerator
+    public class CriteriaGenerator
     {
         #region Public Methods
 
-        public static AdvancedSearchCriteria Generate(QueryModel model, IEktronIdProvider idProvider)
+        public AdvancedSearchCriteria Generate(QueryModel model, IEktronIdProvider idProvider)
         {
+            Properties = PropertyCollectingVisitor.Collect();
+
             TransformationVisitor.Transform(model);
             AdvancedSearchCriteria criteria = TranslationVisitor.Translate(model, idProvider);
 

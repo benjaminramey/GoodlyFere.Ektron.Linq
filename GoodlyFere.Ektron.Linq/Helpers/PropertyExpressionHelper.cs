@@ -32,6 +32,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Ektron.Cms.Search.Expressions;
 using GoodlyFere.Ektron.Linq.Extensions;
 using GoodlyFere.Ektron.Linq.Generation.Translation.Maps.PropertyMaps;
@@ -69,6 +70,18 @@ namespace GoodlyFere.Ektron.Linq.Helpers
             return factoryMethod.Invoke(attr.EktronPropertyName);
         }
 
+        public static PropertyExpression GetPropertyExpression(
+            MemberExpression expression)
+        {
+            var ekProp = expression.Member.GetCustomAttribute<EktronPropertyAttribute>();
+            PropertyExpression propExpr = ekProp != null
+                                              ? GetPropertyExpression(ekProp)
+                                              : new StringPropertyExpression(
+                                                    expression.Member.Name);
+
+            return propExpr;
+        }
+
         public static HashSet<PropertyExpression> GetPropertyExpressionsForType(Type domainObjectType)
         {
             HashSet<PropertyExpression> properties = new HashSet<PropertyExpression>();
@@ -90,7 +103,7 @@ namespace GoodlyFere.Ektron.Linq.Helpers
         public static string GetPropertyName(EktronPropertyAttribute attr)
         {
             PropertyExpression propExpr = GetPropertyExpression(attr);
-            return propExpr == null ? string.Empty : propExpr.Name;
+            return propExpr == null ? String.Empty : propExpr.Name;
         }
 
         #endregion
