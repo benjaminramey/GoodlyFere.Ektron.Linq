@@ -221,7 +221,6 @@
     </Compile>
     <Compile Include="TranslationTests\UnaryTests.cs" />
     <Compile Include="ExecutorTests\CollectionTests.cs" />
-    <Compile Include="Tools\Visitors\TestExpressionVisitor.cs" />
     <Compile Include="Tools\TestHelper.cs" />
     <Compile Include="TestImplementations\IdProvider.cs" />
     <Compile Include="Model\Widget.cs" />

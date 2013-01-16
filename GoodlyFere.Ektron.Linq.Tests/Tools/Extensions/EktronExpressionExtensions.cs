@@ -32,7 +32,7 @@
 using System;
 using System.Linq;
 using Ektron.Cms.Search.Expressions;
-using GoodlyFere.Ektron.Linq.Tests.Tools.Visitors;
+using GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors;
 
 #endregion
 
@@ -44,7 +44,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Tools.Extensions
 
         public static string ToTestString(this Expression expression)
         {
-            var visitor = new TestExpressionVisitor();
+            var visitor = new FormattingExpressionVisitor();
             expression.Accept(visitor);
             return visitor.ToString();
         }

@@ -1,7 +1,7 @@
 #region License
 
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="TestExpressionVisitor.cs">
+// <copyright file="FormattingExpressionVisitor.cs">
 // LINQ to Ektron Search, a LINQ interface to the Ektron AdvancedSearchCriteria search engine
 // 
 // Copyright (C) 2013 Benjamin Ramey
@@ -37,9 +37,9 @@ using Ektron.Cms.Search.Expressions;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.Tools.Visitors
+namespace GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors
 {
-    internal class TestExpressionVisitor : ExpressionVisitor
+    public class FormattingExpressionVisitor : ExpressionVisitor
     {
         #region Constants and Fields
 
@@ -49,7 +49,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Tools.Visitors
 
         #region Constructors and Destructors
 
-        public TestExpressionVisitor()
+        public FormattingExpressionVisitor()
         {
             _expressionString = new StringBuilder();
         }

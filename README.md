@@ -244,6 +244,7 @@ The MetadataPropertyAttribute is a convenience attribute equivalent to setting `
 an EktronPropertyAttribute.
 
 ## Version History
+- (1.0.9.4) Added FormattingExpressionVisitor as an easy way to format Ektron expression trees into a string.
 - (1.0.9.3) Removed debugging log messages from ReflectionExtensions. 
 - (1.0.9.2) Constricted the EktronExpressionType property on EktronPropertyAttribute to throw an exception if it is not a
 type assignable to Ektron.Cms.Search.Expressions.PropertyExpression.

@@ -60,6 +60,17 @@ namespace GoodlyFere.Ektron.Linq.Execution.Search
 
         #region Methods
 
+        /// <summary>
+        ///     Submits the given AdvancedSearchCriteria to the
+        ///     Ektron ISearchManager.
+        /// </summary>
+        /// <remarks>
+        ///     If an exception is thrown (which happens for a variety of reasons) by the
+        ///     Ektron ISearchManager, the exception is logged with an
+        ///     Error severity and an empty list is return.
+        /// </remarks>
+        /// <param name="criteria">Criteria to search Ektron with.</param>
+        /// <returns>List of SearchResultData returned by Ektron ISearchManager.</returns>
         internal List<SearchResultData> DoSearch(AdvancedSearchCriteria criteria)
         {
             List<SearchResultData> results;

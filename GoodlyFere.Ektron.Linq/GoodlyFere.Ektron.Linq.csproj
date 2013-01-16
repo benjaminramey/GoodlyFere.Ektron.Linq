@@ -71,6 +71,7 @@
     <Compile Include="Generation\Translation\Aggregators\CriteriaExpressionTreeAggregator.cs" />
     <Compile Include="Generation\Translation\Aggregators\OrderByAggregator.cs" />
     <Compile Include="Generation\Transformation\Aggregators\SubQueryExpressionAggegrator.cs" />
+    <Compile Include="Generation\Translation\ExpressionVisitors\FormattingExpressionVisitor.cs" />
     <Compile Include="Generation\Translation\Handlers\Expressions\UnaryExpressionHandlers.cs" />
     <Compile Include="Generation\Transformation\ExpressionVisitors\SubQueryExpressionVisitor.cs" />
     <Compile Include="Generation\Translation\Maps\IDefaultingMap.cs" />
