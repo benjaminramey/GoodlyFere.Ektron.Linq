@@ -206,7 +206,6 @@
     <Compile Include="ExecutorTests\ScalarTests.cs" />
     <Compile Include="ExecutorTests\SingleTests.cs" />
     <Compile Include="Tools\EkAssert.cs" />
-    <Compile Include="Tools\Extensions\EktronExpressionExtensions.cs" />
     <Compile Include="TranslationTests\SelectFromOrderByTests.cs">
       <SubType>Code</SubType>
     </Compile>

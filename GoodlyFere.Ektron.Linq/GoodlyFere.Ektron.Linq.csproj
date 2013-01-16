@@ -66,6 +66,7 @@
     <Compile Include="Execution\Maps\Int64ResultMap.cs" />
     <Compile Include="Execution\Maps\Int32ResultMap.cs" />
     <Compile Include="Execution\Maps\ScalarResultMaps.cs" />
+    <Compile Include="Extensions\EktronExpressionExtensions.cs" />
     <Compile Include="Generation\CriteriaGenerator.cs" />
     <Compile Include="Generation\Transformation\ModelVisitors\TransformationVisitor.cs" />
     <Compile Include="Generation\Translation\Aggregators\CriteriaExpressionTreeAggregator.cs" />

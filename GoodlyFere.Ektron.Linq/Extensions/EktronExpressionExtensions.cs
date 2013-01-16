@@ -36,13 +36,13 @@ using GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors;
 
 #endregion
 
-namespace GoodlyFere.Ektron.Linq.Tests.Tools.Extensions
+namespace GoodlyFere.Ektron.Linq.Extensions
 {
-    internal static class EktronExpressionExtensions
+    public static class EktronExpressionExtensions
     {
         #region Public Methods
 
-        public static string ToTestString(this Expression expression)
+        public static string ToFormattedString(this Expression expression)
         {
             var visitor = new FormattingExpressionVisitor();
             expression.Accept(visitor);

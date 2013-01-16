@@ -34,7 +34,7 @@ using System.Linq;
 using Common.Logging;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
-using GoodlyFere.Ektron.Linq.Tests.Tools.Extensions;
+using GoodlyFere.Ektron.Linq.Extensions;
 using Xunit;
 
 #endregion
@@ -53,8 +53,8 @@ namespace GoodlyFere.Ektron.Linq.Tests.Tools
 
         internal static void Equal(Expression expectedExpression, Expression actualExpression)
         {
-            string expectedQuery = expectedExpression.ToTestString();
-            string actualQuery = actualExpression.ToTestString();
+            string expectedQuery = expectedExpression.ToFormattedString();
+            string actualQuery = actualExpression.ToFormattedString();
 
             Log.InfoFormat("Expected: {0}", expectedQuery);
             Log.InfoFormat("Actual: {0}", actualQuery);
@@ -64,8 +64,8 @@ namespace GoodlyFere.Ektron.Linq.Tests.Tools
 
         internal static void Equal(AdvancedSearchCriteria expectedCriteria, AdvancedSearchCriteria actualCriteria)
         {
-            string expectedQuery = expectedCriteria.ExpressionTree.ToTestString();
-            string actualQuery = actualCriteria.ExpressionTree.ToTestString();
+            string expectedQuery = expectedCriteria.ExpressionTree.ToFormattedString();
+            string actualQuery = actualCriteria.ExpressionTree.ToFormattedString();
 
             Log.InfoFormat("Expected: {0}", expectedQuery);
             Log.InfoFormat("Actual: {0}", actualQuery);

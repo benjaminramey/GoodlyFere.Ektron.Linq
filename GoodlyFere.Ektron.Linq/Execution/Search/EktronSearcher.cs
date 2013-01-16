@@ -34,6 +34,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Common.Logging;
 using Ektron.Cms.Search;
+using GoodlyFere.Ektron.Linq.Extensions;
+using GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors;
 
 #endregion
 
@@ -76,6 +78,7 @@ namespace GoodlyFere.Ektron.Linq.Execution.Search
             List<SearchResultData> results;
             try
             {
+                Log.DebugFormat("Searching with expression: {0}", criteria.ExpressionTree.ToFormattedString());
                 SearchResponseData searchResponse = _searchManager.Search(criteria);
                 results = searchResponse == null ? new List<SearchResultData>() : searchResponse.Results;
             }
