@@ -31,6 +31,7 @@
 
 using System;
 using System.Linq;
+using Ektron.Cms.Search.Expressions;
 
 #endregion
 
@@ -39,6 +40,12 @@ namespace GoodlyFere.Ektron.Linq.Model.Attributes
     [AttributeUsage(AttributeTargets.Property)]
     public class EktronPropertyAttribute : Attribute
     {
+        #region Constants and Fields
+
+        private Type _ektronExpressionType;
+
+        #endregion
+
         #region Constructors and Destructors
 
         public EktronPropertyAttribute(string ektronPropertyName)
@@ -50,7 +57,24 @@ namespace GoodlyFere.Ektron.Linq.Model.Attributes
 
         #region Public Properties
 
-        public Type EktronExpressionType { get; set; }
+        public Type EktronExpressionType
+        {
+            get
+            {
+                return _ektronExpressionType;
+            }
+            set
+            {
+                if (!typeof(PropertyExpression).IsAssignableFrom(value))
+                {
+                    throw new ArgumentOutOfRangeException(
+                        "value", string.Format("Type must be a child class of {0}", typeof(PropertyExpression).FullName));
+                }
+
+                _ektronExpressionType = value;
+            }
+        }
+
         public string EktronPropertyName { get; set; }
         public bool IsCustomProperty { get; set; }
         public bool IsMetadataProperty { get; set; }
