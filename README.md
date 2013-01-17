@@ -29,11 +29,10 @@ in the GoodlyFere.Ektron.Linq project.
 
 ## Basic Usage
 
-To use this Linq-to-Ektron implementation you need three basic things in place:
+To use this Linq-to-Ektron implementation you need two basic things in place:
 - An Ektron 8.5 (this library has not been tested with any version <8.5) installation with search running.  See Ektron documentation (good luck!) on 
 setting this up.
-- A class implementing the IEktronIdProvider interface (see the [AppSettingsIdProvider](#appsettingsidprovider-class) example below)
-- One or more domain objects that map to data in your Ektron instance (see the [Widget](#widget-class) example class below)
+- One or more domain objects that map to indexed properties in your Ektron instance (see the [Widget](#widget-class) example class below)
 
 ### Example
     var widgets = EktronQueryFactory.Queryable<Widget>(new AppSettingsIdProvider());
