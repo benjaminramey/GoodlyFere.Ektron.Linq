@@ -1,6 +1,6 @@
 # LINQ to Ektron Search
 
-Table of Contents
+## Table of Contents
 - [Summary](#summary)
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
