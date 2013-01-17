@@ -6,7 +6,7 @@ Table of Contents
 - [Basic Usage](#basic-usage)
 - [Reference](#reference)
     - [Class Attributes](#class-attributes)
-    - [Property Attributes](#property-attributes)
+    - [Property Attributes](#property-attributes-goodlyfereektronlinqmodelattributes)
     - [Return Properties](#return-properties)
 - [Version History](#version-history)
 
