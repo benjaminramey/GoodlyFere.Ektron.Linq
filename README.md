@@ -60,8 +60,9 @@ setting up properties to match smart form, metadata and custom properties in Ekt
     }
 
 ### AppSettingsIdProvider Class
-You need to provide an implementation of `GoodlyFere.Ektron.Linq.Interfaces.IEktronIdProvider` when you call
-`EktronQueryFactory.Queryable<T>()`.  The library will use your class to translate smart form and content
+You can provide an implementation of `GoodlyFere.Ektron.Linq.Interfaces.IEktronIdProvider` when you call
+`EktronQueryFactory.Queryable<T>()`.  If you do not, the class detailed below will be used by default.
+The library will use your class to translate smart form and content
 type names (that you provide as attributes on your domain object classes with the `SmartForm` and
 `ContentType` attributes) into Ektron content IDs.  
 
