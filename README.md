@@ -143,7 +143,6 @@ for the content type. Therefore, this name can be an arbitrary value as long as 
 IEktronIdProvider implementation.
 
 #### FolderPathAttribute
-
 Use this attribute to designate a domain object class to correspond to a certain folder path in Ektron.  This will tell 
 the library to add a `SearchContentProperty.FolderPath == <folder path>` clause to the AdvancedSearchCriteria
 expression tree.
@@ -160,7 +159,9 @@ expression tree.
 #### Defaults
 You may use any property (without any type of GoodlyFere.Ektron.Linq.Model.Attributes.* attribute
 attached) in a LINQ expression to search in Ektron.  If you do not supply an attribute, the library will
-use the name of the property and assume it is a StringPropertyExpression.  This may be updated in the future
+use the name of the property and assume it is a StringPropertyExpression (see above in the
+[Return Properties](#Return-Properties) section for information
+on how these properties are handled in the search results).  This may be updated in the future
 to assume a PropertyExpression type from the actual property type (so that a `long` property, for example, 
 would auto-translate into an IntegerPropertyExpression instead of a StringPropertyExpression).
 
@@ -242,6 +243,53 @@ an EktronPropertyAttribute.
 #### MetadataPropertyAttribute
 The MetadataPropertyAttribute is a convenience attribute equivalent to setting `IsMetadataProperty = true` on
 an EktronPropertyAttribute.
+
+### Return Properties
+If you're familiar with using Ektron's AdvancedSearchCriteria, you know you have to define which
+properties you want returned by adding them to the AdvancedSearchCriteria.ReturnProperties property.
+
+As you may suspect, this is what the library populates your domain object properties from.  The library does
+this essentially in a two-step process:
+
+1. It collects the properties you use in the where and order-by clauses and adds these to the ReturnProperties.
+2. It collects all of the properties on your domain object that have any kind of EktronPropertyAttribute
+attached to them.
+
+The reasoning behind this is pretty simple: the Ektron SearchManager will throw an exception if any properties
+you use in the AdvancedSearchCriteria.ExpressionTree or AdvancedSearchCriteria.ReturnProperties are not
+indexed and will return no results.  So, the library makes the safest assumption it can, while being as
+broading inclusive as it can: if you are searching on a property (where clause) or ordering by a property
+(order-by clause) or attach an EktronPropertyAttribute to a property, then you have also made sure that
+this property is indexed in Ektron.
+
+This has two simple consequences:
+
+1. You can have any number of properties in your domain object, without
+EktronPropertyAttributes, that will be ignored by the library (unless you include them in the where or 
+order-by clauses) when your LINQ query is parsed.
+2. Any property without an EktronPropertyAttribute and not used in the where or order-by clauses will
+not be populated with data from Ektron.
+
+#### Example
+Consider a query using the [Widget class](#widget-class) above.  The following query will NOT populate
+the `Name` property on any of the `Widgets` in `itemWidgets`:
+
+    var query = from w in widgets
+                where w.Id > 10
+                select w;
+
+    Widget[] itemWidgets = query.ToArray();
+
+This query WILL attempt to populate the `Name` property:
+
+    var query = from w in widgets
+                where w.Name == "bob"
+                select w;
+
+    Widget[] itemWidgets = query.ToArray();
+
+However, it will cause the SearchManager to throw an exception and return no results because the `Name` 
+property does not exist as a standard Ektron content property.
 
 ## Version History
 - (1.0.9.5) Added inclusion of non-attributed properties into ReturnProperties when used in the Where clause of a query
