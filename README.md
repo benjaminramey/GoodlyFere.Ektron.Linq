@@ -1,5 +1,15 @@
 # LINQ to Ektron Search
 
+Table of Contents
+- [Summary](#summary)
+- [Installation](#installation)
+- [Basic Usage](#basic-usage)
+- [Reference](#reference)
+    - [Class Attributes](#class-attributes)
+    - [Property Attributes](#property-attributes)
+    - [Return Properties](#return-properties)
+- [Version History](#version-history)
+
 ## Summary 
 
 LINQ to Ektron Search provides a very basic (at the moment) implementation of LINQ for Ektron by translating LINQ expressions
