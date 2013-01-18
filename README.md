@@ -302,6 +302,7 @@ However, it will cause the SearchManager to throw an exception and return no res
 property does not exist as a standard Ektron content property.
 
 ## Version History
+- (1.0.10.7) Updated to re-linq 1.13.182.0
 - (1.0.10.6) Added lots of class, property and method documentation
 - (1.0.10.5) Added support for string.IsNullOrEmpty method
 - (1.0.9.5) Added inclusion of non-attributed properties into ReturnProperties when used in the Where clause of a query
