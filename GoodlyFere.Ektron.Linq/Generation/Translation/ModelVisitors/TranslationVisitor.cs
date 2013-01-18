@@ -96,7 +96,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors
         {
             var visitor = new TranslationVisitor(idProvider);
             visitor.VisitQueryModel(queryModel);
-            
+
             AdvancedSearchCriteria criteria = new AdvancedSearchCriteria
                 {
                     ExpressionTree = visitor.ExpressionTree,

@@ -1,6 +1,7 @@
 ﻿# LINQ to Ektron Search Tests
 
 ## Version History
+- (1.0.4.0) Added StringMethodTests
 - (1.0.3.0) Adding tests for correct inclusion of return properties
 - (1.0.2.5) Moved TestExpressionVisitor to GoodlyFere.Ektron.Linq as FormattingExpressionVisitor
 - (1.0.2.4) Added tests for scalar result operators

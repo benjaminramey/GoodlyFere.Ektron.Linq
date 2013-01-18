@@ -52,6 +52,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.Maps
         public ObjectMethodsMap()
         {
             Add(typeof(string).GetMethod("Contains"), StringMethodHandlers.HandleStringContains);
+            Add(typeof(string).GetMethod("IsNullOrEmpty"), StringMethodHandlers.HandleIsNullOrEmpty);
         }
 
         #endregion

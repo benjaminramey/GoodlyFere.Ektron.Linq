@@ -45,6 +45,15 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.Handlers.Objects
     {
         #region Public Methods
 
+        public static EktronExpression HandleIsNullOrEmpty(Expression obj, ReadOnlyCollection<Expression> arguments)
+        {
+            QueryBuildResult propResult = QueryBuildingVisitor.Build(arguments[0]);
+
+            StringPropertyExpression objectExpr = propResult.Expression as StringPropertyExpression;
+
+            return objectExpr.EqualTo(string.Empty);
+        }
+
         public static EktronExpression HandleStringContains(
             Expression obj, ReadOnlyCollection<Expression> arguments)
         {
