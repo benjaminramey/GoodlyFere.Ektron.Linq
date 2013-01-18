@@ -31,11 +31,18 @@
 
 using System;
 using System.Linq;
+using GoodlyFere.Ektron.Linq.Interfaces;
 
 #endregion
 
 namespace GoodlyFere.Ektron.Linq.Model.Attributes
 {
+    /// <summary>
+    ///     Use this property to designate a domain object as mapping
+    ///     to a particular Ektron content type and (optionally) a sub-content type.
+    ///     The library will use an <see cref="IEktronIdProvider" /> to convert the
+    ///     ContentTypeName and ContentSubTypeName into Ektron content IDs.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public class ContentTypeAttribute : Attribute
     {
@@ -57,9 +64,23 @@ namespace GoodlyFere.Ektron.Linq.Model.Attributes
 
         #region Public Properties
 
+        /// <summary>
+        ///     The name of the sub content type to which this domain object maps.
+        ///     This name can be arbitrary depending on how your <see cref="IEktronIdProvider" />
+        ///     interpets content type names.
+        /// </summary>
         public string ContentSubTypeName { get; set; }
+
+        /// <summary>
+        ///     The name of the content type to which this domain object maps.
+        ///     This name can be arbitrary depending on how your <see cref="IEktronIdProvider" />
+        ///     interpets content type names.
+        /// </summary>
         public string ContentTypeName { get; set; }
 
+        /// <summary>
+        ///     True if a ContentSubTypeName was set.
+        /// </summary>
         public bool HasSubType
         {
             get

@@ -37,6 +37,11 @@ using Ektron.Cms.Search.Expressions;
 
 namespace GoodlyFere.Ektron.Linq.Model.Attributes
 {
+    /// <summary>
+    /// Use this attribute to designate a string-type metadata property.  This is a 
+    /// convenience attribute for setting IsMetadataProperty and EktronExpressionType to
+    /// typeof(StringPropertyExpression) on an <see cref="EktronPropertyAttribute"/>.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public class MetadataStringPropertyAttribute : MetadataPropertyAttribute
     {

@@ -37,6 +37,11 @@ using Ektron.Cms.Search.Expressions;
 
 namespace GoodlyFere.Ektron.Linq.Model.Attributes
 {
+    /// <summary>
+    ///     This is the base class from which all other *PropertyAttributes derive. Use this
+    ///     attribute to fine-tune how the library translates your domain object properties
+    ///     into the AdvancedSearchCriteria.ExpressionTree.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public class EktronPropertyAttribute : Attribute
     {
@@ -57,6 +62,10 @@ namespace GoodlyFere.Ektron.Linq.Model.Attributes
 
         #region Public Properties
 
+        /// <summary>
+        ///     Defines what Ektron PropertyExpression this property will
+        ///     translate into.
+        /// </summary>
         public Type EktronExpressionType
         {
             get
@@ -75,9 +84,29 @@ namespace GoodlyFere.Ektron.Linq.Model.Attributes
             }
         }
 
+        /// <summary>
+        ///     The name of the Ektron property that this domain object property
+        ///     should translate into.  If IsSmartFormProperty is set, this must
+        ///     be an absolute XML path to the SmartForm element.
+        /// </summary>
         public string EktronPropertyName { get; set; }
+
+        /// <summary>
+        ///     Defines whether this property is a custom Ektron property.  Mutually
+        ///     exclusive with IsMetadataProperty and IsSmartFormProperty.
+        /// </summary>
         public bool IsCustomProperty { get; set; }
+
+        /// <summary>
+        ///     Defines whether this property is a metadata Ektron property.  Mutually
+        ///     exclusive with IsCustomProperty and IsSmartFormProperty.
+        /// </summary>
         public bool IsMetadataProperty { get; set; }
+
+        /// <summary>
+        ///     Defines whether this property is a smart form Ektron property.  Mutually
+        ///     exclusive with IsMetadataProperty and IsCustomProperty.
+        /// </summary>
         public bool IsSmartFormProperty { get; set; }
 
         #endregion

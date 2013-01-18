@@ -37,6 +37,11 @@ using Ektron.Cms.Search.Expressions;
 
 namespace GoodlyFere.Ektron.Linq.Model.Attributes
 {
+    /// <summary>
+    /// Use this attribute to designate a integer-type property in a SmartForm.  This is a 
+    /// convenience attribute for setting IsSmartFormProperty and EktronExpressionType to
+    /// typeof(IntegerPropertyExpression) on an <see cref="EktronPropertyAttribute"/>.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public class SmartFormIntegerPropertyAttribute : SmartFormPropertyAttribute
     {

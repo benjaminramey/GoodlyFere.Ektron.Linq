@@ -31,13 +31,22 @@
 
 using System;
 using System.Linq;
+using GoodlyFere.Ektron.Linq.Model.Attributes;
 
 #endregion
 
 namespace GoodlyFere.Ektron.Linq.Model
 {
+    /// <summary>
+    ///     Ektron constant values that are helpful in giving names for
+    ///     <see cref="EktronPropertyAttribute" />s.
+    /// </summary>
     public static class EkConstants
     {
+        /// <summary>
+        ///     Constant values to use with <see cref="EktronPropertyAttribute" />s
+        ///     for all of the SearchContentPropertys available in Ektron.
+        /// </summary>
         public struct SearchProperties
         {
             #region Constants and Fields

@@ -50,7 +50,7 @@ namespace GoodlyFere.Ektron.Linq
         ///     Creates an <see cref="EktronQueryable" /> for a domain object
         ///     using the default <see cref="AppSettingsIdProvider" /> id provider.
         /// </summary>
-        /// <typeparam name="T">Domain object to wrap in an IQueryable.</typeparam>
+        /// <typeparam name="T">Domain object type that maps to content in Ektron to wrap in an IQueryable.</typeparam>
         /// <returns>
         ///     <see cref="EktronQueryable<T>"/>
         /// </returns>
@@ -63,7 +63,7 @@ namespace GoodlyFere.Ektron.Linq
         ///     Creates an <see cref="EktronQueryable" /> for a domain object
         ///     with the provided <see cref="IEktronIdProvider" />.
         /// </summary>
-        /// <typeparam name="T">Domain object to wrap in an IQueryable.</typeparam>
+        /// <typeparam name="T">Domain object type that maps to content in Ektron to wrap in an IQueryable.</typeparam>
         /// <param name="idProvider">
         ///     Implementation of <see cref="IEktronIdProvider" /> to use when searching.
         /// </param>
@@ -79,7 +79,7 @@ namespace GoodlyFere.Ektron.Linq
         ///     Creates an <see cref="EktronQueryable" /> for a domain object
         ///     with the provided <see cref="IEktronIdProvider" /> and <see cref="ISearchManager" />.
         /// </summary>
-        /// <typeparam name="T">Domain object to wrap in an IQueryable.</typeparam>
+        /// <typeparam name="T">Domain object type that maps to content in Ektron to wrap in an IQueryable.</typeparam>
         /// <param name="idProvider">
         ///     Implementation of <see cref="IEktronIdProvider" /> to use when searching.
         /// </param>

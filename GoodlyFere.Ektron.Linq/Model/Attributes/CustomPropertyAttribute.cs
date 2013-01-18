@@ -36,6 +36,10 @@ using System.Linq;
 
 namespace GoodlyFere.Ektron.Linq.Model.Attributes
 {
+    /// <summary>
+    /// Use this attribute to designate a custom property.  This is a 
+    /// convenience attribute for setting IsCustomProperty on an <see cref="EktronPropertyAttribute"/>.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public class CustomPropertyAttribute : EktronPropertyAttribute
     {
