@@ -5,10 +5,10 @@ The AssemblyVersion and AssemblyInformationalVersion will always match the
 GoodlyFere.Ektron.Linq AssemblyVersion and AssemblyInformationVersion.
 
 The AssemblyFileVersion will follow this scheme:
-Major version (of GoodlyFere.Ektron.Linq assembly)
-Minor version (of GoodlyFere.Ektron.Linq assembly)
-Test set version (updated when a set of tests is added)
-Bug fix/minor update version (updated when bugs are fixed or minor updates are made in existing tests)
+- Major version (of GoodlyFere.Ektron.Linq assembly)
+- Minor version (of GoodlyFere.Ektron.Linq assembly)
+- Test set version (updated when a set of tests is added)
+- Bug fix/minor update version (updated when bugs are fixed or minor updates are made in existing tests)
 
 ### History
 - (1.0.4.0) Added StringMethodTests

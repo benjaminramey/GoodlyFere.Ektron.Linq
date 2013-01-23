@@ -306,16 +306,16 @@ This is the first piece of software I've written where versioning could potentia
 to do some reading on how to actually go about it.  There are lots of ideas out there, and really, it's kind of confusing.
 
 So far, I've started with something like this for the four version dots:
-Major version
-Minor version
-Feature build (updated every time I code a significant feature)
-Bug fix commit (updated almost every time I commit, definitely every time I commit a bug fix)
+- Major version
+- Minor version
+- Feature build (updated every time I code a significant feature)
+- Bug fix commit (updated almost every time I commit, definitely every time I commit a bug fix)
 
-As of 1.0.10.7, I'm changing this to:
-Major version (will correspond to Ektron's major version.  So, 1 = 8 right now)
-Minor version (will correspond to Ektron's minor version.  So, 0 = 5 right now)
-Feature set number (will generally correspond to NuGet package builds)
-Git commit number
+After 1.0.10.7, I am changing this to:
+- Major version (will correspond to Ektron's major version.  So, 1 = 8 right now)
+- Minor version (will correspond to Ektron's minor version.  So, 0 = 5 right now)
+- Feature set number (will generally correspond to NuGet package builds)
+- Git commit number
 
 All of the above applies to the AssemblyFileVersion version number.  I am keeping the AssemblyVersion at
 1.0.0.0 for now where the major and minor version numbers will work just like the major and minor version numbers in the
@@ -324,6 +324,7 @@ I'm not even sure if there are any that would affect this library), I will creat
 branch will become the 8.6 branch with a new, updated AssemblyVersion of 1.1.0.0.  
 
 ### Version History
+- (1.0.10.98) Updated versioning scheme to correspond to git commits, no code updates
 - (1.0.10.7) Updated to re-linq 1.13.182.0
 - (1.0.10.6) Added lots of class, property and method documentation
 - (1.0.10.5) Added support for string.IsNullOrEmpty method
