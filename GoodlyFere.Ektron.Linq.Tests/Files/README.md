@@ -11,6 +11,7 @@ The AssemblyFileVersion will follow this scheme:
 - Bug fix/minor update version (updated when bugs are fixed or minor updates are made in existing tests)
 
 ### History
+- (1.0.5.2) Added to NullableTests
 - (1.0.5.1) Removed unused "expectedValue" variables from NullableTests
 - (1.0.5.0) Added NullableTests
 - (1.0.4.0) Added StringMethodTests

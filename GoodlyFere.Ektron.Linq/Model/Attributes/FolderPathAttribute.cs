@@ -37,10 +37,10 @@ using System.Linq;
 namespace GoodlyFere.Ektron.Linq.Model.Attributes
 {
     /// <summary>
-    /// Use this attribute to map this domain object to content in a specific
-    /// folder in Ektron.  This will cause the library to add a 
-    /// SearchContentProperty.FolderPath == "FOLDERPATH_VALUE" expression
-    /// to the AdvancedSearchCriteria.ExpressionTree.
+    ///     Use this attribute to map this domain object to content in a specific
+    ///     folder in Ektron.  This will cause the library to add a
+    ///     SearchContentProperty.FolderPath == "FOLDERPATH_VALUE" expression
+    ///     to the AdvancedSearchCriteria.ExpressionTree.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public class FolderPathAttribute : Attribute
@@ -57,11 +57,11 @@ namespace GoodlyFere.Ektron.Linq.Model.Attributes
         #region Public Properties
 
         /// <summary>
-        /// The path to the folder in Ektron in which content for this domain object
-        /// is found.  This path should begin with "Folders/"
+        ///     The path to the folder in Ektron in which content for this domain object
+        ///     is found.  This path should begin with "Folders/"
         /// </summary>
         /// <example>
-        /// Folders/Content/Settings
+        ///     Folders/Content/Settings
         /// </example>
         public string FolderPath { get; set; }
 

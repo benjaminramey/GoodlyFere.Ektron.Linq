@@ -109,17 +109,23 @@ namespace GoodlyFere.Ektron.Linq.Tests.Model
     {
         #region Public Properties
 
+        [EktronBooleanProperty("NullableBoolean")]
+        public bool? NullableBoolean { get; set; }
+
+        [EktronBooleanProperty("NullableBoolean2")]
+        public bool? NullableBoolean2 { get; set; }
+
         [EktronDateProperty("NullableDateTime")]
         public DateTime? NullableDateTime { get; set; }
 
         [EktronDecimalProperty("NullableDecimal")]
         public double? NullableDecimal { get; set; }
 
+        [EktronDecimalProperty("NullableDecimal2")]
+        public decimal? NullableDecimal2 { get; set; }
+
         [EktronIntegerProperty("NullableLong")]
         public long? NullableLong { get; set; }
-
-        [EktronBooleanProperty("NullableBoolean")]
-        public bool? NullableBoolean { get; set; }
 
         #endregion
     }

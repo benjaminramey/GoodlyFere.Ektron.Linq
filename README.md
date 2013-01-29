@@ -324,6 +324,7 @@ I'm not even sure if there are any that would affect this library), I will creat
 branch will become the 8.6 branch with a new, updated AssemblyVersion of 1.1.0.0.  
 
 ### Version History
+- (1.0.11.102) Fixed bug with compound where clauses made up of nullable property comparisons
 - (1.0.11.100) Added support for nullable properties, including the HasValue property
 - (1.0.10.98) Updated versioning scheme to correspond to git commits, no code updates
 - (1.0.10.7) Updated to re-linq 1.13.182.0

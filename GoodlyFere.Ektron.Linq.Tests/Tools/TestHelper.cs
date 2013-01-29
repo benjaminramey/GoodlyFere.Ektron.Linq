@@ -87,7 +87,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Tools
                     dataRowMock[columnName] = prop.GetValue(dummyObj, null);
                 }
             }
-            
+
             return dataRowMock;
         }
 

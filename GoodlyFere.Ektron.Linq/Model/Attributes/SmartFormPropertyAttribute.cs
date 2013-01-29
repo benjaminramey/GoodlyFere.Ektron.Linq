@@ -37,8 +37,8 @@ using System.Linq;
 namespace GoodlyFere.Ektron.Linq.Model.Attributes
 {
     /// <summary>
-    /// Use this attribute to designate a property in a SmartForm.  This is a 
-    /// convenience attribute for setting IsSmartFormProperty on an <see cref="EktronPropertyAttribute"/>.
+    ///     Use this attribute to designate a property in a SmartForm.  This is a
+    ///     convenience attribute for setting IsSmartFormProperty on an <see cref="EktronPropertyAttribute" />.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property)]
     public class SmartFormPropertyAttribute : EktronPropertyAttribute
