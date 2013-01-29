@@ -163,15 +163,17 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors
             {
                 EktronBinaryNullExpression binNullExpr = expression as EktronBinaryNullExpression;
 
-                if (expression.NodeType == ExpressionType.Equal)
+                switch (expression.NodeType)
                 {
-                    _ekExpressions.Push(new IsNullExpression(binNullExpr.EktronProperty));
-                }
-                else if (expression.NodeType == ExpressionType.NotEqual)
-                {
-                    _ekExpressions.Push(new IsNotNullExpression(binNullExpr.EktronProperty));
+                    case ExpressionType.Equal:
+                        _ekExpressions.Push(new IsNullExpression(binNullExpr.EktronProperty));
+                        break;
+                    case ExpressionType.NotEqual:
+                        _ekExpressions.Push(new IsNotNullExpression(binNullExpr.EktronProperty));
+                        break;
                 }
 
+                _propertiesUsed.Add(binNullExpr.EktronProperty);
                 return expression;
             }
 

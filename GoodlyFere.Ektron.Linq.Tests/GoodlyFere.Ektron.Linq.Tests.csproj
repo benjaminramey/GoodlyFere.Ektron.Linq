@@ -180,6 +180,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -203,6 +204,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExecutorTests\NullableTests.cs" />
     <Compile Include="ExecutorTests\ReturnPropertiesTests.cs" />
     <Compile Include="ExecutorTests\ScalarTests.cs" />
     <Compile Include="ExecutorTests\SingleTests.cs" />

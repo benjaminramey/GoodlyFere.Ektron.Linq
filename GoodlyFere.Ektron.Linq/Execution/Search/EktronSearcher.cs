@@ -40,7 +40,7 @@ using GoodlyFere.Ektron.Linq.Extensions;
 
 namespace GoodlyFere.Ektron.Linq.Execution.Search
 {
-    internal class EktronSearcher
+    public class EktronSearcher
     {
         #region Constants and Fields
 
@@ -59,7 +59,7 @@ namespace GoodlyFere.Ektron.Linq.Execution.Search
 
         #endregion
 
-        #region Methods
+        #region Public Methods
 
         /// <summary>
         ///     Submits the given AdvancedSearchCriteria to the
@@ -72,7 +72,7 @@ namespace GoodlyFere.Ektron.Linq.Execution.Search
         /// </remarks>
         /// <param name="criteria">Criteria to search Ektron with.</param>
         /// <returns>List of SearchResultData returned by Ektron ISearchManager.</returns>
-        internal List<SearchResultData> DoSearch(AdvancedSearchCriteria criteria)
+        public List<SearchResultData> DoSearch(AdvancedSearchCriteria criteria)
         {
             List<SearchResultData> results;
             try
