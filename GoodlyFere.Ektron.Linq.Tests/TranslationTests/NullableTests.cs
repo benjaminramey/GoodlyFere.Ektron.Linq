@@ -136,7 +136,6 @@ namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
         [Fact]
         public void Nullable_EqualsNull()
         {
-            long expectedValue = 1L;
             var query = from w in EktronQueryFactory.Queryable<NullableWidget>()
                         where w.NullableLong == null
                         select w;
@@ -164,7 +163,6 @@ namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
         [Fact]
         public void Nullable_NotEqualsNull()
         {
-            long expectedValue = 1L;
             var query = from w in EktronQueryFactory.Queryable<NullableWidget>()
                         where w.NullableLong != null
                         select w;
