@@ -12,8 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>LINQ provider for Ektron via Ektron's SearchManager using AdvancedSearchCriteria searches.</description>
     <releaseNotes>
-        Added class, method and property documentation; string.IsNullOrEmpty support; inclusion of non-attributed
-        properties into ReturnProperties when used in where and/or order-by clauses.
+        Added support for Nullable properties, including calling the HasValue property in the where clause.
     </releaseNotes>
     <tags>linq ektron advancedsearchcriteria search</tags>
     <dependencies>

@@ -36,6 +36,7 @@ using System.Linq;
 using System.Reflection;
 using Ektron.Cms.Search;
 using Ektron.Cms.Search.Expressions;
+using GoodlyFere.Ektron.Linq.Generation.Transformation.ModelVisitors;
 using GoodlyFere.Ektron.Linq.Generation.Translation.ModelVisitors;
 using GoodlyFere.Ektron.Linq.Helpers;
 using GoodlyFere.Ektron.Linq.Model.Attributes;
@@ -111,6 +112,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.Tools
         internal static Expression GetTranslation<T>(IQueryable<T> query)
         {
             var queryModel = GetQueryModel(query);
+            TransformationVisitor.Transform(queryModel);
             return TranslationVisitor.Translate(queryModel, new IdProvider()).ExpressionTree;
         }
 

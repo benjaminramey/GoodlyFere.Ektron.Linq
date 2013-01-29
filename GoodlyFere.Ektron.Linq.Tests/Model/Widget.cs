@@ -105,6 +105,25 @@ namespace GoodlyFere.Ektron.Linq.Tests.Model
         #endregion
     }
 
+    public class NullableWidget : Widget
+    {
+        #region Public Properties
+
+        [EktronDateProperty("NullableDateTime")]
+        public DateTime? NullableDateTime { get; set; }
+
+        [EktronDecimalProperty("NullableDecimal")]
+        public double? NullableDecimal { get; set; }
+
+        [EktronIntegerProperty("NullableLong")]
+        public long? NullableLong { get; set; }
+
+        [EktronBooleanProperty("NullableBoolean")]
+        public bool? NullableBoolean { get; set; }
+
+        #endregion
+    }
+
     public class NumberTestWidget : Widget
     {
         #region Public Properties

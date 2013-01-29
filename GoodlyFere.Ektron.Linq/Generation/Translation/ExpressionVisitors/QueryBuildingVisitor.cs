@@ -39,6 +39,7 @@ using GoodlyFere.Ektron.Linq.Exceptions;
 using GoodlyFere.Ektron.Linq.Generation.Translation.Maps;
 using GoodlyFere.Ektron.Linq.Helpers;
 using Remotion.Linq.Clauses.ExpressionTreeVisitors;
+using Remotion.Linq.Clauses.Expressions;
 using Remotion.Linq.Parsing;
 using BinaryExpression = System.Linq.Expressions.BinaryExpression;
 using EktronExpression = Ektron.Cms.Search.Expressions.Expression;
@@ -154,6 +155,27 @@ namespace GoodlyFere.Ektron.Linq.Generation.Translation.ExpressionVisitors
             _ekExpressions.Push(valueExpression);
 
             return expression;
+        }
+
+        protected override Expression VisitExtensionExpression(ExtensionExpression expression)
+        {
+            if (expression is EktronBinaryNullExpression)
+            {
+                EktronBinaryNullExpression binNullExpr = expression as EktronBinaryNullExpression;
+
+                if (expression.NodeType == ExpressionType.Equal)
+                {
+                    _ekExpressions.Push(new IsNullExpression(binNullExpr.EktronProperty));
+                }
+                else if (expression.NodeType == ExpressionType.NotEqual)
+                {
+                    _ekExpressions.Push(new IsNotNullExpression(binNullExpr.EktronProperty));
+                }
+
+                return expression;
+            }
+
+            return base.VisitExtensionExpression(expression);
         }
 
         protected override Expression VisitMemberExpression(MemberExpression expression)

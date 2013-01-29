@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EktronBinaryNullExpression.cs" />
     <Compile Include="Exceptions\InvalidQueryException.cs" />
     <Compile Include="Execution\Handlers\Int64ResultHandlers.cs" />
     <Compile Include="Execution\Handlers\Int32ResultHandlers.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Execution\Maps\ScalarResultMaps.cs" />
     <Compile Include="Extensions\EktronExpressionExtensions.cs" />
     <Compile Include="Generation\CriteriaGenerator.cs" />
+    <Compile Include="Generation\Transformation\ExpressionVisitors\NullableExpressionVisitor.cs" />
     <Compile Include="Generation\Transformation\ModelVisitors\TransformationVisitor.cs" />
     <Compile Include="Generation\Translation\Aggregators\CriteriaExpressionTreeAggregator.cs" />
     <Compile Include="Generation\Translation\Aggregators\OrderByAggregator.cs" />

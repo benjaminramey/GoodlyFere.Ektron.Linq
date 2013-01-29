@@ -386,7 +386,21 @@ namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
         }
 
         [Fact]
-        public void SelectFromWhere_NullComparisonConstantTurnsIntoEmptyString()
+        public void SelectFromWhere_NotNullComparisonConstantTurnsIntoIsNotNull()
+        {
+            string expectedValue = null;
+
+            var query = from w in EktronQueryFactory.Queryable<Widget>(_idProvider)
+                        where w.Name != expectedValue
+                        select w;
+
+            var actualTranslation = TestHelper.GetTranslation(query);
+            var expectedTranslation = new StringPropertyExpression("Name").IsNotNull();
+            EkAssert.Equal(expectedTranslation, actualTranslation);
+        }
+
+        [Fact]
+        public void SelectFromWhere_NullComparisonConstantTurnsIntoIsNull()
         {
             string expectedValue = null;
 
@@ -395,7 +409,7 @@ namespace GoodlyFere.Ektron.Linq.Tests.TranslationTests
                         select w;
 
             var actualTranslation = TestHelper.GetTranslation(query);
-            var expectedTranslation = new StringPropertyExpression("Name").EqualTo(expectedValue);
+            var expectedTranslation = new StringPropertyExpression("Name").IsNull();
             EkAssert.Equal(expectedTranslation, actualTranslation);
         }
 

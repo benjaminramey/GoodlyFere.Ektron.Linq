@@ -12,7 +12,7 @@ using Remotion.Linq.Parsing;
 
 namespace GoodlyFere.Ektron.Linq.Generation.Transformation.ModelVisitors
 {
-    internal class TransformationVisitor : QueryModelVisitorBase
+    public class TransformationVisitor : QueryModelVisitorBase
     {
         #region Constants and Fields
 
@@ -26,6 +26,7 @@ namespace GoodlyFere.Ektron.Linq.Generation.Transformation.ModelVisitors
         {
             _whereClauseVisitors = new List<ExpressionTreeVisitor>
                 {
+                    new NullableExpressionVisitor(),
                     new SubQueryExpressionVisitor()
                 };
         }
