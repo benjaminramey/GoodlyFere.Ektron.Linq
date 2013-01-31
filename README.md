@@ -17,6 +17,8 @@ LINQ to Ektron Search provides a very basic (at the moment) implementation of LI
 into valid `Ektron.Cms.Search.Expressions.Expression`s that then are submitted to the Ektron SearchManager via an
 `AdvancedSearchCriteria` search.
 
+If you use LINQ to Ektron Search in a project, please let me know!  I'd be excited to hear about it.
+
 ## Installation
 
 I recommend installing via the NuGet package through Visual Studio.  See generic instructions here:
