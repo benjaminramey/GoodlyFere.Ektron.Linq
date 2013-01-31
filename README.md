@@ -32,8 +32,8 @@ in the GoodlyFere.Ektron.Linq project.
 
 ## Basic Usage
 
-To use this Linq-to-Ektron implementation you need two basic things in place:
-- An Ektron 8.5 (this library has not been tested with any version <8.5) installation with search running.  See Ektron documentation (good luck!) on 
+To use this library you need two basic things in place:
+- An Ektron 8.5 (this library has not been tested with any version <8.5) installation with search running.  See Ektron documentation on 
 setting this up.
 - One or more domain objects that map to indexed properties in your Ektron instance (see the [Widget](#widget-class) example class below)
 
@@ -48,10 +48,12 @@ setting this up.
 
 ### Widget Class
 This is a simple example of a domain object used to query Ektron content.  This Widget will
-match any content item in Ektron.
+match any content item in Ektron. It has one property that matches an Ektron property: Id.
 
-It has one property that matches an Ektron property: Id.  See more documentation to come soon on
-setting up properties to match smart form, metadata and custom properties in Ektron.
+See the class and property attribute
+documentation below for more details on setting up classes to match smart forms, folder paths,
+content types and setting up properties to match smart form properties, meta data properties, 
+regular properties and custom properties.
 
     public class Widget
     {
