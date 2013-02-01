@@ -329,10 +329,10 @@ I'm not even sure if there are any that would affect this library), I will creat
 branch will become the 8.6 branch with a new, updated AssemblyVersion of 1.1.0.0.  
 
 ### Known Issues
-- There seems to be an issue in Ektron 8.5 with the PropertyExpression.IsNull() and PropertyExpression.IsNotNull()
-that, no matter how you construct it, will cause the SearchManager to throw an expression when you try to search
+- There seems to be an issue in Ektron 8.5 with PropertyExpression.IsNull() and PropertyExpression.IsNotNull() so
+that, no matter how you construct it, they will cause the SearchManager to throw an expression when you try to search
 with any number of these expressions in the ExpressionTree.  Therefore, the recent Nullable property support I 
-just added is pretty useless.  If you use NullableProperty.HasValue or AnyProperty == null in a LINQ where clause
+just added (1.0.11.103) is pretty useless.  If you use NullableProperty.HasValue or AnyProperty == null in a LINQ where clause
 the library will convert this to a IsNotNullExpression or IsNullExpression and your search will fail.  So, beware!
 
 ### Version History
