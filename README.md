@@ -19,6 +19,9 @@ into valid `Ektron.Cms.Search.Expressions.Expression`s that then are submitted t
 
 If you use LINQ to Ektron Search in a project, please let me know!  I'd be excited to hear about it.
 
+I learned a ton from [Chris Eldridge](https://github.com/themotleyfool)'s [LINQ to Lucene](https://github.com/themotleyfool/Lucene.Net.Linq) project that helped me take a good path on this project.
+So, thanks Chris!
+
 ## Installation
 
 I recommend installing via the NuGet package through Visual Studio.  See generic instructions here:
