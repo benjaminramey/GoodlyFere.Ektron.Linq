@@ -309,6 +309,13 @@ This query WILL attempt to populate the `Name` property:
 However, it will cause the SearchManager to throw an exception and return no results because the `Name` 
 property does not exist as a standard Ektron content property.
 
+## Known Issues
+- There seems to be an issue in Ektron 8.5 with PropertyExpression.IsNull() and PropertyExpression.IsNotNull() so
+that, no matter how you construct it, they will cause the SearchManager to throw an expression when you try to search
+with any number of these expressions in the ExpressionTree.  Therefore, the recent Nullable property support I 
+just added (1.0.11.103) is pretty useless.  If you use NullableProperty.HasValue or AnyProperty == null in a LINQ where clause
+the library will convert this to a IsNotNullExpression or IsNullExpression and your search will fail.  So, beware!
+
 ## Versioning
 This is the first piece of software I've written where versioning could potentially actually matter.  So, I had
 to do some reading on how to actually go about it.  There are lots of ideas out there, and really, it's kind of confusing.
@@ -330,13 +337,6 @@ All of the above applies to the AssemblyFileVersion version number.  I am keepin
 AssemblyFileVersion.  So, in the future, if I or someone else updates the library to work with new Ektron 8.6 features (honestly,
 I'm not even sure if there are any that would affect this library), I will create an 8.5 (1.0.0.0) branch and the master
 branch will become the 8.6 branch with a new, updated AssemblyVersion of 1.1.0.0.  
-
-### Known Issues
-- There seems to be an issue in Ektron 8.5 with PropertyExpression.IsNull() and PropertyExpression.IsNotNull() so
-that, no matter how you construct it, they will cause the SearchManager to throw an expression when you try to search
-with any number of these expressions in the ExpressionTree.  Therefore, the recent Nullable property support I 
-just added (1.0.11.103) is pretty useless.  If you use NullableProperty.HasValue or AnyProperty == null in a LINQ where clause
-the library will convert this to a IsNotNullExpression or IsNullExpression and your search will fail.  So, beware!
 
 ### Version History
 - (1.0.11.103) Added nullable properties to return properties when used in where clause
