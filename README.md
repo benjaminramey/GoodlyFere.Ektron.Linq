@@ -310,7 +310,7 @@ However, it will cause the SearchManager to throw an exception and return no res
 property does not exist as a standard Ektron content property.
 
 ## Known Issues
-- Null comparisons  
+- **Null comparisons**  
 There seems to be an issue in Ektron 8.5 with PropertyExpression.IsNull() and PropertyExpression.IsNotNull() so
 that, no matter how you construct it, they will cause the SearchManager to throw an expression when you try to search
 with any number of these expressions in the ExpressionTree.  Therefore, the recent Nullable property support I 
